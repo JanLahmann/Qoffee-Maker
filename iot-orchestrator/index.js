@@ -3,12 +3,15 @@ var ClientOAuth2 = require('client-oauth2');
 require('dotenv').config();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const fs = require('fs');
+const crypto = require("crypto");
 
 const app = express();
 app.use(express.json());
 
 const apiBaseUrl = process.env.API_URL;
 var qoffeeUser = null;
+
+const token = (process.env.TOKEN) ? process.env.TOKEN : crypto.randomBytes(32).toString('hex');
 
 var coffeeMachineConfiguration = {
     haId: process.env.HA_ID,
@@ -126,6 +129,17 @@ function withAuthenticatedUser(req, res, next) {
 }
 
 /*
+    Middleware to check for API token
+*/
+function withToken(req, res, next) {
+    if(!req.headers.authorization || req.headers.authorization != 'Bearer '+token) {
+        res.sendStatus(401).send("Wrong token");
+    } else {
+        next();
+    }
+}
+
+/*
     Send user to authentication interface
 */
 app.get('/auth', function (req, res) {
@@ -152,7 +166,7 @@ app.get("/auth/callback", function(req, res) {
 /*
     Refresh access token
 */
-app.get("/auth/refresh", withAuthenticatedUser, function(req, res) {
+app.get("/auth/refresh", withToken, withAuthenticatedUser, function(req, res) {
     refreshUser().then(result => {
         res.send(result);
     })
@@ -161,14 +175,14 @@ app.get("/auth/refresh", withAuthenticatedUser, function(req, res) {
 /*
     Get current coffeemachine config
 */
-app.get("/coffeemachine/config", async (req, res) => {
+app.get("/coffeemachine/config", withToken, async (req, res) => {
     res.send(coffeeMachineConfiguration);
 })
 
 /*
     set coffeemachine config
 */
-app.post("/coffeemachine/config", async (req, res) => {
+app.post("/coffeemachine/config", withToken, async (req, res) => {
     console.debug("Set configuration to", req.body);
     coffeeMachineConfiguration = req.body;
     res.send(true);
@@ -177,7 +191,7 @@ app.post("/coffeemachine/config", async (req, res) => {
 /*
     Fetch the current state of the machine
 */
-app.get("/coffeemachine/state", withAuthenticatedUser, async (req, res) => {
+app.get("/coffeemachine/state", withToken, withAuthenticatedUser, async (req, res) => {
     console.debug("Fetch latest machine state");
     const machineState = await fetch(apiBaseUrl+"/api/homeappliances/"+coffeeMachineConfiguration.haId+"/status/BSH.Common.Status.OperationState", {
         headers: {
@@ -192,7 +206,7 @@ app.get("/coffeemachine/state", withAuthenticatedUser, async (req, res) => {
 /*
     Request a drink from the coffeemachine
 */
-app.post("/coffeemachine/drink/:drink", withAuthenticatedUser, async (req, res) => {
+app.post("/coffeemachine/drink/:drink", withToken, withAuthenticatedUser, async (req, res) => {
     const drinkOptions = coffeeMachineConfiguration.drinks[req.params.drink];
     console.debug("Request drink", req.params.drink, drinkOptions);
     await fetch(apiBaseUrl+"/api/homeappliances/"+coffeeMachineConfiguration.haId+"/programs/active", {
@@ -219,8 +233,7 @@ app.post("/coffeemachine/drink/:drink", withAuthenticatedUser, async (req, res) 
 
 
 const port = 8000
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-});
-
 loadUser();
+app.listen(port, () => {
+    console.log(`The app listens to port ${port} with bearer token ${token}`);
+});
