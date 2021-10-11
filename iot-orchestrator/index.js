@@ -2,6 +2,7 @@ var express = require('express');
 var ClientOAuth2 = require('client-oauth2');
 require('dotenv').config();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fs = require('fs');
 
 const app = express();
 app.use(express.json());
@@ -48,6 +49,74 @@ const qoffeeAuth = new ClientOAuth2({
     scopes: ['IdentifyAppliance', 'CoffeeMaker']
 })
 
+/*
+    Export user to file
+*/
+function exportUser() {
+    if(!qoffeeUser) {
+        throw new Error("qoffeeUser does not exist");
+    }
+    const data = qoffeeUser.data;
+    data._expires = qoffeeUser.expires;
+    fs.writeFileSync("./qoffeeUser.json", JSON.stringify(data));
+}
+
+/*
+    Load user from file
+*/
+function loadUser() {
+    if(qoffeeUser) {
+        throw new Error("qoffeeUser already exists");
+    }
+    if(!fs.existsSync("./qoffeeUser.json")) {
+        console.debug("No user data found, do not load user");
+        return;
+    }
+    const userData = JSON.parse(fs.readFileSync("./qoffeeUser.json"));
+    const expireDate = new Date(userData._expires);
+    const now = new Date();
+    // check if expired
+    if(now > expireDate) {
+        console.log("The user object has expired, can not load the user from file", expireDate);
+        fs.rmSync("./qoffeeUser.json");
+        return;
+    }
+    delete userData._expires;
+    qoffeeUser = qoffeeAuth.createToken(userData);
+    refreshUser();
+    enableAutoRefresh();
+}
+
+/*
+    Refresh user
+*/
+function refreshUser() {
+    return new Promise((resolve, reject) => {
+        console.debug("Refresh user access token");
+        qoffeeUser.refresh().then(() => {
+            console.debug("User refreshed");
+            exportUser();
+            resolve(true);
+        }, error => {
+            reject(error);
+        })
+    }) 
+}
+
+/*
+    Automatically refresh users
+*/
+var autoRefreshInterval = null;
+function enableAutoRefresh() {
+    clearInterval(autoRefreshInterval);
+    autoRefreshInterval = setInterval(() => {
+        refreshUser();
+    }, (qoffeeUser.data.expires_in - 300)*1000);
+}
+
+/*
+    Middleware to enforce authentication
+*/
 function withAuthenticatedUser(req, res, next) {
     if(!qoffeeUser) {
         res.sendStatus(401).send("No user authenticated.");
@@ -68,9 +137,14 @@ app.get('/auth', function (req, res) {
     Handle callback from authentication server
 */
 app.get("/auth/callback", function(req, res) {
+    console.log("Original URL", req.originalUrl);
     qoffeeAuth.code.getToken(req.originalUrl).then(user => {
         console.debug("Authentication succeeded", user);
+        // set user (persistent)
         qoffeeUser = user;
+        exportUser();
+        // set interval to refresh user (5min before expires)
+        enableAutoRefresh();
         res.send(true);
     })
 })
@@ -79,10 +153,8 @@ app.get("/auth/callback", function(req, res) {
     Refresh access token
 */
 app.get("/auth/refresh", withAuthenticatedUser, function(req, res) {
-    console.debug("Refresh user access token");
-    qoffeeUser.refresh().then(() => {
-        console.debug("User refreshed");
-        res.send(true);
+    refreshUser().then(result => {
+        res.send(result);
     })
 })
 
@@ -149,4 +221,6 @@ app.post("/coffeemachine/drink/:drink", withAuthenticatedUser, async (req, res) 
 const port = 8000
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
-})
+});
+
+loadUser();
