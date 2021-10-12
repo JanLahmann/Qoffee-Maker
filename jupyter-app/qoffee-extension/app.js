@@ -186,6 +186,7 @@ define([
         // allow to activate/deactivate from console
         window.appActivate = activateApp;
         window.appDeactivate = deactivateApp;
+        window.appLoadView = loadView;
     }
 
     return {

@@ -4,11 +4,14 @@ require('dotenv').config();
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const fs = require('fs');
 const crypto = require("crypto");
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const apiBaseUrl = process.env.API_URL;
+const port = parseInt(process.env.PORT);
 var qoffeeUser = null;
 
 const token = (process.env.TOKEN) ? process.env.TOKEN : crypto.randomBytes(32).toString('hex');
@@ -134,7 +137,7 @@ function enableAutoRefresh() {
 */
 function withAuthenticatedUser(req, res, next) {
     if(!qoffeeUser) {
-        res.sendStatus(401).send("No user authenticated.");
+        res.status(401).send("No user authenticated.");
     } else {
         next();
     }
@@ -145,7 +148,7 @@ function withAuthenticatedUser(req, res, next) {
 */
 function withToken(req, res, next) {
     if(!req.headers.authorization || req.headers.authorization != 'Bearer '+token) {
-        res.sendStatus(401).send("Wrong token");
+        res.status(401).send("Wrong token");
     } else {
         next();
     }
@@ -245,20 +248,18 @@ app.post("/coffeemachine/drink/:drink", withToken, withAuthenticatedUser, async 
             }
         })
     }).then(async data => {
-        const responseData = await data.json();
-        if(responseData.error) {
+        if(!data.ok) {
+            const responseData = await data.json();
             res.status(parseInt(responseData.error.key)).send(responseData);
+            return;
         }
-        else {
-            res.send(responseData);
-        }
+        res.send(true);
     }, error => {
         res.status(406).send(error);
     });
 })
 
 
-const port = 8000
 loadUser();
 app.listen(port, () => {
     console.log(`The app listens to port ${port} with bearer token ${token}`);
