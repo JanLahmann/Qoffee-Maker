@@ -18,27 +18,39 @@ var coffeeMachineConfiguration = {
     drinks: {
         'espresso': {
             key: 'ConsumerProducts.CoffeeMaker.Program.Beverage.Espresso',
-            options: {}
+            options: {
+                "ConsumerProducts.CoffeeMaker.Option.BeanAmount": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
+            }
         },
         'espressomacchiato': {
             key: 'ConsumerProducts.CoffeeMaker.Program.Beverage.EspressoMacchiato',
-            options: {}
+            options: {
+                "ConsumerProducts.CoffeeMaker.Option.BeanAmount": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
+            }
         },
         'coffee': {
             key: 'ConsumerProducts.CoffeeMaker.Program.Beverage.Coffee',
-            options: {}
+            options: {
+                "ConsumerProducts.CoffeeMaker.Option.BeanAmount": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
+            }
         },
         'cappucino': {
             key: 'ConsumerProducts.CoffeeMaker.Program.Beverage.Cappuccino',
-            options: {}
+            options: {
+                "ConsumerProducts.CoffeeMaker.Option.BeanAmount": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
+            }
         },
         'lattemacchiato': {
             key: 'ConsumerProducts.CoffeeMaker.Program.Beverage.LatteMacchiato',
-            options: {}
+            options: {
+                "ConsumerProducts.CoffeeMaker.Option.BeanAmount": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
+            }
         },
         'caffeelatte': {
             key: 'ConsumerProducts.CoffeeMaker.Program.Beverage.CaffeLatte',
-            options: {}
+            options: {
+                "ConsumerProducts.CoffeeMaker.Option.BeanAmount": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
+            }
         }
     }
 }
@@ -207,9 +219,20 @@ app.get("/coffeemachine/state", withToken, withAuthenticatedUser, async (req, re
     Request a drink from the coffeemachine
 */
 app.post("/coffeemachine/drink/:drink", withToken, withAuthenticatedUser, async (req, res) => {
-    const drinkOptions = coffeeMachineConfiguration.drinks[req.params.drink];
-    console.debug("Request drink", req.params.drink, drinkOptions);
-    await fetch(apiBaseUrl+"/api/homeappliances/"+coffeeMachineConfiguration.haId+"/programs/active", {
+    const drinkKey = coffeeMachineConfiguration.drinks[req.params.drink].key;
+    const drinkOptionsObj = Object.assign(
+        {},
+        coffeeMachineConfiguration.drinks[req.params.drink].options,
+        req.body.drinkOptions
+    );
+    const drinkOptions = Object.keys(drinkOptionsObj).map(key => {
+        return {
+            key: key,
+            value: drinkOptionsObj[key]
+        }
+    })
+    console.debug("Request drink", req.params.drink, drinkKey, drinkOptions);
+    fetch(apiBaseUrl+"/api/homeappliances/"+coffeeMachineConfiguration.haId+"/programs/active", {
         headers: {
             "Authorization": "Bearer "+qoffeeUser.accessToken,
             "Content-Type": "application/vnd.bsh.sdk.v1+json"
@@ -217,18 +240,21 @@ app.post("/coffeemachine/drink/:drink", withToken, withAuthenticatedUser, async 
         method: "put",
         body: JSON.stringify({
             data: {
-                key : drinkOptions.key,
-                // TODO: merge options from drinkOptions
-                options: [
-                    {
-                             "key": "ConsumerProducts.CoffeeMaker.Option.BeanAmount",
-                             "value": "ConsumerProducts.CoffeeMaker.EnumType.BeanAmount.Strong"
-                    }
-                ]
+                key : drinkKey,
+                options: drinkOptions
             }
         })
+    }).then(async data => {
+        const responseData = await data.json();
+        if(responseData.error) {
+            res.status(parseInt(responseData.error.key)).send(responseData);
+        }
+        else {
+            res.send(responseData);
+        }
+    }, error => {
+        res.status(406).send(error);
     });
-    res.send(true);
 })
 
 
