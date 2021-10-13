@@ -52,10 +52,12 @@ define([
     }
 
     function requestDrink(drinkName) {
-        fetch("http://localhost:8000/coffeemachine/drink/"+drinkName, {
+        const orchestratorBaseUrl = window.state.get("orchestrator-url");
+        const orchestratorToken = window.state.get("orchestrator-token");
+        fetch(orchestratorBaseUrl+"/coffeemachine/drink/"+drinkName, {
             method: 'post',
             headers: {
-                "Authorization": "Bearer qoffee"
+                "Authorization": "Bearer "+orchestratorToken
             }
         }).then(response => {
             if(!response.ok) {
