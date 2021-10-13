@@ -1,9 +1,12 @@
 define([
     'base/js/namespace',
     'jquery',
-    './reactive'
+    'require',
+    './reactive',
+    'https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js',
+    'https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js',
 ], function(
-    jupyter, $, qer
+    jupyter, $, requirejs, qer, qed, qef
 ) {
 
     const drinkMap = {
@@ -31,21 +34,20 @@ define([
             value: 0
         };
         ["00", "01", "10", "11"].map(key => {
-            const prob = Math.round(window.state.get("bit-"+key)*100);
-            console.log("Set", key, "to", prob);
-            $(".progress-bar-"+key+" .progress-bar").css({
+            const prob = Math.round(window.state.get("editor-circuit-bit-"+key)*100);
+            $(".editor-circuit-probbar-"+key+" .progress-bar").css({
                 'width': prob+"%",
                 'aria-valuenow': prob
             });
-            $(".progress-text-"+key).text(prob+"%");
+            $(".editor-circuit-probtext-"+key).text(prob+"%");
             if(prob > currentMax.value) {
                 currentMax.key = key;
                 currentMax.value = prob;
             }
         })
         if(currentMax.key) {
-            $(".current-max-name").text(drinkMap[currentMax.key].name);
-            $(".current-max-id").attr("data-q-drink", drinkMap[currentMax.key].id);
+            $(".editor-circuit-max-name").text(drinkMap[currentMax.key].name);
+            $(".editor-circuit-max-id").attr("data-q-drink", drinkMap[currentMax.key].id);
         }
     }
 
@@ -63,8 +65,31 @@ define([
                 window.appLoadView("success");
             }
         }, error => {
+            alert("Could not get drink "+drinkName+"\n"+error);
             console.error(error);
         })
+    }
+
+    function openCircuitInQuantumComposer(stateVarName) {
+        const circuitQasm = window.state.get(stateVarName);
+        console.log("Found qasm", circuitQasm);
+        const data = {
+            title: 'Qoffee Maker',
+            description: '',
+            qasm: circuitQasm
+        }
+        const qantumComposerComponent = encodeURIComponent(LZString.compressToEncodedURIComponent(JSON.stringify(data)));
+        const url = "https://quantum-computing.ibm.com/composer/files/new?initial="+qantumComposerComponent;
+        // clear previous qr code
+        $("#qrcode").empty();
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: url,
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff"
+        });
+        $("#qrcode-container").addClass("active");
     }
 
     let loadFunctionCalled = false;
@@ -75,6 +100,14 @@ define([
             return;
         }
         loadFunctionCalled = true;
+
+        // load CSS file
+        $('<link/>').attr({
+            id: 'qoffee_qoffee_css',
+            rel: 'stylesheet',
+            type: 'text/css',
+            href: requirejs.toUrl('./qoffee.css')
+        }).appendTo('head');
 
         // subscribe to state object for reactive updates
         window.state.subscribe('qoffee-progress', (key, value) => {
@@ -87,6 +120,16 @@ define([
             const drinkId = event.target.dataset.qDrink;
             console.log("Alright, lets get a ", drinkId);
             requestDrink(drinkId);
+        })
+
+        $(document).on("click", "*[data-q-open-external]", event => {
+            const circuitName = event.target.dataset.qOpenExternal;
+            openCircuitInQuantumComposer(circuitName);
+        })
+
+        $('body').append('<div id="qrcode-container"><div id="qrcode"></div></div>');
+        $(document).on("click", "#qrcode-container", event => {
+            $(event.target).removeClass("active");
         })
     }
 

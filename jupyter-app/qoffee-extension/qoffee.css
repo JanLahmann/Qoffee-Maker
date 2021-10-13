@@ -1,0 +1,34 @@
+
+body.app-mode #qrcode-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3000;
+}
+
+body.app-mode #qrcode-container.active {
+	display: flex;
+}
+
+body.app-mode #qrcode-container #qrcode {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex: 0 0 auto;
+}
+
+body.app-mode #qrcode-container #qrcode img {
+	flex: 0 0 auto;
+	max-width: 60vw;
+	max-height: 60vh;
+	border-color: white;
+	border-style: solid;
+	border-width: 20px;
+}
