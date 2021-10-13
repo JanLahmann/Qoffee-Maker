@@ -82,6 +82,7 @@ define([
         const url = "https://quantum-computing.ibm.com/composer/files/new?initial="+qantumComposerComponent;
         // clear previous qr code
         $("#qrcode").empty();
+        $("#qrcode-container a").remove();
         var qrcode = new QRCode(document.getElementById("qrcode"), {
             text: url,
             width: 256,
@@ -90,6 +91,7 @@ define([
             colorLight : "#ffffff"
         });
         $("#qrcode-container").addClass("active");
+        $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open in Quantum Composer</a>')
     }
 
     let loadFunctionCalled = false;
@@ -117,7 +119,12 @@ define([
         window.requestDrink = requestDrink;
         
         $(document).on("click", "*[data-q-drink]", event => {
-            const drinkId = event.target.dataset.qDrink;
+            let drinkId = event.target.dataset.qDrink;
+            if(!drinkId) {
+                console.log("drinkId is undefined, look for parent");
+                drinkId = $(event.target).parents("[data-q-drink]").attr('data-q-drink');
+                console.log("Found drink id in parent", drinkId);
+            }
             console.log("Alright, lets get a ", drinkId);
             requestDrink(drinkId);
         })

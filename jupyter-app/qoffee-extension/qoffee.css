@@ -32,3 +32,7 @@ body.app-mode #qrcode-container #qrcode img {
 	border-style: solid;
 	border-width: 20px;
 }
+
+body.app-mode #qrcode-container #qrcode a {
+	text-align: center;
+}
