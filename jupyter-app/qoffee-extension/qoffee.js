@@ -44,16 +44,25 @@ define([
                 currentMax.key = key;
                 currentMax.value = prob;
             }
-        })
+        });
         if(currentMax.key) {
-            $(".editor-circuit-max-name").text(drinkMap[currentMax.key].name);
-            $(".editor-circuit-max-id").attr("data-q-drink", drinkMap[currentMax.key].id);
+            window.state.set("editor-circuit-max-name", drinkMap[currentMax.key].name)
         }
     }
 
-    function requestDrink(drinkName) {
+    function updateSingleShot() {
+        const ssBit = window.state.get("editor-circuit-single-shot-bit");
+        const ssName = drinkMap[ssBit].name;
+        const ssId = drinkMap[ssBit].id;
+        window.state.set("editor-circuit-single-shot-name", ssName);
+        window.state.set("editor-circuit-single-shot-id", ssId);
+    }
+
+    function requestDrink() {
+        const drinkName = window.state.get("editor-circuit-single-shot-id");
         const orchestratorBaseUrl = window.state.get("orchestrator-url");
         const orchestratorToken = window.state.get("orchestrator-token");
+        window.appLoadView("drinkPreparation");
         fetch(orchestratorBaseUrl+"/coffeemachine/drink/"+drinkName, {
             method: 'post',
             headers: {
@@ -115,7 +124,12 @@ define([
 
         // subscribe to state object for reactive updates
         window.state.subscribe('qoffee-progress', (key, value) => {
-            updateProbabilities();
+            if(key.startsWith("editor-circuit-bit-")) {
+                updateProbabilities();
+            }
+            if(key == "editor-circuit-single-shot-bit") {
+                updateSingleShot();
+            }
         })
 
         window.requestDrink = requestDrink;

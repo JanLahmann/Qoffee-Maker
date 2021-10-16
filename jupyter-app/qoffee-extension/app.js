@@ -55,6 +55,18 @@ define([
     }
 
     /*
+        handlePythonCellExecution
+        Function to execute a cell by view id
+    */
+        function handlePythonCellExecution(event) {
+            // check if it has data-q-execute attribute and execute this cell
+            if(event.target.dataset.qExecute) {
+                console.debug("Execute cell", event.target.dataset.qExecute);
+                executeView(event.target.dataset.qExecute);
+            }
+        }
+
+    /*
         handlePythonExecution
         Function to execute Python Code in the Kernel
     */
@@ -78,6 +90,20 @@ define([
     function handleCellSelection() {
         $(".app-view").removeClass("selected");
     }
+
+    /*
+        handleWindowFn
+        Function to handle execution of functions on window
+    */
+   function handleWindowFn(event) {
+       const name = event.target.dataset.qFn;
+       if(window[name]) {
+           window[name]();
+       }
+       else {
+           console.error("Can not execute function", name, window[name]);
+       }
+   }
 
     /*
         activateApp
@@ -129,6 +155,12 @@ define([
         // initialize custom python execution function
         $(document).on("click", "*[data-q-code]", handlePythonExecution);
 
+        // initialize execution of python cell
+        $(document).on("click", "*[data-q-execute]", handlePythonCellExecution);
+
+        // initialize execution of window functions
+        $(document).on("click", "*[data-q-fn]", handleWindowFn);
+
         // disable selection of cells
         $(jupyter.events).on("select.Cell", handleCellSelection);
 
@@ -145,6 +177,10 @@ define([
         $(document).off("click", "*[data-q-target]", handleViewRouting);
         // deactivate python execution
         $(document).off("click", "*[data-q-code]", handlePythonExecution);
+        // deactivate python cell execution
+        $(document).off("click", "*[data-q-execute]", handlePythonExecution);
+        // deactivate execution of window functions
+        $(document).off("click", "*[data-q-fn]", handleWindowFn);
         // enable selection of cells
         $(jupyter.events).off("select.Cell", handleCellSelection);
     }
