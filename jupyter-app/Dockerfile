@@ -1,5 +1,7 @@
 FROM jupyter/base-notebook:latest
 
+LABEL org.opencontainers.image.source=https://github.com/JanLahmann/Qoffee-Maker
+
 WORKDIR /home/jovyan/work
 
 # setup python environment
