@@ -3,6 +3,7 @@
 ## Installation
 
 - create `.env` file in root directory (ask Max for content)
+- install npm / node.js on the Raspberry: `curl -fsSL https://deb.nodesource.com/setup_16.x | sudo bash -` and `sudo apt-get install -y nodejs`
 - install all dependencies: `npm install`
 - start server: `npm run start`
 
