@@ -7,20 +7,33 @@ Sounds complicated? ... Actually it's quite simple. Have at look at the instruct
 You can try ouut the examples on the [IBM Quantum Composer](http://quantum-computing.ibm.com/composer), before running it on the real Qoffee Maker.
 
 ## Quick Start
-...
 
-## Examples
-...
+- Man kann sich aussuchen, ob man von einem Beispiel aus startet oder den Circuit selber baut
+- Erklärung wie funktioniert ein Composer - per drag and drop reinziehbar
+- Wird alles durch den Quantencomputer in der Cloud berechnet, der das Ergebnis im Composer ausgibt
+- Je nachdem welches Ergebnis auf dem Composer ausgegeben wird, kann man dem Ergebniss entweder zustimmen oder nicht
+- Zahlenbeispiele : 0 = Tee (000) , 1 = Heiße Schokolade (001) , 2 = Espresso (010) , 3 = Kaffee (011) , 4 = Cappuccino (100) , 5 = Latte Macchiatto (101) , 6 = Wiener Melange (110) , 7 = Americano (111) 
+
 
 ## Description of the Quantum Gates
 "Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on.
 ...
 
+
+
+
+## Examples
+- Kleine Überschrift
+- Kleiner Text
+- Screenshot 
+
+
 ## Detailed information (optional)
-...
+
+Pro Version Beispiele
 
 ## How to build your own Qoffee Maker at home
-...
+... ???
 
 
 # instructions for the "hacker" Theme
