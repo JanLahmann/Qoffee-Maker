@@ -69,7 +69,6 @@ setup_args = dict(
     packages        = find_packages(),
     author          = 'Max Simon',
     author_email    = 'max.simon@ibm.com',
-    license         = 'BSD',
     platforms       = "Linux, Mac OS X, Windows",
     keywords        = ['Jupyter', 'Widgets', 'IPython'],
     include_package_data = True,

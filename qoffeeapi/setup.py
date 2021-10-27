@@ -30,7 +30,6 @@ setup_args = dict(
     packages        = find_packages(),
     author          = 'Max Simon',
     author_email    = 'max.simon@ibm.com',
-    license         = 'BSD',
     platforms       = "Linux, Mac OS X, Windows",
     include_package_data = True,
     python_requires=">=3.6",
