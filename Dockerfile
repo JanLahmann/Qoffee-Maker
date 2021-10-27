@@ -26,6 +26,9 @@ RUN pip install ./appwidgets --user && \
     jupyter nbextension install --sys-prefix --overwrite --py appwidgets && \
     jupyter nbextension enable --sys-prefix --py appwidgets
 
+COPY qoffeefrontend qoffeefrontend
+RUN jupyter nbextension install ./qoffeefrontend --user && \
+    jupyter nbextension enable qoffeefrontend/app 
 
 COPY css css
 COPY *.ipynb .

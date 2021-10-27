@@ -1,0 +1,129 @@
+/*
+	Remove Jupyter Notebook Look
+*/
+body.app-mode > #header {
+	display: none !important;
+}
+body.app-mode.notebook_app {
+	background-color: white;
+}
+body.app-mode #site {
+	max-width: 100vw;
+	overflow-x: hidden;
+}
+body.app-mode #notebook-container {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+/*
+	Hide all cells...
+*/
+body.app-mode div.cell {
+	display: none;
+}
+/*
+	... and show the ones labelled with VIEW, but shift them off-screen
+*/
+body.app-mode div.cell.app-view {
+	display: block;
+	width: 100%;
+	margin-left: 0; /*120%;*/
+	height: auto; /*0*/
+}
+
+/*
+	hide input area of cells
+*/
+body.app-mode div.cell .input, body.app-mode div.cell .out_prompt_overlay, body.app-mode div.cell .output_area .prompt {
+    display: none;
+}
+
+/*
+	hide selection border of cells
+*/
+body.app-mode div.cell.selected {
+	border-width: 0;
+}
+body.app-mode div.cell.selected::before {
+	display: none;
+}
+
+
+/*
+
+	Hide checkbox for composer
+
+*/
+.composer-workarea > div.duo--Checkbox-wrapper {
+	display: none;
+}
+
+
+/*
+	Restart button and restart overlay
+*/
+#restart-button-container {
+	display: none;
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 9998;
+}
+body.app-mode #restart-button-container {
+	display: block;
+}
+#restart-overlay {
+	background-color: rgba(0, 0, 0, 0.8); 
+	z-index: 9999; 
+	padding: 20px; 
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 100vw; 
+	height: 100vh;
+}
+#restart-overlay h1 {
+	color: white;
+	font-size: 40px;
+}
+
+/*
+	QR-Code Container
+*/
+#qrcode-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3000;
+}
+#qrcode-container.active {
+	display: flex;
+}
+#qrcode-container #qrcode {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex: 0 0 auto;
+}
+#qrcode-container #qrcode img {
+	flex: 0 0 auto;
+	max-width: 60vw;
+	max-height: 60vh;
+	border-color: white;
+	border-style: solid;
+	border-width: 20px;
+}
+#qrcode-container #qrcode a {
+	text-align: center;
+}

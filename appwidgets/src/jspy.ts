@@ -67,7 +67,7 @@ def _exec_to_stdout(code_b64):
       `)
       
       // add listener for custom messages
-      this.comm.on_msg(obj => {
+      this.comm?.on_msg(obj => {
         this.processMessage(obj);
       })
 
