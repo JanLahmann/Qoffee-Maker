@@ -1,0 +1,199 @@
+define([
+    'base/js/namespace',
+    'jquery',
+    'require',
+    'https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js',
+    'https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js',
+], function(
+    jupyter, $, requirejs, lzs, qrc
+) {
+
+    /** is app mode active */
+    let appActive = false;
+
+    /**
+     * Handler to be called when a cell is selected. Just unselect it.
+     * @function handleCellSelection
+     */
+    function handleCellSelection() {
+        if(!appActive) { // disable
+            return;
+        }
+        $(".app-view").removeClass("selected");
+    }
+
+    /**
+     * Activate the app mode, build viewId index and initialize event listeners
+     * @function activateApp
+     */
+    function activateApp() {
+        appActive = true;
+        // add class to body to make CSS rules apply
+        $("body").addClass("app-mode");
+
+        //
+        // loop cells, get their viewIds and add corresponding classes
+        //
+        // keep track of very first view (default)
+        jupyter.notebook.get_cells().map((cell, idx) => {
+            const cellContent = cell.get_text();
+            // if it is a view cell
+            if(cellContent.startsWith("### APP")) {
+                // add CSS classes to cells
+                $(cell.element).addClass("app-view");
+            }
+        });
+        // disable selection of cells
+        $(jupyter.events).on("select.Cell", handleCellSelection);
+        // automatically restart
+        restart();
+    }
+
+    /**
+     * Deactivate the app mode, remove event listeners
+     * @function deactivateApp
+     */
+    function deactivateApp() {
+        appActive = false;
+        // remove class from body
+        $("body").removeClass("app-mode");
+        // enable selection of cells
+        $(jupyter.events).off("select.Cell", handleCellSelection);
+    }
+
+    /**
+     * Restart kernel, execute all cells and block view with an overlay during this time
+     * @function restart
+     */
+    function restart() {
+        // add an overlay
+        $("body").prepend('<div id="restart-overlay"><h1>Reloading</h1></div>');
+        // restart kernel and execute all cells
+        jupyter.actions.call("jupyter-notebook:restart-kernel-and-run-all-cells");
+        // periodically check when the notebook is ready
+        setTimeout(() => {
+            var restartInterval = setInterval(() => {
+                if(!jupyter.notebook.kernel_busy) {
+                    clearInterval(restartInterval);
+                    $("#restart-overlay").remove(); // remove overlay
+                }
+            }, 1000)
+        }, 1000)
+    }
+
+    function requestDrink(drinkKey, drinkOptions) {
+        console.log("Start requesting", drinkKey, "with options", drinkOptions)
+        return new Promise((resolve, reject) => {
+            // do POST request to Jupyter backend
+            fetch("/drink", {
+                method: 'post',
+                credentials: 'same-origin',
+                headers: {
+                    'X-XSRFToken': document.cookie.replace("_xsrf=", "")
+                },
+                body: JSON.stringify({
+                    key: drinkKey,
+                    options: drinkOptions
+                })
+            }).then(response => {
+                // if fail, alert and go to welcome
+                if(!response.ok) {
+                    alert("Could not get drink "+drinkKey+"\n"+response.statusText);
+                    reject();
+                }
+                // if succeed to to success
+                else {
+                    resolve();
+                }
+            }, error => {
+                alert("Could not get drink "+drinkKey+"\n"+error);
+                console.error(error);
+                reject(error);
+            })
+        })
+    }
+
+    function openQRCodeIBMQ(circuitQasm) {
+        // setup data to transfer
+        const data = {
+            title: 'Qoffee Maker - ' +(new Date()).toLocaleString(),
+            description: '',
+            qasm: circuitQasm
+        }
+        // encode data and add to URL
+        const qantumComposerComponent = encodeURIComponent(LZString.compressToEncodedURIComponent(JSON.stringify(data)));
+        const url = "https://quantum-computing.ibm.com/composer/files/new?initial="+qantumComposerComponent;
+        // clear previous qr code
+        $("#qrcode").empty();
+        $("#qrcode-container a").remove();
+        // create qrcode
+        const qrcode = new QRCode(document.getElementById("qrcode"), {
+            text: url,
+            width: 256,
+            height: 256,
+            colorDark : "#000000",
+            colorLight : "#ffffff"
+        });
+        $("#qrcode-container").addClass("active");
+        $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open in Quantum Composer</a>')
+    }
+
+    // state variable to avoid double loading
+    let loadFunctionCalled = false;
+    function load_ipython_extension() {
+        // avoid double loading
+        if(loadFunctionCalled) {
+            return;
+        }
+        loadFunctionCalled = true;
+
+        // load CSS file
+        $('<link/>').attr({
+            id: 'app_css',
+            rel: 'stylesheet',
+            type: 'text/css',
+            href: requirejs.toUrl('./app.css')
+        }).appendTo('head');
+
+        // add button to toolbar to start app mode
+        jupyter.toolbar.add_buttons_group([
+            jupyter.actions.register({
+                icon: 'fa-rocket',
+                help: 'Activate App Mode',
+                handler : activateApp
+            }, 'app-activate', 'simple-app')
+        ]);
+
+        // add keyboard shortcut to leave app mode
+        jupyter.actions.register({
+            icon: 'fa-times',
+            help: 'Deactivate App Mode',
+            handler : deactivateApp
+        }, 'app-deactivate', 'simple-app');
+        jupyter.keyboard_manager.command_shortcuts.add_shortcut('esc', 'simple-app:app-deactivate');
+
+        // publish requestDrink method
+        window.requestDrink = requestDrink
+        // publish openQrCode
+        window.openQRCodeIBMQ = openQRCodeIBMQ
+
+
+        // add a button to UI which restarts the app
+        $("body").append('<div id="restart-button-container"><button type="button" id="restart-button">Restart</button></div>')
+        $(document).on("click", "#restart-button", restart);
+
+        /*
+            Add QR Code Container
+        */
+        // add container to render QRCode
+        $('body').append('<div id="qrcode-container"><div id="qrcode"></div></div>');
+        // add listener to close on click
+        $(document).on("click", "#qrcode-container", event => {
+            $(event.target).removeClass("active");
+        })
+    }
+
+    return {
+        load_ipython_extension: load_ipython_extension
+    };
+});

@@ -140,4 +140,17 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-oauth-token.json
+
+# NPM
+# ----
+
+**/node_modules/
+appwidgets/nbextension/index.*
+appwidgets/labextension/*.tgz
+
+# Coverage data
+# -------------
+**/coverage/
+
+# Packed lab extensions
+appwidgets/labextension
