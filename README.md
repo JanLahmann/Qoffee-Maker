@@ -8,18 +8,26 @@ You can try ouut the examples on the [IBM Quantum Composer](http://quantum-compu
 
 ## Quick Start
 
-- Man kann sich aussuchen, ob man von einem Beispiel aus startet oder den Circuit selber baut
-- Erklärung wie funktioniert ein Composer - per drag and drop reinziehbar
-- Wird alles durch den Quantencomputer in der Cloud berechnet, der das Ergebnis im Composer ausgibt
-- Je nachdem welches Ergebnis auf dem Composer ausgegeben wird, kann man dem Ergebniss entweder zustimmen oder nicht
-- Zahlenbeispiele : 0 = Tee (000) , 1 = Heiße Schokolade (001) , 2 = Espresso (010) , 3 = Kaffee (011) , 4 = Cappuccino (100) , 5 = Latte Macchiatto (101) , 6 = Wiener Melange (110) , 7 = Americano (111) 
+To get started, you first need to decide whether you begin from scratch or with a pre-built circuit.
+For the next step you’re going to use our IBM Quantum Composer. This program allows building Quantum Circuits easily by just dragging and dropping different gates onto the qubits. Giving you the probability of each state, the diagram in the lower left may help creating the circuit for the drink you wish.
+Once your done with your circuit, you can submit it and via the IBM Cloud it will be sent to an IBM Quantum Device. After running, the result will be sent back to the Qoffee Maker, where you can get your drink, if you agree with the Quantum choice.
+Our Qoffee Maker offers the following 8 beverages, which is why we need three qubits, named q0, q1 and q2, to get the binary numbers. While building your circuit, please remember, the first qubit (q0) belongs to the last digit of the binary number and the third qubit (q2) belongs to the first digit.
+
+### 000  0 Tee
+### 001 1 heiße Schokolade
+### 010 2 Espresso 
+### 011 3 Kaffee
+### 100 4 Cappuccino
+### 101 5 Latte Macchiato
+### 110 6 Wiener Melange
+### 111 7 Americano
 
 
 ## Description of the Quantum Gates
 "Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on.
 ...
 
-
+-> Screenshots mit Beschreibung der Gates + dem Composer von Katharina und Larissa erwartet..
 
 
 ## I want...
