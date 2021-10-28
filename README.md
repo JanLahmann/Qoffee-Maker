@@ -47,6 +47,8 @@ Goal: Cappuccino = No. 4 = State 100
 To make sure to certainly get a cappuccino, we need to build the Quantum Circuit such that the state 100 will come up with 100% probability.
 The easiest way to do that is to apply an NOT-Gate (Pauli-X-Gate) on the Qubit q2.
 
+![alt text](Bilder/Jana1) 
+
 ### … nothing with caffein
 Goal: Tea = No. 0 = State 000 or Hot Chocolate = No. 1 = State 001
 Tea and Hot Chocolate are the only two drinks without caffein. To get each drink with an equal probability, we need to apply an H-Gate to q0. This brings our qubit into a superposition between 0 and 1, such that each state 000 and 001 have a 50% probability to result after the measuring, where the superposition collapses.
