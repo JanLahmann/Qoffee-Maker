@@ -29,6 +29,8 @@ Our Qoffee Maker offers the following 8 beverages, which is why we need three qu
 
 -> Screenshots mit Beschreibung der Gates + dem Composer von Katharina und Larissa erwartet..
 
+![alt text](Bilder/CNOTgate.png) 
+
 
 ## I want...
 
