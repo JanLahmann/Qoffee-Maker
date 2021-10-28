@@ -24,12 +24,20 @@ Our Qoffee Maker offers the following 8 beverages, which is why we need three qu
 
 
 ## Description of the Quantum Gates
-"Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on.
-...
+"Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on. In the following Screenshots we're showing at first the Quantum Composer which is a graphical quantum programming tool that lets you drag and drop operations to build quantum circuits and run them on real quantum hardware or simulators.
 
--> Screenshots mit Beschreibung der Gates + dem Composer von Katharina und Larissa erwartet..
+![alt text](Bilder/Composer.png) 
 
-![alt text](Bilder/CNOTgate.png) 
+
+Here we listet some of the Quantum gates:
+
+![alt text](Bilder/NOTgate.png)
+
+![alt text](Bilder/CNOTgate.png)
+
+![alt text](Bilder/Hadamard.png)
+
+![alt text](Bilder/Zgate.png)
 
 
 ## I want...
