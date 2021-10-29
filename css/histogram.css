@@ -31,20 +31,25 @@
 	margin-left: -15px;
 	height: 100%;
 	position: relative;
-	background-color: lightgray;
+	/* background-color: lightgray; */
 }
 #composer-histogram .histogram-bar {
 	background-color: blue;
 	position: absolute;
 	bottom: 0;
 	height: 0;
-	width: 50%;
+	width: 33%;
 }
-#composer-histogram .histogram-bar-ideal {
-	background-color: blue;
-	left: 0;
-}
-#composer-histogram .histogram-bar-measured {
+
+#composer-histogram .histogram-bar-qasm {
 	background-color: purple;
-	left: 50%;
+	left: 0%;
+}
+#composer-histogram .histogram-bar-anal {
+	background-color: blue;
+	left: 33%;
+}
+#composer-histogram .histogram-bar-mock {
+	background-color: green;
+	left: 66%;
 }

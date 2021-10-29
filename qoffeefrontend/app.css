@@ -1,6 +1,10 @@
 /*
 	Remove Jupyter Notebook Look
 */
+
+.app-view .output > .output_area > .output_subarea {
+    padding: 0 !important;
+}
 body.app-mode > #header {
 	display: none !important;
 }
@@ -11,12 +15,18 @@ body.app-mode #site {
 	max-width: 100vw;
 	overflow-x: hidden;
 }
+body.app-mode #notebook {
+	padding: 0;
+}
 body.app-mode #notebook-container {
 	box-shadow: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	overflow-x: hidden;
 	overflow-y: hidden;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 /*
@@ -33,6 +43,7 @@ body.app-mode div.cell.app-view {
 	width: 100%;
 	margin-left: 0; /*120%;*/
 	height: auto; /*0*/
+	padding: 0;
 }
 
 /*

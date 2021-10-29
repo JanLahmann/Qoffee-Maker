@@ -1,5 +1,0 @@
-jupyter nbextension enable --py widgetsnbextension
-jupyter nbextension enable --py ibm_quantum_widgets
-jupyter nbextension install ./qoffee-extension --user
-jupyter nbextension enable qoffee-extension/reactive
-jupyter nbextension enable qoffee-extension/app
