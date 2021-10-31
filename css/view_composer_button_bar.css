@@ -1,0 +1,13 @@
+#view-composer-button-bar button {
+    border-radius: 0;
+    border-color: black;
+    font-size: 1.5em;
+}
+
+#view-composer-button-bar button[data-active="True"] {
+    border-color: rgba(40, 105, 245);
+}
+
+#view-composer-button-bar .mr-4 {
+    margin-right: 20px;
+}

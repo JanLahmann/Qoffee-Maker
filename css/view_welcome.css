@@ -1,42 +1,13 @@
-.header-container {
-    width: 100%;
-    background-color: black;
-    height: 160px;
-    display: block;
-    position: relative;
-    margin-bottom: 3em;
-}
-
-.header-container h1 {
-    color: white;
-    font-size: 3.5em;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-}
-
-#init-circuit-container {
-    padding: 0 50px 0 50px;
-}
-
-#init-circuit-container h3 {
+#view-welcome h3 {
     font-size: 2em;
-    margin-bottom: 1.5em;
 }
 
-#init-circuit-container h4 {
-    font-size: 1.5em;
+#view-welcome h4, #view-welcome h5 {
+    font-size: 1.7em;
     margin-bottom: 1em;
 }
 
-#init-circuit-container h5 {
-    font-size: 1.5em;
-    margin-bottom: 1em;
-}
-
-#init-circuit-container .card {
+#view-welcome .card {
     padding: 10px 10px 30px 10px;
     margin: 2px;
     background-color: rgba(244, 244, 244);
@@ -47,7 +18,7 @@
     cursor: pointer;
 }
 
-#init-circuit-container span.arrow {
+#view-welcome span.arrow {
     color: rgba(40, 105, 245);
     position: absolute;
     bottom: 10px;
@@ -55,6 +26,6 @@
     font-size: 1.5em;
 }
 
-.mt-4 {
+#view-welcome .mt-4 {
     margin-top: 20px;
 }

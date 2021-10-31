@@ -71,7 +71,11 @@ export class ReactiveHtmlView extends DOMWidgetView {
     })
     // add event listener to execute python code
     jQuery(this.el).on("click", "[data-rh-exec]", ev => {
-      const pythonCode = ev.target.dataset.rhExec;
+      let pythonCode = ev.target.dataset.rhExec;
+      if(!pythonCode) {
+        console.log("Did not find python code, look on parents")
+        pythonCode = jQuery(ev.target).parents("[data-rh-exec]")[0].dataset.rhExec;
+      }
       console.log("Execute Python Code", pythonCode);
       this.execPython(pythonCode)
     })
@@ -81,32 +85,6 @@ export class ReactiveHtmlView extends DOMWidgetView {
       console.log("Execute JavaScript Code", jsCode);
       executeJsString(jsCode);
     })
-
-//     // create a function in python to execute custom code
-//     Jupyter.notebook.kernel.execute(`
-// from base64 import b64decode
-// def _exec_stdout(code_b64):
-//     code = b64decode(code_b64).decode()
-//     try:
-//         res = None
-//         try:
-//             res = eval(code)
-//         except Exception as e:
-//             exec(code)
-//         print("<--RETURN-->")
-//         print(json.dumps({
-//             "status": "success",
-//             "result": res
-//         }))
-//     except Exception as e:
-//         print("<--RETURN-->")
-//         print(json.dumps({
-//             "status": "error",
-//             "errorType": type(e).__name__,
-//             "errorMessage": str(e),
-//             "code": code
-//         }))
-// `)
   }
 
   html_changed() {

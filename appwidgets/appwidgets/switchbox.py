@@ -52,6 +52,7 @@ class AppBox(SwitchBox):
         super().__init__(children=(), trait_names=['view'], **kwargs)
         self.view = init_view
         self._view_index = {}
+        self.add_class("app-appbox")
     
     def add_widget(self, key, widget):
         self._view_index[key] = widget

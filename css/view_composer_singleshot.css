@@ -1,0 +1,19 @@
+#view-composer-singleshot button {
+    font-size: 1.5em;
+}
+
+#view-composer-singleshot button.btn-primary {
+    color: white;
+    background-color: rgba(40, 105, 245);
+    border-color: rgba(40, 105, 245);
+    border-radius: 0;
+}
+
+#view-composer-singleshot-result p {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    line-height: 1.2;
+}
