@@ -1,6 +1,11 @@
 # Qoffee-Maker
 
-Installation on RasQberry (draft; will be improved):
+### User Instructions
+
+Find user instructions on the project github pages: http://qoffee-maker.org
+
+
+### Installation on RasQberry (draft; will be improved):
 1. setup RasQberry with Qiskit 0.31, "Bloch Autostart" (for VNC and screen config) and "Config & Demos" (for Jupyter environment)
 1. git clone https://github.com/JanLahmann/Qoffee-Maker
 2. connect via vnc:2 to the raspberry; or remote connection to jupyter server
