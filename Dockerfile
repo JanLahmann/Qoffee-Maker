@@ -30,6 +30,8 @@ COPY qoffeefrontend qoffeefrontend
 RUN jupyter nbextension install ./qoffeefrontend --user && \
     jupyter nbextension enable qoffeefrontend/app 
 
+EXPOSE 8887
+
 COPY css css
 COPY *.ipynb .
 
