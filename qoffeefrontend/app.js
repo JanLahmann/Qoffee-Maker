@@ -113,16 +113,7 @@ define([
         })
     }
 
-    function openQRCodeIBMQ(circuitQasm) {
-        // setup data to transfer
-        const data = {
-            title: 'Qoffee Maker - ' +(new Date()).toLocaleString(),
-            description: '',
-            qasm: circuitQasm
-        }
-        // encode data and add to URL
-        const qantumComposerComponent = encodeURIComponent(LZString.compressToEncodedURIComponent(JSON.stringify(data)));
-        const url = "https://quantum-computing.ibm.com/composer/files/new?initial="+qantumComposerComponent;
+    function openQRCode(url) {
         // clear previous qr code
         $("#qrcode").empty();
         $("#qrcode-container a").remove();
@@ -135,7 +126,20 @@ define([
             colorLight : "#ffffff"
         });
         $("#qrcode-container").addClass("active");
-        $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open in Quantum Composer</a>')
+        $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open</a>')
+    }
+
+    function openQRCodeIBMQ(circuitQasm) {
+        // setup data to transfer
+        const data = {
+            title: 'Qoffee Maker - ' +(new Date()).toLocaleString(),
+            description: '',
+            qasm: circuitQasm
+        }
+        // encode data and add to URL
+        const qantumComposerComponent = encodeURIComponent(LZString.compressToEncodedURIComponent(JSON.stringify(data)));
+        const url = "https://quantum-computing.ibm.com/composer/files/new?initial="+qantumComposerComponent;
+        openQRCode(url);
     }
 
     // state variable to avoid double loading
@@ -176,6 +180,7 @@ define([
         window.requestDrink = requestDrink
         // publish openQrCode
         window.openQRCodeIBMQ = openQRCodeIBMQ
+        window.openQRCode = openQRCode
 
 
         // add a button to UI which restarts the app
@@ -188,8 +193,11 @@ define([
         // add container to render QRCode
         $('body').append('<div id="qrcode-container"><div id="qrcode"></div></div>');
         // add listener to close on click
-        $(document).on("click", "#qrcode-container", event => {
-            $(event.target).removeClass("active");
+        $("#qrcode-container").on("click", "*", event => {
+            $("#qrcode-container").removeClass("active");
+        })
+        $("#qrcode-container").on("click", event => {
+            $("#qrcode-container").removeClass("active");
         })
     }
 

@@ -18,6 +18,10 @@
     cursor: pointer;
 }
 
+#view-welcome p {
+    font-size: 1.3em;
+}
+
 #view-welcome span.arrow {
     color: rgba(40, 105, 245);
     position: absolute;

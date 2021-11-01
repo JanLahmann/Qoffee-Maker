@@ -21,16 +21,16 @@
 }
 #view-composer-hist-container .histogram-entry p {
 	text-align: center;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 #view-composer-hist-container .histogram-bar-container {
 	position: relative;
 	height: 80%;
 }
 #view-composer-hist-container .histogram-bar-outer {
-	width: 30px;
+	width: 60px;
 	left: 50%;
-	margin-left: -15px;
+	margin-left: -30px;
 	height: 100%;
 	position: relative;
 	/* background-color: lightgray; */
@@ -44,7 +44,7 @@
 }
 
 #view-composer-hist-container .histogram-bar-qasm {
-	background-color: purple;
+	background-color: rgb(116, 0, 123);
 	left: 0%;
 }
 #view-composer-hist-container .histogram-bar-anal {
@@ -52,6 +52,10 @@
 	left: 33%;
 }
 #view-composer-hist-container .histogram-bar-mock {
-	background-color: green;
+	background-color: rgb(0, 135, 92);
 	left: 66%;
+}
+
+#view-composer-hist-container .histogram-text-container {
+    margin-top: 20px;
 }

@@ -19,7 +19,7 @@ RUN pip install ibm_quantum_widgets jupyter_packaging && \
     jupyter nbextension enable --py ibm_quantum_widgets
 
 COPY qoffeeapi qoffeeapi
-RUN ls && pip install ./qoffeeapi --user
+RUN pip install ./qoffeeapi --user
 
 COPY --from=build-frontend /appwidgets appwidgets
 RUN pip install ./appwidgets --user && \
