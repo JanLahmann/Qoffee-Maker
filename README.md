@@ -13,6 +13,8 @@ For the next step you’re going to use our IBM Quantum Composer. This program a
 Once your done with your circuit, you can submit it and via the IBM Cloud it will be sent to an IBM Quantum Device. After running, the result will be sent back to the Qoffee Maker, where you can get your drink, if you agree with the Quantum choice.
 Our Qoffee Maker offers the following 8 beverages, which is why we need three qubits, named q0, q1 and q2, to get the binary numbers. While building your circuit, please remember, the first qubit (q0) belongs to the last digit of the binary number and the third qubit (q2) belongs to the first digit.
 
+![alt text](Bilder/Zuordnung.png)
+
 ### 000  0 Tee
 ### 001 1 heiße Schokolade
 ### 010 2 Espresso 
