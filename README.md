@@ -15,18 +15,10 @@ Our Qoffee Maker offers the following 8 beverages, which is why we need three qu
 
 ![alt text](Bilder/Zuordnung.png)
 
-### 000  0 Tee
-### 001 1 heiße Schokolade
-### 010 2 Espresso 
-### 011 3 Kaffee
-### 100 4 Cappuccino
-### 101 5 Latte Macchiato
-### 110 6 Wiener Melange
-### 111 7 Americano
-
 
 ## Description of the Quantum Gates
 "Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on. In the following Screenshots we're showing at first the Quantum Composer which is a graphical quantum programming tool that lets you drag and drop operations to build quantum circuits and run them on real quantum hardware or simulators.
+
 
 ![alt text](Bilder/Composer.png) 
 
@@ -41,8 +33,8 @@ Here we listet some of the Quantum gates:
 
 ![alt text](Bilder/Zgate.png)
 
+For more details see in [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary)
 
-## I want...
 
 ### … a Cappucino
 Goal: Cappuccino = No. 4 = State 100
