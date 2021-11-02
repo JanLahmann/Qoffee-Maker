@@ -83,9 +83,29 @@ To certainly get a normal coffee, we need to switch the states of both q0 and q1
 ![alt text](Bilder/coffee.png)
 
 
-## Detailed information (optional)
+## Advanced (optional)
 
-Pro Version Beispiele
+## I want…
+
+### … a tea or something strong, but I prefer tea
+
+Goal: Tea = No. 0 = State 000 or Espresso = No. 2 = State 010 or Coffee = No. 3 = State 011 or Wiener Melange = No. 6 = State 110 or Americano = No. 7 = State 111, but Tea with a higher probability
+
+### … something strong, but preferably an Espresso
+
+Goal: Espresso = No. 2 = State 010 or Wiener Melange = No. 6 = State 110 or Americano = No. 7 = State 111, Probability for an Espresso should be higher than for Wiener Melange and Americano
+
+### … something with caffein
+Goal: Espresso = No. 2 = State 010 or Coffee = No. 3 = State 011 or Cappuccino = No. 4 = State 100 or Latte Macchiato = No. 5 = State 101 or Wiener Melange = No. 6 = State 110 or Americano = No. 7 = State 111
+
+### … either something without caffein or something with much caffein but without milk (CCX Gate)
+
+Goal: Tea = No. 0 = State 000 or Hot Chocolate = No. 1 = State 001 or Espresso = No. 2 = State 010 or Americano = No. 7 = State 111
+
+### … something to drink, it doesn’t matter what, preferably a Coffee and no Americano
+
+Goal: Tea = No. 0 = State 000 or Hot Chocolate = No. 1 = State 001 or Espresso = No. 2 = State 010 or Coffee = No. 3 = State 011 or Cappuccino = No. 4 = State 100 or Latte Macchiato = No. 5 = State 101 or Wiener Melange = No. 6 = State 110, Coffee should have the highest probability
+
 
 ## How to build your own Qoffee Maker at home
 ... ???
