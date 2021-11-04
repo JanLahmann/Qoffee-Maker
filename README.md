@@ -1,6 +1,6 @@
 # Welcome to the Qoffee Maker
 
-![alt text](Bilder/QuoffeMug_vector.png)
+![alt text](Bilder/QuoffeeMug_vector.png)
 
 ## Introduction
 Qoffee Maker is based on [Quantum Computing](https://en.wikipedia.org/wiki/Quantum_computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit. All you need to do to get your favourite type of coffee is to graphically create a quantum circuit whose measurement result is the binary number of your beverage.
@@ -35,8 +35,9 @@ Here we listet some of the Quantum gates:
 
 ![alt text](Bilder/Zgate.png)
 
-For more details see in [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary)
+For more details see [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary)
 
+## How to select your coffee of choice
 
 ### … a Cappucino
 Goal: Cappuccino = No. 4 = State 100
@@ -72,6 +73,12 @@ To get either a tea or coffee with equal probability a special state, the so-cal
 
 ![alt text](Bilder/tea.png)
 
+
+
+## Advanced (optional)
+
+## I want…
+
 ### … an Espresso
 Goal: Espresso = No. 2 = State 010
 Getting a certain drink, in this case an Espresso, can also be done by applying several CNOT-Gates as it’s shown in the circuit below (on the right/left…)
@@ -82,12 +89,8 @@ Getting a certain drink, in this case an Espresso, can also be done by applying 
 Goal: Coffee = No. 3 = State 011
 To certainly get a normal coffee, we need to switch the states of both q0 and q1. This can be done easily by applying NOT-Gates like for q0. But we can also go a more quantum-computational way using two Hadamard-Gates and a Z-Gate in between. As you can see, bringing a qubit into an equal superposition (first H-Gate), modifying it by turning its vector around the Z-axis (Z-Gate), and reversing the superposition (second H-Gate), turns out to be the same as applying a simple NOT-Gate.
 
-![alt text](Bilder/coffee.png)
+![alt text](Bilder/coffee.png)  
 
-
-## Advanced (optional)
-
-## I want…
 
 ### … a tea or something strong, but I prefer tea
 
