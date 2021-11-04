@@ -27,11 +27,11 @@ Our Qoffee Maker offers the following 8 beverages, which is why we need three qu
 
 Here we listet some of the Quantum gates:
 
-![alt text](Bilder/NOTgate.png)
+![alt text](Bilder/Notgate.png)
 
-![alt text](Bilder/CNOTgate.png)
+![alt text](Bilder/Cnotgate.png)
 
-![alt text](Bilder/Hadamard.png)
+![alt text](Bilder/Hadamardgate.png)
 
 ![alt text](Bilder/Zgate.png)
 
