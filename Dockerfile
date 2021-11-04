@@ -7,7 +7,7 @@ RUN cd appwidgets && \
 
 
 
-FROM jupyter/base-notebook:latest
+FROM jupyter/base-notebook:notebook-6.4.5
 
 WORKDIR /home/jovyan/work
 
@@ -18,15 +18,15 @@ RUN pip install ibm_quantum_widgets jupyter_packaging && \
     jupyter nbextension enable --py widgetsnbextension && \
     jupyter nbextension enable --py ibm_quantum_widgets
 
-COPY qoffeeapi qoffeeapi
-RUN pip install ./qoffeeapi --user
+COPY --chown=jovyan:jovyan qoffeeapi qoffeeapi
+RUN pip install -e ./qoffeeapi --user
 
-COPY --from=build-frontend /appwidgets appwidgets
+COPY --from=build-frontend --chown=jovyan:jovyan /appwidgets appwidgets
 RUN pip install ./appwidgets --user && \
     jupyter nbextension install --sys-prefix --overwrite --py appwidgets && \
     jupyter nbextension enable --sys-prefix --py appwidgets
 
-COPY qoffeefrontend qoffeefrontend
+COPY --chown=jovyan:jovyan qoffeefrontend qoffeefrontend
 RUN jupyter nbextension install ./qoffeefrontend --user && \
     jupyter nbextension enable qoffeefrontend/app 
 

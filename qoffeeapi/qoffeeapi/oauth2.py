@@ -129,29 +129,38 @@ class PersistentOAuth2Connector(OAuth2Connector):
         # init and save path
         super().__init__(**kwargs)
         self.path = kwargs['path']
-        self.load_tokens()
-
+        self._load_config_from_file()
 
     def set_tokens(self, tokens):
         # overwrite set_tokens, also save to file
         super().set_tokens(tokens)
-        with open(self.path, "w") as f:
-            json.dump(self.tokens, f)
-    
+        self.save_config()
 
-    def load_tokens(self):
+    def _save_config_to_file(self, config):
+        with open(self.path, "w") as f:
+            json.dump(config, f)
+    
+    def _load_config_from_file(self):
         """
-        Load tokens from file
+        Load config from file
         """
         try:
             if os.path.isfile(self.path):
                 with open(self.path) as f:
                     fc = json.load(f)
-                    if 'access_token' not in fc:
-                        raise RuntimeError("No Access Token found, do not load from file")
-                self.set_tokens(fc)
-                refresh_result = self.refresh_access_token()
-                if 'success' not in refresh_result:
-                    raise RuntimeError("Not able to refresh access_token")
-        except:
-            print("Not able to load tokens from file")
+                    self.load_config(fc)
+        except Exception as e:
+            print("Not able to load tokens from file", str(e))
+
+    def load_config(self, config):
+        if 'auth' not in config or 'access_token' not in config['auth']:
+            raise RuntimeError("No Access Token found, do not load from file")
+        self.set_tokens(config['auth'])
+        refresh_result = self.refresh_access_token()
+        if 'success' not in refresh_result[1]:
+            raise RuntimeError("Not able to refresh access_token", refresh_result)
+
+    def save_config(self):
+        return self._save_config_to_file({
+            "auth": self.tokens
+        })

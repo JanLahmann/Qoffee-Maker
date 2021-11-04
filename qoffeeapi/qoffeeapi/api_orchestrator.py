@@ -1,14 +1,10 @@
 from notebook.base.handlers import IPythonHandler
-from qoffeeapi.homeconnect import get_connector
+from qoffeeapi.hc_connector import get_connector
 from qoffeeapi.utils import proxy
 from tornado import web
 import os
 import dotenv
 dotenv.load_dotenv()
-
-# machine HAID, can be overwritten
-MACHINE_HA_ID = os.getenv("MACHINE_HAID")
-
 
 # fetch the current state of the machine from the API
 class OrchestratorMachineStateHandler(IPythonHandler):
@@ -17,24 +13,31 @@ class OrchestratorMachineStateHandler(IPythonHandler):
         connector = get_connector()
         proxy(
             self,
-            connector.get("/api/homeappliances/"+MACHINE_HA_ID+"/status/BSH.Common.Status.OperationState")
+            connector.get("/api/homeappliances/"+connector.machine["haId"]+"/status/BSH.Common.Status.OperationState")
         )
 
 # get/set the HAID of the machine to use
-class OrchestratorMachineHaIdHandler(IPythonHandler):
+class OrchestratorMachineHandler(IPythonHandler):
     @web.authenticated
     def get(self):
-        self.finish({
-            "haid": MACHINE_HA_ID
-        })
+        connector = get_connector()
+        self.finish(connector.machine)
+
     @web.authenticated
     def post(self):
-        global MACHINE_HA_ID
         body = self.get_json_body()
-        if "haid" in body:
-            MACHINE_HA_ID = body['haid']
+        connector = get_connector()
+        enumber = None if (body is None or "enumber" not in body) else body["enumber"]
+        connector.set_machine(enumber)
+        self.finish(connector.machine)
+
+# get/set the HAID of the machine to use
+class OrchestratorAllMachinesHandler(IPythonHandler):
+    @web.authenticated
+    def get(self):
+        connector = get_connector()
         self.finish({
-            "haid": MACHINE_HA_ID
+            "machines": connector.get_machines()
         })
 
 # send a request to the coffee machine to create a drink
@@ -55,7 +58,7 @@ class OrchestratorDrinkRequestHandler(IPythonHandler):
         # send put request
         proxy(
             self,
-            connector.put("/api/homeappliances/"+MACHINE_HA_ID+"/programs/active", {
+            connector.put("/api/homeappliances/"+connector.machine["haId"]+"/programs/active", {
                 "data": {
                     "key": drinkKey,
                     "options": drinkOptionsList
