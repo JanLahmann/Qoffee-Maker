@@ -1,6 +1,4 @@
-<img src="Bilder/QuoffeeMug_vector.png" width="150">
-
-# Welcome to the Qoffee Maker 
+# Welcome to the Qoffee Maker <img src="Bilder/QuoffeeMug_vector.png" width="150">
 
 ## Introduction
 Qoffee Maker is based on [Quantum Computing](https://en.wikipedia.org/wiki/Quantum_computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit. 
@@ -17,7 +15,7 @@ You can try out the examples on the [IBM Quantum Composer](http://quantum-comput
 
 ### IBM Quantum Composer
 
-Using the IBM Quantum Composer, Quantum Circuits can be build by drag & drop of various gates onto the qubits. The resulting measurement probabilities are shown in a diagram. In addition, the Quantum Circuits can be executed on real quantum hardware or on simulators. A more detailed overview of the IBM Quantum Composer can be fond [here](https://quantum-computing.ibm.com/composer/docs/iqx/overview).
+Using the IBM Quantum Composer, Quantum Circuits can be build by drag & drop of various gates onto the qubits. The resulting measurement probabilities are shown in a diagram. In addition, the Quantum Circuits can be executed on real quantum hardware or on simulators. A more detailed overview of the IBM Quantum Composer can be found [here](https://quantum-computing.ibm.com/composer/docs/iqx/overview).
 
 ![alt text](Bilder/Composer.png) 
 
@@ -56,7 +54,7 @@ The following examples illustrate how the standard gates (NOT, CNOT, H) can be u
 
 To get a cappuccino, which is beverage number 4 (encoded with the binary number 100), you need to build the Quantum Circuit such that the state 100 will come up with 100% probability.  
 Remember: The qubits are ordered q2, q1, q0, and each are initialized with 0.  
-The simplest way to build the desired "capuccino circuit" is to apply an NOT-Gate to qubit q2, which flips the state from |000> to |100>.
+The simplest way to build the desired "capuccino circuit" is to apply an NOT-Gate to qubit q2, which flips the state from |000> to |100>.  
 Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIDCEAOBXAxpglmA9iADQgCOEAzlAiAPIAKAogHICKAggMoCyABAEwA6AAwBuADpg8mADboAJjF7iyMGTgBGARkHSVEsJNIAnGAHNepANoBmALoHMpi5lsPJkgB6Wr-B8RBFCiccVAAXHHwwGhAAXyA).
 
 <img src="Bilder/cappuccino.png" width="600">
