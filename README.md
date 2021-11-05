@@ -33,10 +33,10 @@ In the following Screenshots we're showing at first the Quantum Composer which i
 
 Here we listet some of the Quantum gates:
 
-![alt text](Bilder/notgate.png)
+![alt text](Bilder/NOTgate.png)
 
 
-![alt text](Bilder/cnotgate.png)
+![alt text](Bilder/CNOTgate.png)
 
 
 ![alt text](Bilder/Hadamardgate.png)
