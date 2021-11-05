@@ -44,7 +44,7 @@ For more details see [Operations glossary](https://quantum-computing.ibm.com/com
 
 ### Beverages
 
-Our Qoffee Maker offers eight beverages, which can be mapped to three-digit binary numbers with the canonical mapping 0 -> 000, 1 -> 001, 2 -> 010, ..., 6 -> 110, 7 -> 111. 
+Our Qoffee Maker offers eight beverages, which can be mapped to three-digit binary numbers with the canonical mapping 0 -> 000, 1 -> 001, 2 -> 010, ..., 6 -> 110, 7 -> 111.  
 
 <img src="Bilder/übersicht.png" width="300">
 
@@ -57,6 +57,7 @@ The following examples illustrate how the standard gates (NOT, CNOT, H) can be u
 To get a cappuccino, which is beverage number 4 (encoded with the binary number 100), you need to build the Quantum Circuit such that the state 100 will come up with 100% probability.  
 Remember: The qubits are ordered q2, q1, q0, and each are initialized with 0.  
 The simplest way to build the desired "capuccino circuit" is to apply an NOT-Gate to qubit q2, which flips the state from |000> to |100>.
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIDCEAOBXAxpglmA9iADQgCOEAzlAiAPIAKAogHICKAggMoCyABAEwA6AAwBuADpg8mADboAJjF7iyMGTgBGARkHSVEsJNIAnGAHNepANoBmALoHMpi5lsPJkgB6Wr-B8RBFCiccVAAXHHwwGhAAXyA).
 
 <img src="Bilder/cappuccino.png" width="600">
 
@@ -66,29 +67,34 @@ The simplest way to build the desired "capuccino circuit" is to apply an NOT-Gat
 Tea (0, 000) and Hot Chocolate (1, 001) are the only two drinks without caffein. 
 
 To get each of these two drinks with equal probability, you can apply an H-Gate to q0.  
-This brings qubit q0 into a superposition of |0> and |1>, such that each state |000> and |001> have a 50% measurement probability.
+This brings qubit q0 into a superposition of |0> and |1>, such that each state |000> and |001> have a 50% measurement probability.  
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIByB7ABAYwgM2zAlmADRoAOANjBAM5xEgCONUCIA8gAoCiSAigIIBlALJoATADoADAG4AOmEIZyAVwAmMNHMYxy%2BAEYBGCUu3ywChgCcYAczQMA2gGYAuuYw37GF%2B4UKACwdHKXcQeg1qT3xSABd8FDBWEABfIA).
 
 <img src="Bilder/nothing.png" width="600">
+
 
 
 ### I want something to drink, it doesn’t matter what
 
 Applying an H-Gate to all 3 Qubits, brings the whole system into an equal superposition. Thus, the selection of your drink is completely left to chance.  
-We hope you enjoy your quantum surprise :)
+We hope you enjoy your quantum surprise :). 
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFBnA9rFgBYCWYA5ilvigCYBO5A1gDQqk534y5iCYBDigQsWGA3TERIViACOEXFAQgA8gAUAogDkAigEEAygFkUAJgB0ABgDcAHTDkAxgBsArnRgo78mC9IARgCMFs4%2B9mAOcgwwVHIA2gDMALoRTjFUTkmpDg7EKAlWOWD5CUHFpfFmqTIgnrjppAAOWKT4YCogAL5AA). 
 
 <img src="Bilder/image.png" width="600">
 
 
 ### I want something with caffein, but not too strong
 
-To let the Quantum Circuit decide between Cappuccino (4, 100) and Latte Macchiato (5, 101), you can apply a NOT-Gate to q2 (i.e. flipping q2 to "1") and an H-Gate to q0.
+To let the Quantum Circuit decide between Cappuccino (4, 100) and Latte Macchiato (5, 101), you can apply a NOT-Gate to q2 (i.e. flipping q2 to "1") and an H-Gate to q0.  
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFBnA9rFgBYCWYA5uqSSgMYQBmjM5ANCgEYCuOY%2BOLPnx4sAJ3yUQbEAEcIuKAhAB5AAoBRAHIBFAIIBlALIoATADoADAG4AOmHJ0ANtwAmMFLbkwnpTgEZzRy87MHtZMRgqWQBtAGYAXVC6SKo6eKT7e2IUWMtMsAAPXJjTJOkQd1wU0gAHLFJJZRAAXyA).
 
 <img src="Bilder/something2.png" width="600">
 
 
-### I want either tea or coffee (Bell State)
+### I want either tea or coffee
 
-To get either a tea (0, 000) or coffee (3, 011) with equal probability, the so-called „Bell State” can be used. It is created by applying an H-Gate to q0 and a CNOT-Gate with q1 as target and q0 as control qubit.
+To get either a tea (0, 000) or coffee (3, 011) with equal probability, the so-called „Bell State” can be used. It is created by applying an H-Gate to q0 and a CNOT-Gate with q1 as target and q0 as control qubit.  
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFMCWWAFjAE4pYwQoD2ZAxtQGaMxwA0IAjhAM5QIgA8gAUAogDkAigEEAygFkUAJgB0ABgDcAHTB4wdADYBXACYwUWrjAN4ARgEYVeupe1gdnEjADmKTgG0AZgBdNzovXzog0J0dQj9-NRj9AA8EpLYA%2B1CQDjMecLwAByw8ajABEABfIA).
 
 <img src="Bilder/tea.png" width="600">
 
@@ -99,14 +105,16 @@ To spice up your beverage selection, you can try to find quantum circuits that s
 
 ### I want an Espresso, but want to apply all single qubit gates to q0 only
 
-To select an Espresso (2, 010), qubit q1 needs to be measured as "1". This can be achieved by using a swap gate, or three CNOT gates as shown in the following solution. (solutions are only provided for the first two of the advanced exercises)
+To select an Espresso (2, 010), qubit q1 needs to be measured as "1". This can be achieved by using a swap gate, or three CNOT gates as shown in the following solution. (solutions are only provided for the first two of the advanced exercises). 
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFmUFEBnABwCcZDCB7AGhQCMBXHDbFLK3Y4gGwE9cPHikIBLMAHMeMFAEdG9UTgkQsFdp1kAGFFTD8QNELIiEoCEAHkACvgByARQCCAZQCyKAEwA6LQG4AHTBxAGMeRgATGQDjGB5RegBGb1CYwLAg2XIJOQBtAGYAXXSQ7JQQguKgoIAPPK0qsBC62VyGmlbExua8ro627paB-q6-QxAowlLRYixRPQsQAF8gA).
 
 <img src="Bilder/espresso.png" width="600">
 
 ### I want a normal coffee, but want to use only one single X-Gate (plus the other gates as needed)
 
 To certainly get a normal coffee (3, 011), we need to switch the states of both q0 and q1 from 0 to 1. 
-Instead of applying a second NOT gate, you can use the following circuit identity: NOT = H Z H with Z being the Z gate.
+Instead of applying a second NOT gate, you can use the following circuit identity: NOT = H Z H with Z being the Z gate.  
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFEVgHsAnKCAGxQGMCAzGmGAGhQCMBXHDbFLAlNgM4wUBMGQCeIsMIEBLMAHMywgBoBaAOIQswgBQAHMoJ4ALYQSxmiKBdpgDcD6TAAmrgJQhGIAI4QBUAggAPIACgCiAHIAigCCAMoAsigATAB0AAwA3AA6YPKURm4oOb4wZLIsAIxpBaW5YHk%2BRDAKKD4A2gDMALoNlC1tlN19eXkAHu0dGaNgJlNVswBeC7PznYtZXiBuAgOy%2BliyokEgAL5AA).
 
 <img src="Bilder/coffee.png" width="600">
 
