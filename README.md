@@ -35,9 +35,12 @@ Here we listet some of the Quantum gates:
 
 ![alt text](Bilder/notgate.png)
 
+
 ![alt text](Bilder/cnotgate.png)
 
+
 ![alt text](Bilder/Hadamardgate.png)
+
 
 ![alt text](Bilder/Zgate.png)
 
