@@ -1,22 +1,38 @@
-# Welcome to the Qoffee Maker
+<img src="Bilder/QuoffeeMug_vector.png" width="150">
 
-![alt text](Bilder/QuoffeeMug_vector.png)
+# Welcome to the Qoffee Maker 
 
 ## Introduction
-Qoffee Maker is based on [Quantum Computing](https://en.wikipedia.org/wiki/Quantum_computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit. All you need to do to get your favourite type of coffee is to graphically create a quantum circuit whose measurement result is the binary number of your beverage.
+Qoffee Maker is based on [Quantum Computing](https://en.wikipedia.org/wiki/Quantum_computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit. 
 
-Sounds complicated? ... Actually it's quite simple. Have at look at the instruction and the examples.
+All you need to do to get your favourite type of coffee is to graphically create a quantum circuit whose measurement result is the binary number of your beverage.
 
+Sounds complicated?  
+... Actually it's quite simple. Have at look at the Quick Start and the examples below.
 
-You can try ouut the examples on the [IBM Quantum Composer](http://quantum-computing.ibm.com/composer), before running it on the real Qoffee Maker.
+You can try out the examples on the [IBM Quantum Composer](http://quantum-computing.ibm.com/composer), before running it on the real Qoffee Maker.
+
 
 ## Quick Start
 
-TUsing our IBM Quantum Composer you can build your own Quantum Circuits easily by just dragging and dropping different gates onto the qubits. Giving you the probability of each state, the diagram in the lower left may help creating the circuit for the drink you wish.
+### IBM Quantum Composer
+
+Using the IBM Quantum Composer, Quantum Circuits can be build by drag & drop of various gates onto the qubits. The resulting measurement probabilities are shown in a diagram. In addition, the Quantum Circuits can be executed on real quantum hardware or on simulators. A more detailed overview of the IBM Quantum Composer can be fond [here](https://quantum-computing.ibm.com/composer/docs/iqx/overview).
+
+![alt text](Bilder/Composer.png) 
+
+2 View: customize the layout.
+
+4 Quantum gates and operations bar: Drag and drop gates (i.e. the building blocks of quantum circuits) onto the graphical circuit editor.
+
+6 Graphical circuit editor: this is where you build a circuit. Drag gates and other operations onto the horizontal qubit “wires” that make up your quantum register.
+
+8 Visualizations: characterize your circuit, e.g. visualize the probabilities of the quantum state as you build it.
 
 
-Our Qoffee Maker offers the following 8 beverages, which is why we need three qubits, named q0, q1 and q2, to get the binary numbers. While building your circuit, please remember, the first qubit (q0) belongs to the last digit of the binary number and the third qubit (q2) belongs to the first digit.
+### Beverages
 
+Our Qoffee Maker offers eight beverages, which can be mapped to three-digit binary numbers with the canonical mapping 0 -> 000, 1 -> 001, 2 -> 010, ..., 6 -> 010, 7 -> 111. 
 
 
 ![alt text](Bilder/übersicht.png)
@@ -25,10 +41,6 @@ Our Qoffee Maker offers the following 8 beverages, which is why we need three qu
 ## Description of the Quantum Gates
 "Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on. 
 
-In the following Screenshots we're showing at first the Quantum Composer which is a graphical quantum programming tool that lets you drag and drop operations to build quantum circuits and run them on real quantum hardware or simulators.
-
-
-![alt text](Bilder/Composer.png) 
 
 
 Here we listet some of the Quantum gates:
@@ -45,6 +57,11 @@ Here we listet some of the Quantum gates:
 ![alt text](Bilder/Zgate.png)
 
 For more details see [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary)
+
+JRL:
+These are the building blocks of quantum circuits. Drag and drop these gates and other operations onto the graphical circuit editor. Different types of gates are grouped together by color. For example, classical gates are dark blue, phase gates are light blue, and non-unitary operations are grey.
+To learn about the available gates and operations, see the Operations glossary, and to see them in action, visit the Field Guide .
+
 
 ## How to select your coffee of choice
 
