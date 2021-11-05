@@ -32,18 +32,18 @@ Using the IBM Quantum Composer, Quantum Circuits can be build by drag & drop of 
 
 ### Beverages
 
-Our Qoffee Maker offers eight beverages, which can be mapped to three-digit binary numbers with the canonical mapping 0 -> 000, 1 -> 001, 2 -> 010, ..., 6 -> 010, 7 -> 111. 
+Our Qoffee Maker offers eight beverages, which can be mapped to three-digit binary numbers with the canonical mapping 0 -> 000, 1 -> 001, 2 -> 010, ..., 6 -> 110, 7 -> 111. 
 
 
 ![alt text](Bilder/übersicht.png)
 
 
 ## Description of the Quantum Gates
-"Quantum Gates" are the fundamental operations that can be applied to Qubits - which quantum computuers are based on. 
+"Quantum Gates" are the fundamental operations that can be applied to Qubits.
 
 
 
-Here we listet some of the Quantum gates:
+The three most important Quantum gates are:
 
 ![alt text](Bilder/NOTgate.png)
 
@@ -58,15 +58,10 @@ Here we listet some of the Quantum gates:
 
 For more details see [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary)
 
-JRL:
-These are the building blocks of quantum circuits. Drag and drop these gates and other operations onto the graphical circuit editor. Different types of gates are grouped together by color. For example, classical gates are dark blue, phase gates are light blue, and non-unitary operations are grey.
-To learn about the available gates and operations, see the Operations glossary, and to see them in action, visit the Field Guide .
-
 
 ## How to select your coffee of choice
 
 ### I want a Cappucino
-
 
 Goal: 
 
