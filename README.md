@@ -21,28 +21,7 @@ Our Qoffee Maker offers eight beverages, which can be mapped to three-digit bina
 
 
 ### How to obtain your coffee of choice
-The following examples illustrate how the standard gates (NOT, CNOT, H) can be used to solve the coffee puzzle.
-
-#### I want a Cappucino
-
-To get a cappuccino, which is beverage number 4 (encoded with the binary number 100), you need to build the Quantum Circuit such that the state 100 will come up with 100% probability.  
-Remember: The qubits are ordered q2, q1, q0, and each are initialized with 0.  
-The simplest way to build the desired "capuccino circuit" is to apply an NOT-Gate to qubit q2, which flips the state from |000> to |100>.  
-Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIDCEAOBXAxpglmA9iADQgCOEAzlAiAPIAKAogHICKAggMoCyABAEwA6AAwBuADpg8mADboAJjF7iyMGTgBGARkHSVEsJNIAnGAHNepANoBmALoHMpi5lsPJkgB6Wr-B8RBFCiccVAAXHHwwGhAAXyA).
-
-<img src="Bilder/cappuccino.png" width="600">
-
-
-#### No caffein, please
-
-Tea (0, 000) and Hot Chocolate (1, 001) are the only two drinks without caffein. 
-
-To get each of these two drinks with equal probability, you can apply an H-Gate to q0.  
-This brings qubit q0 into a superposition of |0> and |1>, such that each state |000> and |001> have a 50% measurement probability.  
-Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIByB7ABAYwgM2zAlmADRoAOANjBAM5xEgCONUCIA8gAoCiSAigIIBlALJoATADoADAG4AOmEIZyAVwAmMNHMYxy%2BAEYBGCUu3ywChgCcYAczQMA2gGYAuuYw37GF%2B4UKACwdHKXcQeg1qT3xSABd8FDBWEABfIA).
-
-<img src="Bilder/nothing.png" width="600">
-
+The following examples illustrate how the standard gates (NOT, CNOT, H) can be used to solve the coffee puzzle. A short description of these gates is [here](Gates.md), for more details see the [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary).
 
 
 #### I want something to drink, it doesn’t matter what
@@ -54,20 +33,33 @@ Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?ini
 <img src="Bilder/image.png" width="600">
 
 
+#### I want a Cappucino
+
+To get a cappuccino, which is beverage number 4 (encoded with the binary number 100), you need to build the Quantum Circuit such that the state 100 will come up with 100% probability.  
+Remember: The qubits are ordered q2, q1, q0, and each are initialized with 0.  
+The simplest way to build the desired "capuccino circuit" is to apply an NOT-Gate to qubit q2, which flips the state from |000> to |100>.  
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIDCEAOBXAxpglmA9iADQgCOEAzlAiAPIAKAogHICKAggMoCyABAEwA6AAwBuADpg8mADboAJjF7iyMGTgBGARkHSVEsJNIAnGAHNepANoBmALoHMpi5lsPJkgB6Wr-B8RBFCiccVAAXHHwwGhAAXyA), or see a screenshot of [this circuit](Bilder/cappuccino.png).
+
+
+#### No caffein, please
+
+Tea (0, 000) and Hot Chocolate (1, 001) are the only two drinks without caffein. 
+
+To get each of these two drinks with equal probability, you can apply an H-Gate to q0.  
+This brings qubit q0 into a superposition of |0> and |1>, such that each state |000> and |001> have a 50% measurement probability.  
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIByB7ABAYwgM2zAlmADRoAOANjBAM5xEgCONUCIA8gAoCiSAigIIBlALJoATADoADAG4AOmEIZyAVwAmMNHMYxy%2BAEYBGCUu3ywChgCcYAczQMA2gGYAuuYw37GF%2B4UKACwdHKXcQeg1qT3xSABd8FDBWEABfIA), or see a screenshot of [this circuit](Bilder/nothing.png).
+
+
 #### I want something with caffein, but not too strong
 
 To let the Quantum Circuit decide between Cappuccino (4, 100) and Latte Macchiato (5, 101), you can apply a NOT-Gate to q2 (i.e. flipping q2 to "1") and an H-Gate to q0.  
-Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFBnA9rFgBYCWYA5uqSSgMYQBmjM5ANCgEYCuOY%2BOLPnx4sAJ3yUQbEAEcIuKAhAB5AAoBRAHIBFAIIBlALIoATADoADAG4AOmHJ0ANtwAmMFLbkwnpTgEZzRy87MHtZMRgqWQBtAGYAXVC6SKo6eKT7e2IUWMtMsAAPXJjTJOkQd1wU0gAHLFJJZRAAXyA).
-
-<img src="Bilder/something2.png" width="600">
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFBnA9rFgBYCWYA5uqSSgMYQBmjM5ANCgEYCuOY%2BOLPnx4sAJ3yUQbEAEcIuKAhAB5AAoBRAHIBFAIIBlALIoATADoADAG4AOmHJ0ANtwAmMFLbkwnpTgEZzRy87MHtZMRgqWQBtAGYAXVC6SKo6eKT7e2IUWMtMsAAPXJjTJOkQd1wU0gAHLFJJZRAAXyA), or see a screenshot of [this circuit](Bilder/something2.png).
 
 
 #### I want either tea or coffee
 
 To get either a tea (0, 000) or coffee (3, 011) with equal probability, the so-called „Bell State” can be used. It is created by applying an H-Gate to q0 and a CNOT-Gate with q1 as target and q0 as control qubit.  
-Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFMCWWAFjAE4pYwQoD2ZAxtQGaMxwA0IAjhAM5QIgA8gAUAogDkAigEEAygFkUAJgB0ABgDcAHTB4wdADYBXACYwUWrjAN4ARgEYVeupe1gdnEjADmKTgG0AZgBdNzovXzog0J0dQj9-NRj9AA8EpLYA%2B1CQDjMecLwAByw8ajABEABfIA).
-
-<img src="Bilder/tea.png" width="600">
+Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFMCWWAFjAE4pYwQoD2ZAxtQGaMxwA0IAjhAM5QIgA8gAUAogDkAigEEAygFkUAJgB0ABgDcAHTB4wdADYBXACYwUWrjAN4ARgEYVeupe1gdnEjADmKTgG0AZgBdNzovXzog0J0dQj9-NRj9AA8EpLYA%2B1CQDjMecLwAByw8ajABEABfIA), or see a screenshot of [this circuit](Bilder/tea.png).
 
 
 ## Advanced Exercises
