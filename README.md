@@ -1,7 +1,7 @@
 # Welcome to the Qoffee Maker <img src="Bilder/QuoffeeMug_vector.png" width="150">
 
 ## Introduction
-Qoffee Maker is based on [Quantum Computing](http://ibm.com/quantum-computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit. 
+Qoffee Maker is based on [Quantum Computing](http://ibm.com/quantum-computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit.  
 
 All you need to do to get your favourite type of coffee is to graphically create a quantum circuit whose measurement result is the binary number of your beverage.
 
