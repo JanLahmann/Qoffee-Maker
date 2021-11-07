@@ -1,6 +1,4 @@
-# Welcome to the Qoffee Maker <img src="Bilder/QuoffeeMug_vector.png" width="150">
-
-## Advanced Exercises (optional)
+# Advanced Exercises (optional) <img src="Bilder/QuoffeeMug_vector.png" width="150">
 To spice up your beverage selection, you can try to find quantum circuits that solve the following advanced exercises.
 
 ### I want an Espresso, but want to apply all single qubit gates to q0 only

@@ -1,6 +1,5 @@
-# Welcome to the Qoffee Maker <img src="Bilder/QuoffeeMug_vector.png" width="150">
+# Description of the Quantum Gates <img src="Bilder/QuoffeeMug_vector.png" width="150">
 
-## Description of the Quantum Gates
 "Quantum Gates" are the fundamental operations that can be applied to Qubits.  
 The three most important Quantum gates are NOT, CNOT and H.  
 For more details see [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary).
