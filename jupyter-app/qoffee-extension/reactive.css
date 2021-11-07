@@ -1,8 +1,0 @@
-._qif-hide {
-    display: none !important;
-}
-.output_subarea.output_javascript {
-    padding: 0 !important;
-    height: 0 !important;
-    overflow: hidden;
-}
