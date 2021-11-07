@@ -21,17 +21,17 @@ Our Qoffee Maker offers eight beverages, which can be mapped to three-digit bina
 
 
 ## How to obtain your coffee of choice
-The following examples illustrate step-by-step how to use the standard gates to solve the Qoffee Puzzle.  
 "Quantum Gates" are fundamental operations that applied to Qubits change their properties (state).
-The three most important ones are: NOT, CNOT and H with a short description [here](Gates.md).
- For more details see the [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary).
+The three most important quantum gates are: NOT, CNOT and H with a short description [here](Gates.md). For more details see the [Operations glossary](https://quantum-computing.ibm.com/composer/docs/iqx/operations_glossary).
+
+The following examples illustrate step-by-step how to use these to solve the Qoffee Puzzle.
 
 
 ### I want something to drink, it doesn’t matter what
 
 Applying an H-Gate to all 3 Qubits brings the whole system into an equal superposition. Thus, the selection of your drink is entirely random.  
-We hope you enjoy your quantum surprise :). 
- You can find a prebuilt version of the circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFBnA9rFgBYCWYA5ilvigCYBO5A1gDQqk534y5iCYBDigQsWGA3TERIViACOEXFAQgA8gAUAogDkAigEEAygFkUAJgB0ABgDcAHTDkAxgBsArnRgo78mC9IARgCMFs4%2B9mAOcgwwVHIA2gDMALoRTjFUTkmpDg7EKAlWOWD5CUHFpfFmqTIgnrjppAAOWKT4YCogAL5AA). 
+We hope you enjoy your quantum surprise :).  
+You can find a prebuilt version of the circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFBnA9rFgBYCWYA5ilvigCYBO5A1gDQqk534y5iCYBDigQsWGA3TERIViACOEXFAQgA8gAUAogDkAigEEAygFkUAJgB0ABgDcAHTDkAxgBsArnRgo78mC9IARgCMFs4%2B9mAOcgwwVHIA2gDMALoRTjFUTkmpDg7EKAlWOWD5CUHFpfFmqTIgnrjppAAOWKT4YCogAL5AA). 
 
 <img src="Bilder/image.png" width="600">
 
@@ -39,7 +39,7 @@ We hope you enjoy your quantum surprise :).
 ### I want a Cappucino
 
 To request a Cappuccino (beverage number 4, encoded with the binary number 100), you need to build the Quantum Circuit such that the state (4, 100) will come up with 100% probability.  
- Remember: The order of qubits q2, q1, q0 is initialized at 0 each (0, 000).  
+Remember: The order of qubits q2, q1, q0 is initialized at 0 each (0, 000).  
 The simplest way to build the desired "Cappuccino circuit" is to apply a NOT-Gate to q2, which flips the state from |000> to |100>.  
 Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIDCEAOBXAxpglmA9iADQgCOEAzlAiAPIAKAogHICKAggMoCyABAEwA6AAwBuADpg8mADboAJjF7iyMGTgBGARkHSVEsJNIAnGAHNepANoBmALoHMpi5lsPJkgB6Wr-B8RBFCiccVAAXHHwwGhAAXyA), or see a [screenshot](Bilder/cappuccino.png).
 
@@ -49,7 +49,7 @@ Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?ini
 Tea (0, 000) and Hot Chocolate (1, 001) are the only two drinks without caffein. 
 
 To get one of these two drinks with equal probability, you can apply an H-Gate to q0.  
-A superposition state of |0> and |1> is created using qubit q0, such that each state |000> and |001> have a 50% measurement probability.  
+A superposition of |0> and |1> is created using qubit q0, such that each state |000> and |001> have a 50% measurement probability.  
 Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcIByB7ABAYwgM2zAlmADRoAOANjBAM5xEgCONUCIA8gAoCiSAigIIBlALJoATADoADAG4AOmEIZyAVwAmMNHMYxy%2BAEYBGCUu3ywChgCcYAczQMA2gGYAuuYw37GF%2B4UKACwdHKXcQeg1qT3xSABd8FDBWEABfIA), or see a [screenshot](Bilder/nothing.png).
 
 
@@ -73,6 +73,7 @@ We provide examples for the first few, but these are not the only possible appro
 
 
 ## How to build your own Qoffee Maker at home
-Before jumping into more challenging Circuits, beware: 
+
 The entire code of this project is available in this GitHub repo. Code cleanup will follow as well as documentation.  
+
 You can use the [IBM Quantum Composer](http://quantum-computing.ibm.com/composer) any time to practice your Quantum Skills by using fundamental quantum gates and executing quantum circuits on real quantum computers.

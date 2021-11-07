@@ -19,8 +19,6 @@ Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?ini
 <img src="Bilder/coffee.png" width="600">
 
 
-## Other intellectual challenges: 
-
 ### I want a Tea or something strong, but I prefer Tea
 
 Goal: Tea (0, 000) or Espresso (2, 010) or Coffee (3, 011) or Wiener Melange (6, 110) or Americano (7, 111), but Tea with a higher probability.
