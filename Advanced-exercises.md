@@ -1,23 +1,27 @@
 # Advanced Exercises (optional) <img src="Bilder/QuoffeeMug_vector.png" width="150">
-To spice up your beverage selection, you can try to find quantum circuits that solve the following advanced exercises.
+To spice up your beverage selection, try to find quantum circuits that solve the following advanced exercises. 
+We provide examples for the first few, but these are not the only possible approach. Give it a shot yourself and come up with individual Quoffe solutions or explore alternative Circuit options.
 
-### I want an Espresso, but want to apply all single qubit gates to q0 only
 
-To select an Espresso (2, 010), qubit q1 needs to be measured as "1". This can be achieved by using a swap gate, or three CNOT gates as shown in the following solution. (solutions are only provided for the first two of the advanced exercises). 
-Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFmUFEBnABwCcZDCB7AGhQCMBXHDbFLK3Y4gGwE9cPHikIBLMAHMeMFAEdG9UTgkQsFdp1kAGFFTD8QNELIiEoCEAHkACvgByARQCCAZQCyKAEwA6LQG4AHTBxAGMeRgATGQDjGB5RegBGb1CYwLAg2XIJOQBtAGYAXXSQ7JQQguKgoIAPPK0qsBC62VyGmlbExua8ro627paB-q6-QxAowlLRYixRPQsQAF8gA).
+### I want an Espresso by using single-qubit gates only on q0
+
+To select an Espresso (2, 010), qubit q1 needs to be measured as "1". This can be achieved by using a swap gate, or three CNOT gates as shown in the following solution. 
+ Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFmUFEBnABwCcZDCB7AGhQCMBXHDbFLK3Y4gGwE9cPHikIBLMAHMeMFAEdG9UTgkQsFdp1kAGFFTD8QNELIiEoCEAHkACvgByARQCCAZQCyKAEwA6LQG4AHTBxAGMeRgATGQDjGB5RegBGb1CYwLAg2XIJOQBtAGYAXXSQ7JQQguKgoIAPPK0qsBC62VyGmlbExua8ro627paB-q6-QxAowlLRYixRPQsQAF8gA).
 
 <img src="Bilder/espresso.png" width="600">
 
-### I want a normal coffee, but want to use only one single X-Gate (plus the other gates as needed)
+### I want a regular Coffee but want to use only one X-Gate (plus other gates as needed)
 
-To certainly get a normal coffee (3, 011), we need to switch the states of both q0 and q1 from 0 to 1. 
+To ensure getting a regular coffee (3, 011), we need to switch the states of both q0 and q1 from 0 to 1. 
 Instead of applying a second NOT gate, you can use the following circuit identity: NOT = H Z H with Z being the Z gate.  
 Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?initial=N4IgdghgtgpiBcICSACA7hMAXFEVgHsAnKCAGxQGMCAzGmGAGhQCMBXHDbFLAlNgM4wUBMGQCeIsMIEBLMAHMywgBoBaAOIQswgBQAHMoJ4ALYQSxmiKBdpgDcD6TAAmrgJQhGIAI4QBUAggAPIACgCiAHIAigCCAMoAsigATAB0AAwA3AA6YPKURm4oOb4wZLIsAIxpBaW5YHk%2BRDAKKD4A2gDMALoNlC1tlN19eXkAHu0dGaNgJlNVswBeC7PznYtZXiBuAgOy%2BliyokEgAL5AA).
 
 <img src="Bilder/coffee.png" width="600">
 
 
-### I want a tea or something strong, but I prefer tea
+## Other intellectual challenges: 
+
+### I want a Tea or something strong, but I prefer Tea
 
 Goal: Tea (0, 000) or Espresso (2, 010) or Coffee (3, 011) or Wiener Melange (6, 110) or Americano (7, 111), but Tea with a higher probability.
 
