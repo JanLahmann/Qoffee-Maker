@@ -1,14 +1,40 @@
 #view-composer-button-bar button {
     border-radius: 0;
-    border-color: black;
     font-size: 1.5em;
 }
 
-#view-composer-button-bar button[data-active="True"] {
-    border-color: rgba(40, 105, 245);
-    border-width: 2px;
+#view-composer-show-theo-btn {
+    border-left-width: 10px;
+    border-color: rgb(40, 105, 245);
+}
+
+#view-composer-show-qasm-btn {
+    border-left-width: 10px;
+    border-color: rgb(116, 0, 123);
+}
+
+#view-composer-show-mock-btn {
+    border-left-width: 10px;
+    border-color: rgb(0, 135, 92);
+}
+
+#view-composer-show-theo-btn[data-active="True"] {
+    background-color:rgba(40, 105, 245, 0.4);
+}
+
+#view-composer-show-qasm-btn[data-active="True"] {
+    background-color:rgba(116, 0, 123, 0.4);
+}
+
+#view-composer-show-mock-btn[data-active="True"] {
+    background-color:rgba(0, 135, 92, 0.4);
 }
 
 #view-composer-button-bar .mr-4 {
     margin-right: 20px;
+}
+
+#view-composer-hist-header h3 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }

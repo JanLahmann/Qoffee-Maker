@@ -3,7 +3,6 @@
 */
 #view-composer-hist-container {
 	width: 100%;
-	height: 30vh;
 	padding: 0 50px 0 10px;
     margin-top: 50px;
 }
@@ -25,7 +24,7 @@
 }
 #view-composer-hist-container .histogram-bar-container {
 	position: relative;
-	height: 80%;
+	height: 25vh;
 }
 #view-composer-hist-container .histogram-bar-outer {
 	width: 60px;
@@ -36,7 +35,6 @@
 	/* background-color: lightgray; */
 }
 #view-composer-hist-container .histogram-bar {
-	background-color: blue;
 	position: absolute;
 	bottom: 0;
 	height: 0;
@@ -56,6 +54,11 @@
 	left: 66%;
 }
 
-#view-composer-hist-container .histogram-text-container {
+#view-composer-hist-container .histogram-text-container-pre {
+    margin-bottom: 20px;
+}
+
+#view-composer-hist-container .histogram-text-container-post {
     margin-top: 20px;
+	margin-bottom: 10px;
 }

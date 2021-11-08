@@ -88,9 +88,23 @@ body.app-mode .app-appbox > .widget-vbox {
 	display: none;
 }
 
+/* Increase height of gates */
+.gates-catalog .gates-catalog__group__gates__gate-icon svg {
+	width: 70px;
+}
+
 /* dont show scrollbar */
 body.app-mode .p-Widget {
 	overflow: visible !important;
+}
+
+body.app-mode #site {
+	height: inherit !important;
+	overflow-y: hidden;
+}
+
+body.app-mode .end_space {
+	display: none;
 }
 
 /* Restart button and restart overlay */
@@ -152,4 +166,12 @@ body.app-mode #restart-button-container {
 }
 #qrcode-container a {
 	text-align: center;
+}
+#qrcode-container p {
+	font-size: 2em;
+	color: white;
+	width: 100%;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 20px;
 }

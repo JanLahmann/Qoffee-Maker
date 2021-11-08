@@ -113,10 +113,11 @@ define([
         })
     }
 
-    function openQRCode(url) {
+    function openQRCode(url, text="") {
         // clear previous qr code
         $("#qrcode").empty();
         $("#qrcode-container a").remove();
+        $("#qrcode-container p").remove();
         // create qrcode
         const qrcode = new QRCode(document.getElementById("qrcode"), {
             text: url,
@@ -126,6 +127,9 @@ define([
             colorLight : "#ffffff"
         });
         $("#qrcode-container").addClass("active");
+        if(text != "") {
+            $("#qrcode-container").prepend('<p class="qrcode-text">'+text+'</p>')
+        }
         $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open</a>')
     }
 
