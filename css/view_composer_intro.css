@@ -2,3 +2,9 @@ p {
     font-size: 1.5em;
     margin-bottom: 40px;
 }
+
+span {
+    color: rgba(40, 105, 245);
+    text-decoration: underline;
+    cursor: pointer;
+}

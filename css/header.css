@@ -43,6 +43,14 @@
     right: 0px;
 }
 
+#navigation-container #navigation-button-q {
+    right: 116px;
+}
+#navigation-container #navigation-button-q[data-device=ibmq] {
+    background-color: rgba(40, 105, 245);
+}
+
+
 #header img {
     position: absolute;
     height: 32px;

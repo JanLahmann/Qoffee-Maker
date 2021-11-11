@@ -18,6 +18,11 @@
     cursor: pointer;
 }
 
+#view-welcome .card-primary .card {
+    background-color: rgba(40, 105, 245);
+    color: white;
+}
+
 #view-welcome p {
     font-size: 1.3em;
 }
@@ -28,6 +33,10 @@
     bottom: 10px;
     left: 20px;
     font-size: 1.5em;
+}
+
+#view-welcome .card-primary span.arrow {
+    color: white;
 }
 
 #view-welcome .mt-4 {
