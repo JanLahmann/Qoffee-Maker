@@ -81,6 +81,36 @@ define([
         }, 1000)
     }
 
+    function refreshAuth() {
+        console.log("Start refreshing auth key")
+        return new Promise((resolve, reject) => {
+            // do POST request to Jupyter backend
+            fetch("/auth/refresh", {
+                method: 'get',
+                credentials: 'same-origin',
+                headers: {
+                    'X-XSRFToken': document.cookie.replace("_xsrf=", "")
+                }
+            }).then(response => {
+                // if fail, alert and go to welcome
+                if(!response.ok) {
+                    alert("Could not refresh auth");
+                    window.open('/auth', '_blank');
+                    reject();
+                }
+                // if succeed to to success
+                else {
+                    resolve();
+                }
+            }, error => {
+                alert("Could not refresh auth");
+                window.open('/auth', '_blank');
+                console.error(error);
+                reject(error);
+            })
+        })
+    }
+
     function requestDrink(drinkKey, drinkOptions) {
         console.log("Start requesting", drinkKey, "with options", drinkOptions)
         return new Promise((resolve, reject) => {
@@ -148,6 +178,8 @@ define([
 
     // state variable to avoid double loading
     let loadFunctionCalled = false;
+    // interval for refreshing auth
+    let intervalAuthRefresh = null;
     function load_ipython_extension() {
         // avoid double loading
         if(loadFunctionCalled) {
@@ -185,11 +217,21 @@ define([
         // publish openQrCode
         window.openQRCodeIBMQ = openQRCodeIBMQ
         window.openQRCode = openQRCode
+        window.refreshAuth = refreshAuth
 
+        // set interval to refresh auth token
+        clearInterval(intervalAuthRefresh)
+        intervalAuthRefresh = setInterval(() => {
+            refreshAuth();
+        }, 40*60*1000)  // every 40min
 
         // add a button to UI which restarts the app
-        $("body").append('<div id="restart-button-container"><button type="button" id="restart-button">Restart</button></div>')
+        $("body").append('<div id="restart-button-container" class="emergency-button-container"><button type="button" id="restart-button">Restart</button></div>')
         $(document).on("click", "#restart-button", restart);
+
+        // add a button to UI which refreshs auth manually
+        $("body").append('<div id="refreshauth-button-container" class="emergency-button-container"><button type="button" id="refreshauth-button">Refresh Auth</button></div>')
+        $(document).on("click", "#refreshauth-button", refreshAuth);
 
         /*
             Add QR Code Container
