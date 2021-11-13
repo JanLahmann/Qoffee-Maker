@@ -8,7 +8,8 @@ pip install getgist
 . ./RasQ-init.sh
 
 sudo apt -y install matchbox-keyboard
-cp -R /home/pi/RasQberry/desktop-icons/* /home/pi/.local/share/applications/
+#cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
+cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
 
 ```
 (reboot)
