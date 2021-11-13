@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Name=Qoffee-Maker	
+Comment=run the Qoffee-Maker Demo
+Icon=/home/pi/Qoffee-Maker/icons/QuoffeeMug_vector-s128.png
+Type=Application
+Categories=Demos;
+Exec=/home/pi/Qoffee-Maker/demos/bin/Qoffee-Maker.sh
+Terminal=true

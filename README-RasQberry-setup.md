@@ -6,6 +6,10 @@
 pip install getgist
 .local/bin/getgist JanLahmann RasQ-init.sh
 . ./RasQ-init.sh
+
+sudo apt -y install matchbox-keyboard
+cp -R /home/pi/RasQberry/desktop-icons/* /home/pi/.local/share/applications/
+
 ```
 (reboot)
 
@@ -24,6 +28,14 @@ curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -
 sudo apt-get install -y nodejs
 npm install yarn  # cf output of previous command
 #npm install --no-package-lock yarn
+
+# alternatively:
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install --no-install-recommends -y yarn # install yarn only
+sudo apt install -y yarn # install with node.js
+
 node_modules/yarn/bin/yarn build:prod
 cd ..
 pip3 install ./appwidgets
@@ -41,4 +53,16 @@ http://localhost:8887/
 ```
 
 
+#### Update of the Qoffee-Maker app
 
+cd Qoffee-Maker/
+git fetch --all
+git reset --hard HEAD
+git pull origin
+
+pip3 install ./qoffeeapi
+
+cd appwidgets/
+node_modules/yarn/bin/yarn build:prod
+cd ..
+pip3 install ./appwidgets
