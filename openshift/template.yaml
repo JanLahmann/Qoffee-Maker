@@ -1,0 +1,154 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+labels:
+  template: qoffee-maker-template
+objects:
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: run-as-root
+  - kind: RoleBinding
+    apiVersion: rbac.authorization.k8s.io/v1
+    metadata:
+      name: run-as-root-role-binding
+    subjects:
+      - kind: ServiceAccount
+        name: run-as-root
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: ClusterRole
+      name: 'system:openshift:scc:anyuid'
+  - apiVersion: image.openshift.io/v1
+    kind: ImageStream
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: ""
+        app.openshift.io/vcs-uri: https://github.com/JanLahmann/Qoffee-Maker
+      labels:
+        app: qoffee-maker
+        app.kubernetes.io/component: qoffee-maker
+        app.kubernetes.io/instance: qoffee-maker
+        app.kubernetes.io/part-of: qoffee-maker
+      name: qoffee-maker
+      namespace: ${IMAGE_NAMESPACE}
+    spec:
+      lookupPolicy:
+        local: false
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: ""
+        app.openshift.io/vcs-uri: https://github.com/JanLahmann/Qoffee-Maker
+      name: qoffee-maker-${APPLICATION_POSTFIX}
+    stringData:
+      HOMECONNECT_API_URL: ${HOMECONNECT_API_URL}
+      HOMECONNECT_CLIENT_ID: ${HOMECONNECT_CLIENT_ID}
+      HOMECONNECT_CLIENT_SECRET: ${HOMECONNECT_CLIENT_SECRET}
+      HOMECONNECT_REDIRECT_URL: ""
+      IBMQ_API_KEY: ${IBMQ_API_KEY}
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN}
+  - apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      annotations:
+        alpha.image.policy.openshift.io/resolve-names: '*'
+        app.openshift.io/vcs-ref: ""
+        app.openshift.io/vcs-uri: https://github.com/JanLahmann/Qoffee-Maker
+        image.openshift.io/triggers: '[{"from":{"kind":"ImageStreamTag","name":"qoffee-maker:latest","namespace":"${IMAGE_NAMESPACE}"},"fieldPath":"spec.template.spec.containers[?(@.name==\"qoffee-maker\")].image","pause":"false"}]'
+      labels:
+        app: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/component: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/instance: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/part-of: qoffee-maker-${APPLICATION_POSTFIX}
+      name: qoffee-maker-${APPLICATION_POSTFIX}
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: qoffee-maker-${APPLICATION_POSTFIX}
+      template:
+        metadata:
+          labels:
+            app: qoffee-maker-${APPLICATION_POSTFIX}
+            deploymentconfig: qoffee-maker-${APPLICATION_POSTFIX}
+        spec:
+          containers:
+          - envFrom:
+            - secretRef:
+                name: qoffee-maker-${APPLICATION_POSTFIX}
+            image: image-registry.openshift-image-registry.svc:5000/${IMAGE_NAMESPACE}/qoffee-maker  #@sha256:a2f40019e2ce69700863e810120923d3bd3ada2fc2f0736c496d77418eefef61
+            imagePullPolicy: Always
+            name: qoffee-maker
+            resources: {}
+          dnsPolicy: ClusterFirst
+          restartPolicy: Always
+          schedulerName: default-scheduler
+          securityContext:
+            runAsUser: 0
+          serviceAccount: run-as-root
+          serviceAccountName: run-as-root
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: ""
+        app.openshift.io/vcs-uri: https://github.com/JanLahmann/Qoffee-Maker
+      labels:
+        app: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/component: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/instance: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/part-of: qoffee-maker-${APPLICATION_POSTFIX}
+      name: qoffee-maker-${APPLICATION_POSTFIX}
+    spec:
+      ports:
+      - name: 8887-tcp
+        port: 8887
+        protocol: TCP
+        targetPort: 8887
+      selector:
+        app: qoffee-maker-${APPLICATION_POSTFIX}
+        deploymentconfig: qoffee-maker-${APPLICATION_POSTFIX}
+      type: ClusterIP
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      labels:
+        app: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/component: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/instance: qoffee-maker-${APPLICATION_POSTFIX}
+        app.kubernetes.io/part-of: qoffee-maker-${APPLICATION_POSTFIX}
+      name: qm-${APPLICATION_POSTFIX}
+    spec:
+      port:
+        targetPort: 8887-tcp
+      to:
+        kind: Service
+        name: qoffee-maker-${APPLICATION_POSTFIX}
+        weight: 100
+      wildcardPolicy: None
+parameters:
+  - description: Namespace of ImageStream
+    name: IMAGE_NAMESPACE
+    required: true
+    value: qoffee-maker
+  - description: API URL of homeconnect
+    name: HOMECONNECT_API_URL
+    required: true
+    value: https://simulator.home-connect.com
+  - description: Client ID for Homeconnect
+    name: HOMECONNECT_CLIENT_ID
+    required: true
+  - description: Client Secret for Homeconnect
+    name: HOMECONNECT_CLIENT_SECRET
+    required: true
+  - description: API Key for IBM Quantum
+    name: IBMQ_API_KEY
+    required: true
+  - description: Token for Jupyter Notebooks
+    name: JUPYTER_TOKEN
+    required: true
+  - description: Postfix for components
+    name: APPLICATION_POSTFIX
+    value: simulator
+    required: true

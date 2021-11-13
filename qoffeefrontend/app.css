@@ -108,16 +108,23 @@ body.app-mode .end_space {
 }
 
 /* Restart button and restart overlay */
-#restart-button-container {
+.emergency-button-container {
 	display: none;
 	position: absolute;
 	bottom: 10px;
-	right: 10px;
+	right: 0px;
 	z-index: 9998;
 }
-body.app-mode #restart-button-container {
+body.app-mode .emergency-button-container {
 	display: block;
 }
+#restart-button-container {
+	right: 10px;
+}
+#refreshauth-button-container {
+	right: 75px;
+}
+
 #restart-overlay {
 	background-color: rgba(0, 0, 0, 0.8); 
 	z-index: 9999; 
