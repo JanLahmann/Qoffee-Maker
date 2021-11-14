@@ -21,7 +21,7 @@ cp /home/pi/RasQberry/bin/rq_desktop-items-0.conf /home/pi/.config/pcmanfm/LXDE-
 #### Install Qoffee-Maker:
 ```
 git clone https://github.com/JanLahmann/Qoffee-Maker
-#cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
+cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
 cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
 
 cd Qoffee-Maker/
