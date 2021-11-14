@@ -5,13 +5,12 @@
 ```
 pip install getgist
 .local/bin/getgist JanLahmann RasQ-init.sh
-. ./RasQ-init.sh
-
 pip3 install numpy==1.21.* # vor qiskit install
+. ./RasQ-init.sh
 
 sudo apt -y install matchbox-keyboard
 mkdir  /home/pi/.matchbox/
-cp /usr/share/matchbox-keyboard/keyboard.xml /home/pi/.matchbox/
+cp keyboard.xml /home/pi/.matchbox/
 mkdir -p /home/pi/.config/pcmanfm/LXDE-pi/
 cp /home/pi/RasQberry/bin/rq_desktop-items-0.conf /home/pi/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
 
@@ -24,7 +23,7 @@ git clone https://github.com/JanLahmann/Qoffee-Maker
 
 cp -R /home/pi/Qoffee-Maker/directory-entries/* /home/pi/.local/share/desktop-directories
 cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
-cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
+#cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
 
 cd Qoffee-Maker/
 pip3 install ibm_quantum_widgets jupyter_packaging python-dotenv
