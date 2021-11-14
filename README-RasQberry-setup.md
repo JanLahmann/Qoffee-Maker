@@ -1,7 +1,7 @@
 # Qoffee-Maker
 
-### Installation on RasQberry (draft):
-#### Install RasQberry (system update, initial config, Qiskit latest, "Config & Demos" (for Jupyter environment) and enable vnc in raspi-config)
+## Installation on RasQberry (draft):
+### Install RasQberry (system update, initial config, Qiskit latest, "Config & Demos" (for Jupyter environment); then enable vnc in raspi-config)
 ```
 pip install getgist
 .local/bin/getgist JanLahmann RasQ-init.sh
@@ -9,19 +9,21 @@ pip3 install numpy==1.21.* # vor qiskit install
 . ./RasQ-init.sh
 
 sudo apt -y install matchbox-keyboard
-mkdir  /home/pi/.matchbox/
-cp keyboard.xml /home/pi/.matchbox/
 mkdir -p /home/pi/.config/pcmanfm/LXDE-pi/
 cp /home/pi/RasQberry/bin/rq_desktop-items-0.conf /home/pi/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
 
 ```
 (reboot)
 
-#### Install Qoffee-Maker:
+### Install Qoffee-Maker:
 ```
 git clone https://github.com/JanLahmann/Qoffee-Maker
 
+mkdir  /home/pi/.matchbox/
+cp /home/pi/Qoffee-Maker/keyboard.xml /home/pi/.matchbox/
+
 cp -R /home/pi/Qoffee-Maker/directory-entries/* /home/pi/.local/share/desktop-directories
+chmod a-x /home/pi/.local/share/desktop-directories/Qoffee.directory
 cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
 #cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
 
@@ -51,7 +53,7 @@ jupyter nbextension install ./qoffeefrontend --user
 jupyter nbextension enable qoffeefrontend/app
 
 vi .env
-cp .env ../.local/lib/
+cp .env /home/pi/.local/lib/
 
 jupyter notebook
 http://localhost:8887/auth
@@ -59,7 +61,7 @@ http://localhost:8887/
 ```
 
 
-#### Update of the Qoffee-Maker app
+### Update of the Qoffee-Maker app
 
 cd Qoffee-Maker/
 git fetch --all
