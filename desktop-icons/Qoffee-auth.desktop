@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Name=Qoffee Auth	
+Comment=Authoorize the Qoffee-Maker Demo within the HomeConnect API	
+Icon=/home/pi/Qoffee-Maker/icons/QuoffeeMug_vector-s128.png
+Type=Application
+Categories=Demos;
+Exec=/home/pi/Qoffee-Maker/demos/Qoffee-auth.sh
+Terminal=true

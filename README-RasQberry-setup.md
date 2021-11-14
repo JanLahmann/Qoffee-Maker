@@ -1,15 +1,19 @@
 # Qoffee-Maker
 
 ### Installation on RasQberry (draft):
-#### Install RasQberry (with Qiskit 0.29, "Config & Demos" (for Jupyter environment) and enable vnc)
+#### Install RasQberry (system update, initial config, Qiskit latest, "Config & Demos" (for Jupyter environment) and enable vnc in raspi-config)
 ```
 pip install getgist
 .local/bin/getgist JanLahmann RasQ-init.sh
 . ./RasQ-init.sh
 
+pip3 install numpy==1.21.* # vor qiskit install
+
 sudo apt -y install matchbox-keyboard
-#cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
-cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
+mkdir  /home/pi/.matchbox/
+cp /usr/share/matchbox-keyboard/keyboard.xml /home/pi/.matchbox/
+mkdir -p /home/pi/.config/pcmanfm/LXDE-pi/
+cp /home/pi/RasQberry/bin/rq_desktop-items-0.conf /home/pi/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
 
 ```
 (reboot)
@@ -17,6 +21,9 @@ cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
 #### Install Qoffee-Maker:
 ```
 git clone https://github.com/JanLahmann/Qoffee-Maker
+#cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/.local/share/applications/
+cp -R /home/pi/Qoffee-Maker/desktop-icons/* /home/pi/Desktop/
+
 cd Qoffee-Maker/
 pip3 install ibm_quantum_widgets jupyter_packaging python-dotenv
 jupyter nbextension enable --py widgetsnbextension
@@ -27,15 +34,12 @@ pip3 install ./qoffeeapi
 cd appwidgets/
 curl -fsSL https://deb.nodesource.com/setup_14.x | sudo bash -
 sudo apt-get install -y nodejs
+
 npm install yarn  # cf output of previous command
 #npm install --no-package-lock yarn
-
-# alternatively:
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install --no-install-recommends -y yarn # install yarn only
-sudo apt install -y yarn # install with node.js
+#curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
+#echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+#sudo apt-get update && sudo apt-get install yarn
 
 node_modules/yarn/bin/yarn build:prod
 cd ..
