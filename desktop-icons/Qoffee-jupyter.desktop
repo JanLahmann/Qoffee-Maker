@@ -4,6 +4,6 @@ Name=Jupyter for Qoffee-Maker
 Comment=Start/Stop Jupyter Notebook for Qoffee-Maker Demo
 Icon=/home/pi/Qoffee-Maker/icons/QuoffeeMug_vector-s128.png
 Type=Application
-Categories=Demos;
+Categories=Qoffee-Maker;
 Exec=/home/pi/Qoffee-Maker/demos/Qoffee-jupyter.sh
 Terminal=true

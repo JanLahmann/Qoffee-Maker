@@ -4,6 +4,6 @@ Name=Qoffee-Maker
 Comment=run the Qoffee-Maker Demo
 Icon=/home/pi/Qoffee-Maker/icons/QuoffeeMug_vector-s128.png
 Type=Application
-Categories=Demos;
+Categories=Qoffee-Maker;
 Exec=/home/pi/Qoffee-Maker/demos/Qoffee-Maker.sh
 Terminal=true

@@ -4,6 +4,6 @@ Name=Qoffee Machine
 Comment=Check the machine ID at  HomeConnect API
 Icon=/home/pi/Qoffee-Maker/icons/QuoffeeMug_vector-s128.png
 Type=Application
-Categories=Demos;
+Categories=Qoffee-Maker;
 Exec=/home/pi/Qoffee-Maker/demos/Qoffee-machine.sh
 Terminal=true
