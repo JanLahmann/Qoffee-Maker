@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Name=Jupyter for Qoffee-Maker	
+Comment=Start Jupyter Notebook for  Qoffee-Maker Demo
+Icon=/home/pi/Qoffee-Maker/icons/QuoffeeMug_vector-s128.png
+Type=Application
+Categories=Demos;
+Exec=/home/pi/Qoffee-Maker/demos/Qoffee-jupater.sh
+Terminal=true
