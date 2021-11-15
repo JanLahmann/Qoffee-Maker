@@ -34,7 +34,7 @@ class OrchestratorMachinePowerHandler(IPythonHandler):
             connector.put("/api/homeappliances/"+connector.machine["haId"]+"/settings/BSH.Common.Setting.PowerState", {
                 "data": {
                     "key": "BSH.Common.Setting.PowerState",
-                    "value": "BSH.Common.EnumType.PowerState.Standby"
+                    "value": "BSH.Common.EnumType.PowerState.On"
                 }
             })
         )
