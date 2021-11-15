@@ -16,6 +16,29 @@ class OrchestratorMachineStateHandler(IPythonHandler):
             connector.get("/api/homeappliances/"+connector.machine["haId"]+"/status/BSH.Common.Status.OperationState")
         )
 
+# get power state and turn on machine from the API
+class OrchestratorMachinePowerHandler(IPythonHandler):
+    @web.authenticated
+    def get(self):
+        connector = get_connector()
+        proxy(
+            self,
+            connector.get("/api/homeappliances/"+connector.machine["haId"]+"/settings/BSH.Common.Setting.PowerState")
+        )
+
+    @web.authenticated
+    def post(self):
+        connector = get_connector()
+        proxy(
+            self,
+            connector.put("/api/homeappliances/"+connector.machine["haId"]+"/settings/BSH.Common.Setting.PowerState", {
+                "data": {
+                    "key": "BSH.Common.Setting.PowerState",
+                    "value": "BSH.Common.EnumType.PowerState.Standby"
+                }
+            })
+        )
+
 # get/set the HAID of the machine to use
 class OrchestratorMachineHandler(IPythonHandler):
     @web.authenticated

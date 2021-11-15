@@ -111,6 +111,34 @@ define([
         })
     }
 
+    function activateCoffeeMachine() {
+        console.log("Activating coffee machine")
+        return new Promise((resolve, reject) => {
+            // do POST request to Jupyter backend
+            fetch("/machine/power", {
+                method: 'post',
+                credentials: 'same-origin',
+                headers: {
+                    'X-XSRFToken': document.cookie.replace("_xsrf=", "")
+                }
+            }).then(response => {
+                // if fail, alert and go to welcome
+                if(!response.ok) {
+                    alert("Could not activate coffee machine");
+                    reject();
+                }
+                // if succeed to to success
+                else {
+                    resolve();
+                }
+            }, error => {
+                alert("Could not activate coffee machine");
+                console.error(error);
+                reject(error);
+            })
+        })
+    }
+
     function requestDrink(drinkKey, drinkOptions) {
         console.log("Start requesting", drinkKey, "with options", drinkOptions)
         return new Promise((resolve, reject) => {
@@ -224,6 +252,7 @@ define([
         window.openQRCodeIBMQ = openQRCodeIBMQ
         window.openQRCode = openQRCode
         window.refreshAuth = refreshAuth
+        window.activateCoffeeMachine = activateCoffeeMachine
 
         // set interval to refresh auth token
         clearInterval(intervalAuthRefresh)

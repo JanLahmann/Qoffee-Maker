@@ -2,7 +2,7 @@ from requests.api import get
 from notebook.utils import url_path_join
 from qoffeeapi.hc_connector import get_connector
 from qoffeeapi.api_auth import HomeconnectLoginHandler, HomeconnectCallbackHandler, HomeconnectRefreshHandler
-from qoffeeapi.api_orchestrator import OrchestratorAllMachinesHandler, OrchestratorDrinkRequestHandler, OrchestratorMachineStateHandler, OrchestratorMachineHandler
+from qoffeeapi.api_orchestrator import OrchestratorAllMachinesHandler, OrchestratorDrinkRequestHandler, OrchestratorMachineStateHandler, OrchestratorMachineHandler, OrchestratorMachinePowerHandler
 
 def load_jupyter_server_extension(nb_server_app):
     """
@@ -32,7 +32,10 @@ def load_jupyter_server_extension(nb_server_app):
     web_app.add_handlers(host_pattern, [(route_pattern, OrchestratorAllMachinesHandler)])
     route_pattern = url_path_join(web_app.settings['base_url'], '/machine/state')
     web_app.add_handlers(host_pattern, [(route_pattern, OrchestratorMachineStateHandler)])
+    route_pattern = url_path_join(web_app.settings['base_url'], '/machine/power')
+    web_app.add_handlers(host_pattern, [(route_pattern, OrchestratorMachinePowerHandler)])
     
+
     ### requesting a drink
     route_pattern = url_path_join(web_app.settings['base_url'], '/drink')
     web_app.add_handlers(host_pattern, [(route_pattern, OrchestratorDrinkRequestHandler)])
