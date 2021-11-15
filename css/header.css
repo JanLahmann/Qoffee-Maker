@@ -49,6 +49,12 @@
 #navigation-container #navigation-button-q[data-device=ibmq] {
     background-color: rgba(40, 105, 245);
 }
+#navigation-container #navigation-button-q[data-device=mock] {
+    background-color: rgb(0, 135, 92);
+}
+#navigation-container #navigation-button-q[data-device=simulator] {
+    background-color: rgb(116, 0, 123);
+}
 
 
 #header img {
