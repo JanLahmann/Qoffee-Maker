@@ -114,6 +114,12 @@ define([
     function requestDrink(drinkKey, drinkOptions) {
         console.log("Start requesting", drinkKey, "with options", drinkOptions)
         return new Promise((resolve, reject) => {
+            // tea is not supported by API
+            if(drinkKey == "NotImplemented") {
+                alert("Unfortunately, the Coffee Machine does not implement this beverage. Please start by hand.");
+                resolve();
+                return;
+            }
             // do POST request to Jupyter backend
             fetch("/drink", {
                 method: 'post',
