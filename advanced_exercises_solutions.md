@@ -21,32 +21,32 @@ Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?ini
 
 ### I want a Tea or something strong, but I prefer Tea
 
-Goal: Tea (0, 000) or Espresso (2, 010) or Coffee (3, 011) or Wiener Melange (6, 110) or Americano (7, 111), but Tea with a higher probability.
+Goal: Tea (0, 000) or Espresso (2, 010) or Coffee (3, 011) or Viennese Melange (6, 110) or Americano (7, 111), but Tea with a higher probability.
 
-<img src="Bilder/teamuchcaffeine.png" width="600">
+<img src="Bilder/teamuchcaffein.png" width="600">
 
 ### I want something strong, but preferably an Espresso
-Goal: Espresso (2, 010) or Wiener Melange (6, 110) or Americano (7, 111) with higher probability for an Espresso than for Wiener Melange and Americano.
+Goal: Espresso (2, 010) or Viennese Melange (6, 110) or Americano (7, 111) with higher probability for an Espresso than for Viennese Melange and Americano.
 
-<img src="Bilder/espressomuchcaffeine.png" width="600">
+<img src="Bilder/espressomuchcaffein.png" width="600">
 
 ### I want something with caffein
 
-Goal: Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Wiener Melange (6, 110) or Americano (7, 111).
+Goal: Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Viennese Melange (6, 110) or Americano (7, 111).
 
-<img src="Bilder/justcaffeine.png" width="600">
+<img src="Bilder/justcaffein.png" width="600">
 
 ### I want either something without caffein or something with much caffein but without milk (CCX Gate)
 
 Goal: Tea (0, 000) or Hot Chocolate (1, 001) or Espresso (2, 010) or Americano (7, 111).
 
-<img src="Bilder/explainccx.png" width="600">
+<img src="Bilder/explainccxlight.png" width="600">
 
 ### I want something to drink, it doesn’t matter what, preferably a Coffee, but no Americano
 
-Goal: Tea (0, 000) or Hot Chocolate (1, 001) or Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Wiener Melange (6, 110), Coffee should have the highest probability.
+Goal: Tea (0, 000) or Hot Chocolate (1, 001) or Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Viennese Melange (6, 110), Coffee should have the highest probability.
 
-<img src="Bilder/noamericano.png" width="600">
+<img src="Bilder/noamericanolight.png" width="600">
 
 
 
