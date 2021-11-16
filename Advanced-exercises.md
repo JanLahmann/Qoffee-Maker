@@ -20,14 +20,14 @@ Try this circuit [here](https://quantum-computing.ibm.com/composer/files/new?ini
 
 ### I want a Tea or something strong, but I prefer Tea
 
-Goal: Tea (0, 000) or Espresso (2, 010) or Coffee (3, 011) or Wiener Melange (6, 110) or Americano (7, 111), but Tea with a higher probability.
+Goal: Tea (0, 000) or Espresso (2, 010) or Coffee (3, 011) or Viennese Melange (6, 110) or Americano (7, 111), but Tea with a higher probability.
 
 ### I want something strong, but preferably an Espresso
-Goal: Espresso (2, 010) or Wiener Melange (6, 110) or Americano (7, 111) with higher probability for an Espresso than for Wiener Melange and Americano.
+Goal: Espresso (2, 010) or Viennese Melange (6, 110) or Americano (7, 111) with higher probability for an Espresso than for Viennese Melange and Americano.
 
 ### I want something with caffein
 
-Goal: Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Wiener Melange (6, 110) or Americano (7, 111).
+Goal: Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Viennese Melange (6, 110) or Americano (7, 111).
 
 ### I want either something without caffein or something with much caffein but without milk (CCX Gate)
 
@@ -35,5 +35,5 @@ Goal: Tea (0, 000) or Hot Chocolate (1, 001) or Espresso (2, 010) or Americano (
 
 ### I want something to drink, it doesn’t matter what, preferably a Coffee, but no Americano
 
-Goal: Tea (0, 000) or Hot Chocolate (1, 001) or Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Wiener Melange (6, 110), Coffee should have the highest probability.
+Goal: Tea (0, 000) or Hot Chocolate (1, 001) or Espresso (2, 010) or Coffee (3, 011) or Cappuccino (4, 100) or Latte Macchiato (5, 101) or Viennese Melange (6, 110), Coffee should have the highest probability.
 
