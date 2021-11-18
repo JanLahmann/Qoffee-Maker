@@ -81,6 +81,10 @@ define([
         }, 1000)
     }
 
+    /**
+     * Call backend to refresh authentication i.e. access tokens
+     * @function refreshAuth
+     */
     function refreshAuth() {
         console.log("Start refreshing auth key")
         return new Promise((resolve, reject) => {
@@ -111,6 +115,10 @@ define([
         })
     }
 
+    /**
+     * Call backend to activate the coffee machine i.e. to set the power state to on
+     * @function refreshAuth
+     */
     function activateCoffeeMachine() {
         console.log("Activating coffee machine")
         return new Promise((resolve, reject) => {
@@ -139,6 +147,12 @@ define([
         })
     }
 
+    /**
+     * Request a drink from the coffee machine
+     * @function requestDrink
+     * @param {string} drinkKey A valid programme for the coffee machine
+     * @param {Object} drinkOptions A map of valid programm options with the corresponding values
+     */
     function requestDrink(drinkKey, drinkOptions) {
         console.log("Start requesting", drinkKey, "with options", drinkOptions)
         return new Promise((resolve, reject) => {
@@ -177,6 +191,12 @@ define([
         })
     }
 
+    /**
+     * Open an overlay which displays a QR Code
+     * @function openQRCode
+     * @param {string} url URL to encode into a QR Code
+     * @param {string} text Text to show above the QR Code
+     */
     function openQRCode(url, text="") {
         // clear previous qr code
         $("#qrcode").empty();
@@ -197,6 +217,11 @@ define([
         $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open</a>')
     }
 
+    /**
+     * Export a circuit to IBM Quantum Composer using URL
+     * @function openQRCodeIBMQ
+     * @param {string} circuitQasm QASM Code of the current circuit
+     */
     function openQRCodeIBMQ(circuitQasm) {
         // setup data to transfer
         const data = {
@@ -207,8 +232,13 @@ define([
         // encode data and add to URL
         const qantumComposerComponent = encodeURIComponent(LZString.compressToEncodedURIComponent(JSON.stringify(data)));
         const url = "https://quantum-computing.ibm.com/composer/files/new?initial="+qantumComposerComponent;
+        // show QR Code
         openQRCode(url);
     }
+
+    //
+    // Ipython Extension code
+    //
 
     // state variable to avoid double loading
     let loadFunctionCalled = false;
@@ -246,9 +276,8 @@ define([
         }, 'app-deactivate', 'simple-app');
         jupyter.keyboard_manager.command_shortcuts.add_shortcut('esc', 'simple-app:app-deactivate');
 
-        // publish requestDrink method
+        // publish methods by putting them onto window
         window.requestDrink = requestDrink
-        // publish openQrCode
         window.openQRCodeIBMQ = openQRCodeIBMQ
         window.openQRCode = openQRCode
         window.refreshAuth = refreshAuth

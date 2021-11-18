@@ -12,6 +12,9 @@ class HomeconnectConnector(PersistentOAuth2Connector):
 
 
     def get_machines(self):
+        """
+        Fetch all machines associated to the current account from homeconnect
+        """
         status_code, response_body = self.get("/api/homeappliances")
         # handle errors
         if status_code >= 300:
@@ -21,6 +24,9 @@ class HomeconnectConnector(PersistentOAuth2Connector):
     
 
     def set_machine(self, enumber=None):
+        """
+        Set the current machine by enumber or - if enumber is not given - just use the first one in the account
+        """
         machines = self.get_machines()
         machine = next(
             filter(
@@ -38,6 +44,7 @@ class HomeconnectConnector(PersistentOAuth2Connector):
 
 
     def save_config(self):
+        # overwrite super function to also load machine details from file
         return self._save_config_to_file({
             "auth": self.tokens,
             "machine": self.machine

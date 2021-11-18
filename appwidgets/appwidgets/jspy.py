@@ -30,11 +30,19 @@ class JsPyWidget(Widget):
 
 
     def message_handler(self, msg):
+        """
+        This handler for incoming messages looks for results from JavaScript executions
+        and calls the corresponding callbacks.
+        """
+
+        # handle only if type == exec_js_result
         if msg['content']['data']['method'] == 'custom':
             content = msg['content']['data']['content']
             msg_type = content['type']
             if msg_type == 'exec_js_result':
+                # get the cexecution id from message
                 exec_id = content['exec_id']
+                # execute the callback if available
                 if exec_id in self._callback_index and self._callback_index[exec_id] is not None:
                     self._callback_index[exec_id](content)
                     del self._callback_index[exec_id]

@@ -137,6 +137,9 @@ class PersistentOAuth2Connector(OAuth2Connector):
         self.save_config()
 
     def _save_config_to_file(self, config):
+        """
+        Save config to file
+        """
         with open(self.path, "w") as f:
             json.dump(config, f)
     

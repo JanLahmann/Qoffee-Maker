@@ -24,19 +24,24 @@ class SwitchBox(Box):
             cc[1] for cc in children
         ])
         self._children_widgets = children_widgets
-
+        # if observe children is set to true, listen to all traits of the children
         if observe_children:
             for widget in self._children_widgets:
                 widget.observe(self.update_children)
+
+        # create addtional traits and add listeners
         self.add_traits(**{
             name: Any('').tag(sync=True) for name in trait_names
         })
-
         self.on_trait_change(self.update_children)
         self.update_children(None)
 
 
     def update_children(self, event):
+        """
+        This function determines for each widget if it should be displayed or not from the
+        corresponding condition callback.
+        """
         new_set_children = []
         for i, widget in enumerate(self._children_widgets):
             if self._children_conditions[i](self, widget):
@@ -62,6 +67,8 @@ class AppBox(SwitchBox):
         self._children_widgets = list([
             self._view_index[key] for key in view_ids
         ])
+
+        # define a condition function that can be used in switchbox
         def get_condition_fn(target_view_id):
             target_view_id_fix = target_view_id+""  # this is required, otherwise we are always comparing against the last
             def condition_fn(s, w):
@@ -75,9 +82,3 @@ class AppBox(SwitchBox):
         # update view
         self.update_children(None)
 
-
-        # widx = len(self._children_widgets)
-        # self._children_widgets.append(widget)
-        # self._children_conditions.append(lambda s, w: s.wIdx == widx)
-        # self.update_children(None)
-    

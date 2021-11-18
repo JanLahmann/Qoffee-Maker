@@ -39,7 +39,7 @@ class OrchestratorMachinePowerHandler(IPythonHandler):
             })
         )
 
-# get/set the HAID of the machine to use
+# get/set the the machine using enumber
 class OrchestratorMachineHandler(IPythonHandler):
     @web.authenticated
     def get(self):
@@ -54,7 +54,7 @@ class OrchestratorMachineHandler(IPythonHandler):
         connector.set_machine(enumber)
         self.finish(connector.machine)
 
-# get/set the HAID of the machine to use
+# get all machines associated to the current account
 class OrchestratorAllMachinesHandler(IPythonHandler):
     @web.authenticated
     def get(self):

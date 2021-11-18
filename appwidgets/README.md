@@ -88,7 +88,7 @@ You can also execute Python code from JavaScript using
 ```
 Jupyter.notebook.kernel.execute
 ```
-see `src/widget.ts : execPython` for a reference implementation (or use from this widget directly).
+see [src/widget.ts : execPython](src/widget.ts) for a reference implementation (or use from this widget directly).
 
 ### ReactiveHtmlWidget
 
