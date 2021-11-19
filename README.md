@@ -8,7 +8,7 @@ Find user instructions on the project github pages: http://qoffee-maker.org
 
 ## Installation
 
-In this example we will install the Qoffee Maker graphical user interface (GUI) on `https://localhost:8887`. If you want to access the GUI under another URL or IP address, you can change this in the following steps.
+In this example, we will install the Qoffee Maker graphical user interface (GUI) on `https://localhost:8887`. If you want to access the GUI under another URL or IP address, you can change this in the following steps.
 ### Prerequisites
 
 - Home Connect enabled coffee machine
@@ -37,14 +37,14 @@ Install the Qoffee Maker GUI on a computer:
 
 1. Build container image from Dockerfile: `docker build -t qoffee .`
 2. Create a `.env` file with the following variables:
-    - `HOMECONNECT_API_URL`: base URL for HomeConnect API (simulator or real API)
-    - `HOMECONNECT_CLIENT_ID`: Client ID of application for HomeConnect
-    - `HOMECONNECT_CLIENT_SECRET`: Client Secret of application for HomeConnect
+    - `HOMECONNECT_API_URL`: `https://api.home-connect.com/` (Home Connect API) or `https://simulator.home-connect.com/` (simulator API)
+    - `HOMECONNECT_CLIENT_ID`: Client ID of the Home Connect Appliance
+    - `HOMECONNECT_CLIENT_SECRET`: Client Secret of the Home Connect Appliance
     - `HOMECONNECT_REDIRECT_URL`: Callback URL for HomeConnect as registered in your application in HomeConnect. On localhost this is `http://localhost:8887/auth/callback` (the port is determined by Jupyter, `/auth/callback` is fixed)
-    - `IBMQ_API_KEY`: the API Key for IBM Quantum
+    - `IBMQ_API_KEY`: the API Key for [IBM Quantum](https://quantum-computing.ibm.com/account)
 3. Run the container image with the specified environment variables: `docker run --name qoffee --rm -p 8887:8887 --env-file .env qoffee`
 
-Now you can start using the Qoffee Maker GUI under http://localhost:8887.
+Now you can start using the Qoffee Maker GUI under http://localhost:8887 (the login token is shown in the StdOut of the docker container). After logging in to Jupyter, you have to select _qoffee.ipynb_ and then you have to click the rocket icon to _Activate App Mode_. 
 
 ## Installation on RasQberry (draft):
 
