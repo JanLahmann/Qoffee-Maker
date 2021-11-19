@@ -8,18 +8,45 @@ Find user instructions on the project github pages: http://qoffee-maker.org
 
 ## Installation
 
-For installation instructions on a RasQberry, read below.
+In this example we will install the Qoffee Maker graphical user interface (GUI) on `https://localhost:8887`. If you want to access the GUI under another URL or IP address, you can change this in the following steps.
+### Prerequisites
+
+- Home Connect enabled coffee machine
+- Android Phone or iPhone
+- Computer
+
+### Install Home Connect
+1. Install the Home Connect [iOS App](https://app.adjust.com/gdi5c03?campaign=germany&redirect_macos=https%3A%2F%2Fapps.apple.com%2Fde%2Fapp%2Fhome-connect-app%2Fid901397789&redirect_windows=https%3A%2F%2Fapps.apple.com%2Fde%2Fapp%2Fhome-connect-app%2Fid901397789) or [Android App](https://app.adjust.com/gdi5c03?campaign=germany&redirect_macos=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.bshg.homeconnect.android.release%26hl%3Dde&redirect_windows=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.bshg.homeconnect.android.release%26hl%3Dde)
+
+2. Add your Coffee Machine appliance to the Home Connect App
+
+First, you need to create a Home Connect User Account. Then you can connect your Coffee Machine under Appliances in the App.
+
+3. [Sign up for a Home Connect Developer Account](https://developer.home-connect.com/user/register)
+
+Make sure to set your _Default Home Connect User Account for Testing_ to the account name (mail address) created in the previous step.
+
+Tipp: It is not crucial to provided meaningful _Additional Information_.
+
+4. [Register a new Home Connect Appliance](https://developer.home-connect.com/applications/add)
+
+Set an _Application ID_ of your choice. Using localhost, the _Redirect URI_ is set to `http://localhost:8887/auth/callback`. Keep the default settings for the remaining boxes and create the appliance.
+
+### Install the Qoffee Maker interface
+Install the Qoffee Maker GUI on a computer:
 
 1. Build container image from Dockerfile: `docker build -t qoffee .`
 2. Create a `.env` file with the following variables:
     - `HOMECONNECT_API_URL`: base URL for HomeConnect API (simulator or real API)
     - `HOMECONNECT_CLIENT_ID`: Client ID of application for HomeConnect
     - `HOMECONNECT_CLIENT_SECRET`: Client Secret of application for HomeConnect
-    - `HOMECONNECT_REDIRECT_URL`: Callback URL for HomeConnect. This must be registered in your application in HomeConnect. On localhost this is `http://localhost:8887/auth/callback` (the port is determined by Jupyter, `/auth/callback` is fixed)
+    - `HOMECONNECT_REDIRECT_URL`: Callback URL for HomeConnect as registered in your application in HomeConnect. On localhost this is `http://localhost:8887/auth/callback` (the port is determined by Jupyter, `/auth/callback` is fixed)
     - `IBMQ_API_KEY`: the API Key for IBM Quantum
 3. Run the container image with the specified environment variables: `docker run --name qoffee --rm -p 8887:8887 --env-file .env qoffee`
+
+Now you can start using the Qoffee Maker GUI under http://localhost:8887.
 
 ## Installation on RasQberry (draft):
 
 First draft for installation procedure on RasQberry (http://rasqberry.org) can be found at [README-RasQberry-setup.md](README-RasQberry-setup.md)
- 
+
