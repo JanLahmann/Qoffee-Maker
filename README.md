@@ -8,7 +8,7 @@ Find user instructions on the project github pages: http://qoffee-maker.org
 
 ## Installation
 
-In this example, we will install the Qoffee Maker graphical user interface (GUI) on `https://localhost:8887`. If you want to access the GUI under another URL or IP address, you can change this in the following steps.
+As an example, we will install the Qoffee Maker Graphical User Interface (GUI) to be accessed under `https://localhost:8887`. It is also possible to choose another URL that you want to access the GUI from.
 ### Prerequisites
 
 - Home Connect enabled coffee machine
@@ -32,7 +32,7 @@ Tipp: It is not crucial to provided meaningful _Additional Information_.
 
 Set an _Application ID_ of your choice. Using localhost, the _Redirect URI_ is set to `http://localhost:8887/auth/callback`. Keep the default settings for the remaining boxes and create the appliance.
 
-### Install the Qoffee Maker interface
+### Install the Qoffee Maker GUI
 Install the Qoffee Maker GUI on a computer:
 
 1. Build container image from Dockerfile: `docker build -t qoffee .`
@@ -44,7 +44,9 @@ Install the Qoffee Maker GUI on a computer:
     - `IBMQ_API_KEY`: the API Key for [IBM Quantum](https://quantum-computing.ibm.com/account)
 3. Run the container image with the specified environment variables: `docker run --name qoffee --rm -p 8887:8887 --env-file .env qoffee`
 
-Now you can start using the Qoffee Maker GUI under http://localhost:8887 (the login token is shown in the StdOut of the docker container). After logging in to Jupyter, you have to select _qoffee.ipynb_ and then you have to click the rocket icon to _Activate App Mode_. 
+Now you can start using the Qoffee Maker GUI under http://localhost:8887 (the login token is shown in the StdOut of the docker container). After logging in to Jupyter, you have to select _qoffee.ipynb_ and then you have to click the rocket icon to _Activate App Mode_.
+
+Enjoy your Quantum Coffee. ☕️
 
 ## Installation on RasQberry (draft):
 
