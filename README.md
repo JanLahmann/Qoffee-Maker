@@ -20,7 +20,7 @@ In this example we will install the Qoffee Maker graphical user interface (GUI) 
 
 2. Add your Coffee Machine appliance to the Home Connect App
 
-First, you need to create a Home Connect User Account. Then you can connect your Coffee Machine under Appliances in the App.
+First, you need to create a Home Connect User Account. Then you can connect your Coffee Machine under _Appliances_ in the App.
 
 3. [Sign up for a Home Connect Developer Account](https://developer.home-connect.com/user/register)
 
