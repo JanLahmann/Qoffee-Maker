@@ -6,32 +6,35 @@ RUN cd appwidgets && \
     yarn build:prod
 
 
+FROM python:3.7
+RUN apt update
+RUN apt install -y libatlas-base-dev
 
-FROM jupyter/base-notebook:notebook-6.4.5
-
-WORKDIR /home/jovyan/work
-
-COPY jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
+WORKDIR /root
+COPY jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py
 
 # setup python environment
-RUN pip install ibm_quantum_widgets jupyter_packaging && \
-    jupyter nbextension enable --py widgetsnbextension && \
-    jupyter nbextension enable --py ibm_quantum_widgets
+RUN pip install --index-url=https://www.piwheels.org/simple jupyter jupyter_packaging qiskit
+RUN pip install ibm_quantum_widgets
 
-COPY --chown=jovyan qoffeeapi qoffeeapi
+RUN jupyter nbextension enable --py widgetsnbextension
+RUN jupyter nbextension enable --py ibm_quantum_widgets
+
+COPY qoffeeapi qoffeeapi
 RUN pip install -e ./qoffeeapi --user
 
-COPY --from=build-frontend --chown=jovyan /appwidgets appwidgets
-RUN pip install ./appwidgets --user && \
-    jupyter nbextension install --sys-prefix --overwrite --py appwidgets && \
-    jupyter nbextension enable --sys-prefix --py appwidgets
+COPY --from=build-frontend /appwidgets appwidgets
+RUN pip install ./appwidgets --user
+RUN jupyter nbextension install --sys-prefix --overwrite --py appwidgets
+RUN jupyter nbextension enable --sys-prefix --py appwidgets
 
-COPY --chown=jovyan qoffeefrontend qoffeefrontend
-RUN jupyter nbextension install ./qoffeefrontend --user && \
-    jupyter nbextension enable qoffeefrontend/app 
+COPY qoffeefrontend qoffeefrontend
+RUN jupyter nbextension install ./qoffeefrontend --user
+RUN jupyter nbextension enable qoffeefrontend/app
 
 EXPOSE 8887
 
 COPY css css
 COPY *.ipynb .
 
+CMD  jupyter notebook --ip 0.0.0.0 --port 8887 --allow-root
