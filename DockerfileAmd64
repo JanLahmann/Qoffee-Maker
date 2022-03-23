@@ -6,7 +6,6 @@ RUN cd appwidgets && \
     yarn build:prod
 
 
-
 FROM jupyter/base-notebook:notebook-6.4.5
 
 WORKDIR /home/jovyan/work
@@ -28,10 +27,9 @@ RUN pip install ./appwidgets --user && \
 
 COPY --chown=jovyan qoffeefrontend qoffeefrontend
 RUN jupyter nbextension install ./qoffeefrontend --user && \
-    jupyter nbextension enable qoffeefrontend/app 
+    jupyter nbextension enable qoffeefrontend/app
 
 EXPOSE 8887
 
 COPY css css
 COPY *.ipynb .
-
