@@ -1,6 +1,8 @@
 FROM node:14 AS build-frontend
 
 COPY appwidgets appwidgets
+RUN npm cache clean --force
+RUN npm cache verify
 RUN cd appwidgets && \
     npm install yarn && \
     yarn build:prod
