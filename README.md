@@ -4,7 +4,7 @@
 
 ## User Instructions
 
-Find user instructions on the project github pages: http://qoffee-maker.org
+Find user instructions on the project GitHub pages: http://qoffee-maker.org
 
 ## Installation
 
@@ -26,7 +26,7 @@ First, you need to create a Home Connect User Account. Then you can connect your
 
 Make sure to set your _Default Home Connect User Account for Testing_ to the account name (mail address) created in the previous step.
 
-Tipp: It is not crucial to provided meaningful _Additional Information_.
+Tip: It is not crucial to provided meaningful _Additional Information_.
 
 4. [Register a new Home Connect Appliance](https://developer.home-connect.com/applications/add)
 
