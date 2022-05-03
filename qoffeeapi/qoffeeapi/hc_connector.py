@@ -1,9 +1,9 @@
 import os
 from qoffeeapi.oauth2 import PersistentOAuth2Connector
-
+from urllib.parse import urljoin
 
 class HomeconnectConnector(PersistentOAuth2Connector):
-    
+
 
     machine = {
         "haId": None,
@@ -21,7 +21,7 @@ class HomeconnectConnector(PersistentOAuth2Connector):
             raise RuntimeError("Could not set machine" + str(status_code) + str(response_body))
         machines = response_body["data"]["homeappliances"]
         return machines
-    
+
 
     def set_machine(self, enumber=None):
         """
@@ -31,8 +31,8 @@ class HomeconnectConnector(PersistentOAuth2Connector):
         machine = next(
             filter(
                 lambda x: (
-                    (enumber is None) and (x["type"] == "CoffeeMaker")) or 
-                    (enumber is not None and x["enumber"].startswith(enumber)), 
+                    (enumber is None) and (x["type"] == "CoffeeMaker")) or
+                    (enumber is not None and x["enumber"].startswith(enumber)),
                 machines
             )
         )
@@ -55,7 +55,7 @@ class HomeconnectConnector(PersistentOAuth2Connector):
         if "machine" in config:
             self.machine = config["machine"]
         super().load_config(config)
-        
+
 
 
 # singleton
@@ -75,8 +75,8 @@ def get_connector():
     api_base_url = os.getenv("HOMECONNECT_API_URL")
     _HOMECONNECT_CONNECTOR = HomeconnectConnector(
         api_base_url=api_base_url,
-        authorize_url=api_base_url+"/security/oauth/authorize",
-        token_url=api_base_url+"/security/oauth/token",
+        authorize_url=urljoin(api_base_url, "security/oauth/authorize"),
+        token_url=urljoin(api_base_url, "security/oauth/token"),
         client_id=os.getenv("HOMECONNECT_CLIENT_ID"),
         client_secret=os.getenv("HOMECONNECT_CLIENT_SECRET"),
         callback_uri=os.getenv("HOMECONNECT_REDIRECT_URL"),
