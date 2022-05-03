@@ -1,11 +1,12 @@
 FROM node:14 AS build-frontend
 
 COPY appwidgets appwidgets
+WORKDIR appwidgets
 RUN npm cache clean --force
 RUN npm cache verify
-RUN cd appwidgets && \
-    npm install yarn && \
-    yarn build:prod
+RUN npm install
+RUN npm install yarn
+RUN yarn build:prod
 
 
 FROM python:3.7
