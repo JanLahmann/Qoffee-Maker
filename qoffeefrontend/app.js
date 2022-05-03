@@ -87,6 +87,15 @@ define([
      */
     function refreshAuth() {
         console.log("Start refreshing auth key")
+
+        function setAuthStatus(success) {
+            const color = (success) ? 'green' : 'red';
+            document.getElementById('refreshauth-button-container').style.backgroundColor = color;
+            setTimeout(() => {
+                document.getElementById('refreshauth-button-container').style.backgroundColor = null;
+            }, 2000);
+        }
+
         return new Promise((resolve, reject) => {
             // do POST request to Jupyter backend
             fetch("/auth/refresh", {
@@ -98,12 +107,14 @@ define([
             }).then(response => {
                 // if fail, alert and go to welcome
                 if(!response.ok) {
+                    setAuthStatus(false);
                     alert("Could not refresh auth");
                     window.open('/auth', '_blank');
                     reject();
                 }
                 // if succeed to to success
                 else {
+                    setAuthStatus(true);
                     resolve();
                 }
             }, error => {
