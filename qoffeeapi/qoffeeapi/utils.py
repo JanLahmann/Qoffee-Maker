@@ -1,10 +1,3 @@
-def joinUrl(*pieces):
-    """
-    Join a parameter list of strings into a url
-    """
-    strippedPieces = [s.strip('/') for s in pieces]
-    return '/'.join(strippedPieces)
-
 def proxy(handler, response):
     """
     extract tuple of status code and response body, use handler to send response to requester

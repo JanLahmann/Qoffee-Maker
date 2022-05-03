@@ -11,10 +11,9 @@ The models and views of the widgets are written in TypeScript and need to be com
 First, install dependencies and `yarn`
 ```
 npm install
-npm install yarn
 ```
 
-Afterwards, compile the TypeScript files
+Afterwards, compile the TypeScript files. If Yarn is missing, you can install it with `npm install -g yarn`.
 ```
 yarn build:prod
 ```
@@ -24,7 +23,7 @@ The webpacked JavaScript files are located in `appwidgets/nbextension/`.
 
 Install the `appwidgets` package and enable the notebook extension
 ```
-pip install ./appwidgets --user
+pip install . --user
 jupyter nbextension install --sys-prefix --overwrite --py appwidgets
 jupyter nbextension enable --sys-prefix --py appwidgets
 ```
@@ -46,7 +45,7 @@ switchbox = SwitchBox(
     observe_children=False
 )
 ```
-In this example, the switchbox has to views. Each view is associated with a function which must return `True` if the view should be displayed and `False` if not. The function must accept two arguments: the SwitchBox object itself (here `switchbox`) and the corresponding view object (here `view1` or `view2`). 
+In this example, the switchbox has to views. Each view is associated with a function which must return `True` if the view should be displayed and `False` if not. The function must accept two arguments: the SwitchBox object itself (here `switchbox`) and the corresponding view object (here `view1` or `view2`).
 
 In addition you can set a list of trait names which are created and observed. In this example, `switchbox` will have a trait `trait_name_1` which you can link to any other trait using the `link` function. The set of views will be updated whenever `trait_name_1` updates (or a linked trait). By this you can trigger updates in your views.
 
@@ -121,7 +120,7 @@ This will load the content of the CSS file and apply it to the notebook. If `enc
 
 Every occurance of `${var}` will be replaced by the value of `var` (from traits or from `data_model`) before the HTML string is rendered. This means that you can use it everywhere, also in class lists or inline styles.
 
-You can combine this with inline calculations like this: 
+You can combine this with inline calculations like this:
 ```
 ... style="width: {{ ${prob} * 100 }}%" ...
 ```
@@ -148,6 +147,6 @@ Example:
     <button data-rh-exec='python_fn("abc")'>Execute Python Code</button>
     <button data-rh-exec='alert("Button clicked")'>Execute JavaScript Code</button>
 ```
-- `data-rh-set` is a shorthand for setting an attribute of the corresponding widget or data model. 
+- `data-rh-set` is a shorthand for setting an attribute of the corresponding widget or data model.
 - `data-rh-exec` will trigger the execution of Python code (in the example it will execute the function `python_fn`). Make sure that everything can be executed from global context (where `_exec_to_stdout` from JsPy resides).
 - `data-rh-exec-js` will trigger the execution of JavaScript code

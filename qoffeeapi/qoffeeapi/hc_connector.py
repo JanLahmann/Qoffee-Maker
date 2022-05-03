@@ -1,6 +1,6 @@
 import os
 from qoffeeapi.oauth2 import PersistentOAuth2Connector
-from qoffeeapi.utils import joinUrl
+from urllib.parse import urljoin
 
 class HomeconnectConnector(PersistentOAuth2Connector):
 
@@ -75,8 +75,8 @@ def get_connector():
     api_base_url = os.getenv("HOMECONNECT_API_URL")
     _HOMECONNECT_CONNECTOR = HomeconnectConnector(
         api_base_url=api_base_url,
-        authorize_url=joinUrl(api_base_url, "/security/oauth/authorize"),
-        token_url=joinUrl(api_base_url, "/security/oauth/token"),
+        authorize_url=urljoin(api_base_url, "security/oauth/authorize"),
+        token_url=urljoin(api_base_url, "security/oauth/token"),
         client_id=os.getenv("HOMECONNECT_CLIENT_ID"),
         client_secret=os.getenv("HOMECONNECT_CLIENT_SECRET"),
         callback_uri=os.getenv("HOMECONNECT_REDIRECT_URL"),
