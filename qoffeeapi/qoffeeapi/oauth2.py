@@ -51,7 +51,7 @@ class OAuth2Connector:
         Refresh the current access_token using the refresh_token, if available
         """
         if not self.tokens or 'refresh_token' not in self.tokens:
-            return {'error': True, 'error_description': 'no refresh token set'}
+            return 401, {'error': 'no refresh token set'}
         data = {'grant_type': 'refresh_token', 'refresh_token': self.tokens['refresh_token']}
         access_token_response = requests.post(self.token_url, data=data, verify=False, allow_redirects=False, auth=(self.client_id, self.client_secret))
         return self._parse_access_token_response(access_token_response)
