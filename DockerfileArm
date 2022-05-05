@@ -27,6 +27,7 @@ COPY qoffeeapi qoffeeapi
 RUN pip install -e ./qoffeeapi --user
 
 COPY --from=build-frontend /appwidgets appwidgets
+COPY icons/openmoji-svg-color icons/openmoji-svg-color
 RUN pip install ./appwidgets --user
 RUN jupyter nbextension install --sys-prefix --overwrite --py appwidgets
 RUN jupyter nbextension enable --sys-prefix --py appwidgets
