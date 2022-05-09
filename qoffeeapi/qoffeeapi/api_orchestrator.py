@@ -2,7 +2,6 @@ from notebook.base.handlers import IPythonHandler
 from qoffeeapi.hc_connector import get_connector
 from qoffeeapi.utils import proxy
 from tornado import web
-import os
 import dotenv
 dotenv.load_dotenv()
 
