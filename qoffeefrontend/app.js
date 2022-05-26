@@ -22,6 +22,14 @@ define([
         $(".app-view").removeClass("selected");
     }
 
+    function goFullscreen() {
+        document.documentElement.requestFullscreen().then(_ => {
+            console.log("Fullscreen started");
+        }, error => {
+            console.log("Fullscreen rejected");
+        });
+    }
+
     /**
      * Activate the app mode, build viewId index and initialize event listeners
      * @function activateApp
@@ -45,6 +53,9 @@ define([
         });
         // disable selection of cells
         $(jupyter.events).on("select.Cell", handleCellSelection);
+
+        goFullscreen();
+
         // automatically restart
         restart();
     }
@@ -203,6 +214,38 @@ define([
     }
 
     /**
+     * Close fullscreen
+     * @function closeFullscreen
+     */
+    function closeFullscreen() {
+        // close full screen if activated
+        try {
+            const exitFullscreenFn = document.exitFullscreen
+            || document.webkitExitFullscreen
+            || document.mozCancelFullScreen
+            || document.msExitFullscreen
+            exitFullscreenFn.call(document);
+        } catch (error) {
+            console.info("Not able to close fullscreen, fail silently")
+        }
+        return true;
+    }
+
+    /**
+     * Open Help Overlay
+     * @function openHelp
+     */
+    function openHelp() {
+        // clear previous qr code
+        $("#qrcode-container").empty();
+        $("#qrcode-container").append(`
+            <a class="help-link" target="_blank" onclick="window.myCloseFullscreen()" href="http://qoffee-maker.org">Qoffee Maker<br/><i>http://qoffee-maker.org</i><span class="arrow">→</span><a/>
+            <a class="help-link" target="_blank" onclick="window.myCloseFullscreen()" href="http://quantum-computing.ibm.com">IBM Quantum<br/><i>http://quantum-computing.ibm.com</i><span class="arrow">→</span><a/>
+        `)
+        $("#qrcode-container").addClass("active");
+    }
+
+    /**
      * Open an overlay which displays a QR Code
      * @function openQRCode
      * @param {string} url URL to encode into a QR Code
@@ -210,9 +253,8 @@ define([
      */
     function openQRCode(url, text="") {
         // clear previous qr code
-        $("#qrcode").empty();
-        $("#qrcode-container a").remove();
-        $("#qrcode-container p").remove();
+        $("#qrcode-container").empty();
+        $("#qrcode-container").append('<div id="qrcode"></div>');
         // create qrcode
         const qrcode = new QRCode(document.getElementById("qrcode"), {
             text: url,
@@ -225,7 +267,7 @@ define([
         if(text != "") {
             $("#qrcode-container").prepend('<p class="qrcode-text">'+text+'</p>')
         }
-        $("#qrcode-container").append('<a href="'+url+'" target="_blank">Open</a>')
+        $("#qrcode-container").append('<a class="qrcode-link" href="'+url+'" target="_blank">Open</a>')
     }
 
     /**
@@ -291,6 +333,8 @@ define([
         window.requestDrink = requestDrink
         window.openQRCodeIBMQ = openQRCodeIBMQ
         window.openQRCode = openQRCode
+        window.openHelp = openHelp
+        window.myCloseFullscreen = closeFullscreen
         window.refreshAuth = refreshAuth
         window.activateCoffeeMachine = activateCoffeeMachine
 
@@ -308,11 +352,15 @@ define([
         $("body").append('<div id="refreshauth-button-container" class="emergency-button-container"><button type="button" id="refreshauth-button">Refresh Auth</button></div>')
         $(document).on("click", "#refreshauth-button", refreshAuth);
 
+        // add a button to UI to go fullscreen
+        $("body").append('<div id="fullscreen-button-container" class="emergency-button-container"><button type="button" id="fullscreen-button">Fullscreen</button></div>')
+        $(document).on("click", "#fullscreen-button", goFullscreen);
+
         /*
             Add QR Code Container
         */
         // add container to render QRCode
-        $('body').append('<div id="qrcode-container"><div id="qrcode"></div></div>');
+        $('body').append('<div id="qrcode-container"></div>');
         // add listener to close on click
         $("#qrcode-container").on("click", "*", event => {
             $("#qrcode-container").removeClass("active");
