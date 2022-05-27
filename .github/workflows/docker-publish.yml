@@ -88,6 +88,7 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
+          push: true
           tags: ${{ steps.meta-arm.outputs.tags }}
           labels: ${{ steps.meta-arm.outputs.labels }}
           file: DockerfileArm
@@ -97,6 +98,7 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: .
+          push: true
           tags: ${{ steps.meta-amd.outputs.tags }}
           labels: ${{ steps.meta-amd.outputs.labels }}
           file: DockerfileAmd64
