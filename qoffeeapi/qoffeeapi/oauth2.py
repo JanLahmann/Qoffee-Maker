@@ -86,7 +86,7 @@ class OAuth2Connector:
         Make an authenticated GET request to the API
         """
         if not self.tokens or 'access_token' not in self.tokens:
-            raise RuntimeError("Not authenticated. Call GET /auth first.")
+            return 401, "Not authenticated. Call GET /auth first to authenticate."
         request_response = requests.get(self.api_base_url+endpoint, 
             headers={
                 'Authorization': 'Bearer '+self.tokens['access_token']
@@ -101,7 +101,7 @@ class OAuth2Connector:
         Make an authenticated PUT request to the API
         """
         if not self.tokens or 'access_token' not in self.tokens:
-            raise RuntimeError("Not authenticated. Call GET /auth first.")
+            return 401, "Not authenticated. Call GET /auth first to authenticate."
         request_response = requests.put(self.api_base_url+endpoint,
             json=data,
             headers={

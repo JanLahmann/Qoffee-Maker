@@ -12,7 +12,7 @@ class OrchestratorMachineStateHandler(IPythonHandler):
         connector = get_connector()
         proxy(
             self,
-            connector.get("/api/homeappliances/"+connector.machine["haId"]+"/status/BSH.Common.Status.OperationState")
+            connector.get("/api/homeappliances/{}/status/BSH.Common.Status.OperationState".format(connector.machine["haId"]))
         )
 
 # get power state and turn on machine from the API
@@ -22,7 +22,7 @@ class OrchestratorMachinePowerHandler(IPythonHandler):
         connector = get_connector()
         proxy(
             self,
-            connector.get("/api/homeappliances/"+connector.machine["haId"]+"/settings/BSH.Common.Setting.PowerState")
+            connector.get("/api/homeappliances/{}/settings/BSH.Common.Setting.PowerState".format(connector.machine["haId"]))
         )
 
     @web.authenticated
@@ -30,7 +30,7 @@ class OrchestratorMachinePowerHandler(IPythonHandler):
         connector = get_connector()
         proxy(
             self,
-            connector.put("/api/homeappliances/"+connector.machine["haId"]+"/settings/BSH.Common.Setting.PowerState", {
+            connector.put("/api/homeappliances/{}/settings/BSH.Common.Setting.PowerState".format(connector.machine["haId"]), {
                 "data": {
                     "key": "BSH.Common.Setting.PowerState",
                     "value": "BSH.Common.EnumType.PowerState.On"
@@ -80,7 +80,7 @@ class OrchestratorDrinkRequestHandler(IPythonHandler):
         # send put request
         proxy(
             self,
-            connector.put("/api/homeappliances/"+connector.machine["haId"]+"/programs/active", {
+            connector.put("/api/homeappliances/{}/programs/active".format(connector.machine["haId"]), {
                 "data": {
                     "key": drinkKey,
                     "options": drinkOptionsList

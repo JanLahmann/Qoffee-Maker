@@ -108,7 +108,7 @@ define([
                 // if fail, alert and go to welcome
                 if(!response.ok) {
                     setAuthStatus(false);
-                    alert("Could not refresh auth");
+                    alert("Authentication with Homeconnect failed.");
                     window.open('/auth', '_blank');
                     reject();
                 }
@@ -118,7 +118,7 @@ define([
                     resolve();
                 }
             }, error => {
-                alert("Could not refresh auth");
+                alert("Authentication with Homeconnect failed.");
                 window.open('/auth', '_blank');
                 console.error(error);
                 reject(error);
@@ -143,7 +143,7 @@ define([
             }).then(response => {
                 // if fail, alert and go to welcome
                 if(!response.ok) {
-                    alert("Could not activate coffee machine");
+                    alert("Could not activate coffee machine.");
                     reject();
                 }
                 // if succeed to to success
@@ -151,7 +151,7 @@ define([
                     resolve();
                 }
             }, error => {
-                alert("Could not activate coffee machine");
+                alert("Could not activate coffee machine.");
                 console.error(error);
                 reject(error);
             })
@@ -187,17 +187,17 @@ define([
             }).then(response => {
                 // if fail, alert and go to welcome
                 if(!response.ok) {
-                    alert("Could not get drink "+drinkKey+"\n"+response.statusText);
                     reject();
+                    alert("Could not get drink\n"+response.statusText);
                 }
                 // if succeed to to success
                 else {
                     resolve();
                 }
             }, error => {
-                alert("Could not get drink "+drinkKey+"\n"+error);
-                console.error(error);
                 reject(error);
+                alert("Could not get drink\n"+response.statusText);
+                console.error(error);
             })
         })
     }
