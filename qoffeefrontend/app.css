@@ -132,6 +132,9 @@ body.app-mode .emergency-button-container {
 #refreshauth-button-container {
 	right: 75px;
 }
+#fullscreen-button-container {
+	right: 180px;
+}
 
 #restart-overlay {
 	background-color: rgba(0, 0, 0, 0.8); 
@@ -179,14 +182,41 @@ body.app-mode .emergency-button-container {
 	border-style: solid;
 	border-width: 20px;
 }
-#qrcode-container a {
+#qrcode-container a.qrcode-link {
 	text-align: center;
 }
-#qrcode-container p {
+#qrcode-container p.qrcode-text {
 	font-size: 2em;
 	color: white;
 	width: 100%;
 	text-align: center;
 	margin-top: 15px;
 	margin-bottom: 20px;
+}
+
+#qrcode-container a.help-link {
+	width: 450px;
+	left: 50%;
+	margin-left: -225px;
+	position: relative;
+	cursor: pointer;
+	padding: 10px 10px 4em 10px;
+	color: black;
+	font-size: 1.7em;
+	background-color: #e0e0e0;
+	margin-bottom: 20px;
+}
+#qrcode-container a.help-link:hover {
+	text-decoration: none;
+}
+#qrcode-container a.help-link:last-of-type {
+	margin-bottom: 0;
+}
+
+#qrcode-container a.help-link span.arrow {
+	color: rgba(40, 105, 245);
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-size: 1.5em;
 }
