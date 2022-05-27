@@ -93,6 +93,14 @@ body.app-mode .app-appbox > .widget-vbox {
 	width: 70px;
 }
 
+/* Hide unnecessary gates */
+.gates-catalog__group__gates > div:nth-of-type(n+6) {
+	display: none;
+}
+.gates-catalog__group__gates .addNewButton {
+	display: none;
+}
+
 /* dont show scrollbar */
 body.app-mode .p-Widget {
 	overflow: visible !important;
