@@ -1,0 +1,127 @@
+name: Docker
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: [actions]
+  pull_request:
+    branches: [actions]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+  VERSION: 0.1.2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Install the cosign tool except on PR
+      # https://github.com/sigstore/cosign-installer
+      - name: Install cosign
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@1e95c1de343b5b0c23352d6417ee3e48d5bcd422
+        with:
+          cosign-release: "v1.4.0"
+
+      # Workarounds
+      # Workaround: https://github.com/docker/buildx/issues/495
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1
+        with:
+          image: tonistiigi/binfmt:latest
+          platforms: all
+      # Workaround: https://github.com/docker/build-push-action/issues/461
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v1
+
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata for ARM
+        id: meta-arm
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-arm
+          tags: |
+            ${{ env.VERSION }}
+      - name: Extract Docker metadata for AMD
+        id: meta-amd
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-amd64
+          tags: |
+            ${{ env.VERSION }}
+      # - name: Extract Docker metadata for ARM64
+      #   id: meta-arm64
+      #   uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      #   with:
+      #     images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      #     tags: |
+      #       type=ref,event=branch,prefix=arm64-
+
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image ARM
+        id: build-and-push-arm
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta-arm.outputs.tags }}
+          labels: ${{ steps.meta-arm.outputs.labels }}
+          file: DockerfileArm
+          platforms: linux/arm/v7
+      - name: Build and push Docker image AMD
+        id: build-and-push-amd
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta-amd.outputs.tags }}
+          labels: ${{ steps.meta-amd.outputs.labels }}
+          file: DockerfileAmd64
+      # - name: Build and push Docker image ARM64
+      #   id: build-and-push-arm
+      #   uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      #   with:
+      #     context: .
+      #     push: ${{ github.event_name != 'pull_request' }}
+      #     tags: ${{ steps.meta-arm.outputs.tags }}
+      #     labels: ${{ steps.meta-arm.outputs.labels }}
+      #     file: DockerfileArm64
+      #     platforms: linux/arm64
+      - name: Create Docker manifest
+        run: |
+          repository=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
+          docker manifest rm $repository:latest && echo Deleted manifest "$repository" || :
+          docker manifest rm $repository:${{ env.VERSION }} && echo Deleted manifest "$repository:${{ env.VERSION }}" || :
+          docker manifest create $repository:latest $repository-arm:${{ env.VERSION }} $repository-amd64:${{ env.VERSION }}
+          docker manifest create $repository:${{ env.VERSION }} $repository-arm:${{ env.VERSION }} $repository-amd64:${{ env.VERSION }}
+          docker manifest push $repository
+          docker manifest push $repository:${{ env.VERSION }}
