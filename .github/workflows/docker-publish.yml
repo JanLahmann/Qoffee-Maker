@@ -13,7 +13,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  VERSION: 0.1.2
+  VERSION: 1.0.0
 
 jobs:
   build:
@@ -116,5 +116,5 @@ jobs:
           docker manifest rm $repository:${{ env.VERSION }} && echo Deleted manifest "$repository:${{ env.VERSION }}" || :
           docker manifest create $repository:latest $repository-arm:${{ env.VERSION }} $repository-amd64:${{ env.VERSION }}
           docker manifest create $repository:${{ env.VERSION }} $repository-arm:${{ env.VERSION }} $repository-amd64:${{ env.VERSION }}
-          docker manifest push $repository
+          docker manifest push $repository:latest
           docker manifest push $repository:${{ env.VERSION }}
