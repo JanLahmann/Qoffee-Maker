@@ -94,11 +94,19 @@ body.app-mode .app-appbox > .widget-vbox {
 }
 
 /* Hide unnecessary gates */
-.gates-catalog__group__gates > div:nth-of-type(n+6) {
+.show-fav-gates .gates-catalog__group__gates > div:nth-of-type(n+6) {
 	display: none;
 }
+/* Show Z gate */
+.show-fav-gates .gates-catalog__group__gates > div:nth-of-type(9) {
+	display: block;
+}
+/* Show Ry gate */
+.show-fav-gates .gates-catalog__group__gates > div:nth-of-type(23) {
+	display: block;
+}
 .gates-catalog__group__gates .addNewButton {
-	display: none;
+	display: none !important;
 }
 
 /* dont show scrollbar */
