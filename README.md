@@ -50,5 +50,13 @@ Enjoy your Quantum Coffee. ☕️
 
 ## Installation on RasQberry (draft):
 
-First draft for installation procedure on RasQberry (http://rasqberry.org) can be found at [README-RasQberry-setup.md](README-RasQberry-setup.md)
+Installation and startup of Qoffee-Maker has been fully integrated to the RasQberry automated setup. (Currently in branch "dev8", but will be merged to master soon.) 
+
+In rasqberry-config (started with `$ . ./RasQ-init.sh dev8`), use the following menu items in "D Quantum Demos" to run the locally build docker image or the image available on dockerhub: "QM Qoffee-Maker", "QMd Qoffee-Maker".
+
+To trigger a rebuild, choose "A Advanced Config" -> "QMrb Qoffee-Maker rebuild".
+
+To stop all qoffee containers, select "A Advanced Config" -> "QMst stop Qoffee-Maker".
+
+The two versions of the demo can also be started using the "Qoffee Maker" desktop icons.
 
