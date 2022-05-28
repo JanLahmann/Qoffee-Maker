@@ -114,8 +114,6 @@ jobs:
       - name: Create Docker manifest
         run: |
           CONTAINER_REPO=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
-          docker manifest rm $CONTAINER_REPO:latest && echo Deleted manifest "$CONTAINER_REPO" || :
-          docker manifest rm $CONTAINER_REPO:${{ env.VERSION }} && echo Deleted manifest "$CONTAINER_REPO:${{ env.VERSION }}" || :
           docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
           docker manifest create $CONTAINER_REPO:${{ env.VERSION }} $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
           docker manifest push $CONTAINER_REPO:latest
