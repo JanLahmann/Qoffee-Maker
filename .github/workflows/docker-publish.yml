@@ -113,10 +113,10 @@ jobs:
       #     platforms: linux/arm64
       - name: Create Docker manifest
         run: |
-          repository=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
-          docker manifest rm $repository:latest && echo Deleted manifest "$repository" || :
-          docker manifest rm $repository:${{ env.VERSION }} && echo Deleted manifest "$repository:${{ env.VERSION }}" || :
-          docker manifest create $repository:latest $repository-arm:${{ env.VERSION }} $repository-amd64:${{ env.VERSION }}
-          docker manifest create $repository:${{ env.VERSION }} $repository-arm:${{ env.VERSION }} $repository-amd64:${{ env.VERSION }}
-          docker manifest push $repository:latest
-          docker manifest push $repository:${{ env.VERSION }}
+          CONTAINER_REPO=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
+          docker manifest rm $CONTAINER_REPO:latest && echo Deleted manifest "$CONTAINER_REPO" || :
+          docker manifest rm $CONTAINER_REPO:${{ env.VERSION }} && echo Deleted manifest "$CONTAINER_REPO:${{ env.VERSION }}" || :
+          docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
+          docker manifest create $CONTAINER_REPO:${{ env.VERSION }} $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
+          docker manifest push $CONTAINER_REPO:latest
+          docker manifest push $CONTAINER_REPO:${{ env.VERSION }}
