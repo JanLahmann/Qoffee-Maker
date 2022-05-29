@@ -32,7 +32,7 @@ span {
 }
 
 .show-fav-gates #gate-toggle-button::after {
-    content: url("icons/openmoji-svg-color/eye.svg");
+    background-image: url("icons/openmoji-svg-color/eye.svg");
 }
 
 
