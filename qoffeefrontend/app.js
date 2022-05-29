@@ -39,6 +39,9 @@ define([
         // add class to body to make CSS rules apply
         $("body").addClass("app-mode");
 
+        // add class to only show favorite gates per default
+        $("body").addClass("show-fav-gates")
+
         //
         // loop cells, get their viewIds and add corresponding classes
         //
@@ -90,6 +93,14 @@ define([
                 }
             }, 1000)
         }, 1000)
+    }
+
+    /**
+     * Toggle class on body "show-fav-gates". This toggles the CSS state of additional gates
+     * @function toggleGates
+     */
+    function toggleGates() {
+        $("body").toggleClass("show-fav-gates");
     }
 
     /**
@@ -336,6 +347,7 @@ define([
         window.openHelp = openHelp
         window.myCloseFullscreen = closeFullscreen
         window.refreshAuth = refreshAuth
+        window.toggleGates = toggleGates
         window.activateCoffeeMachine = activateCoffeeMachine
 
         // set interval to refresh auth token
