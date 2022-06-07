@@ -24,7 +24,7 @@ First, you need to create a Home Connect User Account. Then you can connect your
 
 3. [Sign up for a Home Connect Developer Account](https://developer.home-connect.com/user/register)
 
-Make sure to set your _Default Home Connect User Account for Testing_ to the account name (mail address) created in the previous step.
+Make sure to set your _Default Home Connect User Account for Testing_ to the Home Connect User Account (mail address) used in the previous step.
 
 Tip: It is not crucial to provided meaningful _Additional Information_.
 
