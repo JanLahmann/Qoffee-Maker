@@ -2,7 +2,7 @@
 
 ## Introduction
 
-<img src="Bilder/Event Image.jpeg" width="150">
+<img src="Bilder/Event Image.jpeg" >
 
 Qoffee Maker is based on [Quantum Computing](http://ibm.com/quantum-computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit.
 
