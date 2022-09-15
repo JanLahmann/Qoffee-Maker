@@ -1,5 +1,7 @@
 # Setup instructions for the QoffeeMaker
 
+> [Credentials (IBM internal)](https://ibm.box.com/s/wbe3ea8rxpea7ou7vwbhhbwct4vcket1)
+
 ![Full setup](QoffeeMaker1.jpg)
 
 Some stats for the setup:
@@ -25,10 +27,11 @@ Some stats for the setup:
      -  Hot chocolate (bags for one cup)
      -  Tea
      -  Water (for the coffee machines tank)
+     -  Cleaning tabs for the coffee machine
 
 - Dimensions: Breadth: 1.5-2m, Depth: 0.8m, Heigth: 1.2m
 - Power: minimum 4 power outlets; total about 1600W (~ 7A, 230V)
-- Internet: Ethernet or WI-FI Connection to the Internet is neccessary; Network should be allowing repeaters/access points
+- Internet: Ethernet or WI-FI Connection to the Internet is neccessary; Network should be allowing repeaters/access points; Hotspots via your mobile phone are also possible
 
 1. Build up the different parts independently (coffee machine, RasQberry, touchscreen monitor, Router) and connect them to a power outlet (total: 1600W (~ 7A, 230V))
 > ![PowerOutlet](QoffeeMaker12.jpg)
