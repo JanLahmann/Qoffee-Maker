@@ -104,4 +104,15 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
    > ![Buttons](QoffeeMaker14.png)
 - The RasQberry has inbuilt LEDs which can be acitvated by pressing the **right** button on top of the enclosure for about 4 seconds. The activation takes a short time.
 - The RasQberry can be turned off by pressing the **left** button on the top the enclosure.
+- The menu bar disappears on its own. Therefore you have to move to the mouse to the top of the screen to show the bar again.
 
+---
+
+# Bug fixing
+
+- If there are any problems, the first thing to try is a restart of the Raspberry Pi. To do this, click on the restart symbol in the menu bar at to top of the screen. If the bar is not visible, move your mouse to the top of the screen.
+- If there the coffee machine doesnt make the ordered coffee:
+  - The machine has to in the selection mode (see picture above; you can choose beverages etc.) to be ready for remote control.
+  - Check if the option "Fernstart" is activated in the settings of the coffee machine.
+- If there are any problems regarding the notebook (e.g. not starting, multiple instances open) restart the whole Raspberry Pi.
+- 
