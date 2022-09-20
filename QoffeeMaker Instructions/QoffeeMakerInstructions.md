@@ -98,6 +98,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 # Usage tips
 
 - By clicking on "Simulator (error free)" and "Simulator (real quantum device)" you can calculate these models too. Wait a few seconds for them to show up in the graphs below. The colors indicate which model is which.
+- The circuit can be exported to the IBM Quantum composer by clicking on "Export to IBM Quantum Composer".
 - By default the circuit is always run in with an error-free simulator. Change this by clicking on the "Q" in the top right hand corner. It should change its colors between purple (error-free) and green (simulating a real device). 
 - You can show more gates in the composer by clicking the crossed out eye on the right side of the screen.
 - To reload the whole notebook or reenable fullscreen click the correspoding buttons in the lower right hand corner.
@@ -105,6 +106,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 - The RasQberry has inbuilt LEDs which can be acitvated by pressing the **right** button on top of the enclosure for about 4 seconds. The activation takes a short time.
 - The RasQberry can be turned off by pressing the **left** button on the top the enclosure.
 - The menu bar disappears on its own. Therefore you have to move to the mouse to the top of the screen to show the bar again.
+- 
 
 ---
 
