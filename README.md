@@ -40,6 +40,7 @@ Install the Qoffee Maker GUI in three steps:
     - `HOMECONNECT_CLIENT_ID`: Client ID of the Home Connect Appliance
     - `HOMECONNECT_CLIENT_SECRET`: Client Secret of the Home Connect Appliance
     - `HOMECONNECT_REDIRECT_URL`: Callback URL for HomeConnect as registered in your application in HomeConnect. On localhost this is `http://localhost:8887/auth/callback` (the port is determined by Jupyter, `/auth/callback` is fixed)
+    - `DEVICE_HAID`: The haId of your coffee machine. Useful when you habe multiple coffee machine in your Home Connect App registered. Leave blank if you don't want to set it/don't know about it. (Find out your haId by using the `find_haId.sh` script.)
     - `IBMQ_API_KEY`: the API Key for [IBM Quantum](https://quantum-computing.ibm.com/account)
 
 2. Run the container image with the specified environment variables: `docker run --name qoffee --rm -itp 8887:8887 --env-file .env ghcr.io/janlahmann/qoffee-maker`
