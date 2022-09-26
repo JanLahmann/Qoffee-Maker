@@ -116,5 +116,8 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 - If there the coffee machine doesnt make the ordered coffee:
   - The machine has to in the selection mode (see picture above; you can choose beverages etc.) to be ready for remote control.
   - Check if the option "Fernstart" is activated in the settings of the coffee machine.
+  - Check Wifi of the coffee machine (see below)
+- If the Qoffee machine has problems with the Wi-Fi (e.g. Wi-Fi symbol is crossed or has an "x" written in the corner), try to restart the machine first. If this did not help, go into the settings and turn of the Wi-Fi and activate it again.
+  - If all of this did'nt help, reset and reconnect the Wi-Fi network. For this, choose option "Netzwerk entfernen" (engl.: remove network). This will delete the network from the machine. To reconnect it again, install the Home Connect App on your smartphone. Open the App, log in (see credentials) and add a new appliance by clicking on the "+" or clicking "Add a new appliance". Follow the steps on the screen.  When you are prompted to scan the QR-code, choose to configure it manually. Enter the E-number of the coffee machine (see credentials). Enter the SSID and the Wi-Fi password of the network you want to connect the machine to (see credentials). After finishing this a reauthentication on the RasQberry may be neccessary.
 - If there are any problems regarding the notebook (e.g. not starting, multiple instances open) restart the whole Raspberry Pi.
-- 
+- If there are any errors in the terminal while starting the Qoffee Maker, check the environment file (still a template?) and google the error.
