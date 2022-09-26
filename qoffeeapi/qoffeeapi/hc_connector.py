@@ -23,16 +23,16 @@ class HomeconnectConnector(PersistentOAuth2Connector):
         return machines
 
 
-    def set_machine(self, enumber=None):
+    def set_machine(self, haId=None):
         """
-        Set the current machine by enumber or - if enumber is not given - just use the first one in the account
+        Set the current machine by haId or - if haId is not given - just use the first one in the account
         """
         machines = self.get_machines()
         machine = next(
             filter(
                 lambda x: (
-                    (enumber is None) and (x["type"] == "CoffeeMaker")) or
-                    (enumber is not None and x["enumber"].startswith(enumber)),
+                    (haId is None) and (x["type"] == "CoffeeMaker")) or
+                    (haId is not None and x["haId"].startswith(haId)),
                 machines
             )
         )

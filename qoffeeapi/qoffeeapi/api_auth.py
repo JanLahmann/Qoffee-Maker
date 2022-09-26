@@ -18,7 +18,11 @@ class HomeconnectCallbackHandler(IPythonHandler):
         authorization_code = self.request.query_arguments['code'][0].decode()
         req_access_token_res = connector.request_access_token(authorization_code)
         # set the current machine to the first available machine associated with the account
-        connector.set_machine()
+        if os.getenv("DEVICE_HAID"):
+            print("Setting machine to " + os.getenv("DEVICE_HAID"))
+            connector.set_machine(os.getenv("DEVICE_HAID"))
+        else:
+            connector.set_machine()
         proxy(self, req_access_token_res)
 
 
