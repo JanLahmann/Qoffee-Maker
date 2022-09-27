@@ -40,7 +40,9 @@ Install the Qoffee Maker GUI in three steps:
     - `HOMECONNECT_CLIENT_ID`: Client ID of the Home Connect Appliance
     - `HOMECONNECT_CLIENT_SECRET`: Client Secret of the Home Connect Appliance
     - `HOMECONNECT_REDIRECT_URL`: Callback URL for HomeConnect as registered in your application in HomeConnect. On localhost this is `http://localhost:8887/auth/callback` (the port is determined by Jupyter, `/auth/callback` is fixed)
-    - `IBMQ_API_KEY`: the API Key for [IBM Quantum](https://quantum-computing.ibm.com/account)
+    - `DEVICE_HA_ID`: This is the HomeConnect Appliance ID (HA ID) of your coffee machine. It is useful when you have multiple coffee machines registered in your Home Connect App. Leave it blank if you don't want to set it/don't know about it.
+      - To get the HA IDs of your available machines start the QoffeeMaker, authenticate and then, type http://{YOUR_IP_ADRESS}:8887/machines into your browser. You will get an response with all your appliances and HA IDs. 
+    - `IBMQ_API_KEY`: the API Key for [IBM Quantum](https://quantum-computing.ibm.com/account) 
 
 2. Run the container image with the specified environment variables: `docker run --name qoffee --rm -itp 8887:8887 --env-file .env ghcr.io/janlahmann/qoffee-maker`
 
@@ -52,7 +54,7 @@ Enjoy your Quantum Coffee. ☕️
 
 Installation and startup of Qoffee-Maker has been fully integrated to the RasQberry automated setup. (Currently in branch "dev8", but will be merged to master soon.) 
 
-In rasqberry-config (started with `$ . ./RasQ-init.sh dev8`), use the following menu items in "D Quantum Demos" to run the locally build docker image or the image available on dockerhub: "QM Qoffee-Maker", "QMd Qoffee-Maker".
+In rasqberry-config (started with `$ . ./RasQ-init.sh dev9`), use the following menu items in "D Quantum Demos" to run the locally build docker image or the image available on dockerhub: "QM Qoffee-Maker", "QMd Qoffee-Maker".
 
 To trigger a rebuild, choose "A Advanced Config" -> "QMrb Qoffee-Maker rebuild".
 
