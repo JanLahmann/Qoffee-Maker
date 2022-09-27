@@ -104,7 +104,6 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 - The RasQberry has inbuilt LEDs which can be acitvated by pressing the **right** button on top of the enclosure for about 4 seconds. The activation takes a short time.
 - The RasQberry can be turned off by pressing the **left** button on the top the enclosure.
 - The menu bar disappears on its own. Therefore you have to move to the mouse to the top of the screen to show the bar again.
-- 
 
 ---
 
