@@ -1,7 +1,5 @@
 # Setup instructions for the QoffeeMaker
 
-> [Credentials (IBM internal)](https://ibm.box.com/s/wbe3ea8rxpea7ou7vwbhhbwct4vcket1)
-
 ![Full setup](QoffeeMaker1.jpg)
 
 Some stats for the setup:

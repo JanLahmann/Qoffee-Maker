@@ -25,7 +25,7 @@ class HomeconnectConnector(PersistentOAuth2Connector):
 
     def set_machine(self, haId=None):
         """
-        Set the current machine by haId or - if haId is not given - just use the first one in the account
+        Set the current machine by HA ID or - if HA ID is not given - just use the first one in the account
         """
         machines = self.get_machines()
         machine = next(
