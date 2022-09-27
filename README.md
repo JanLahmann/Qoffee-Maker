@@ -75,6 +75,8 @@ We provide examples for the first few, but these are not the only possible appro
 
 ## How to build your own Qoffee Maker at home
 
-The entire code of this project is available in this GitHub repo. Code cleanup will follow as well as documentation.  
+The entire code of this project is available in this GitHub repo. Code cleanup will follow.
+
+Find a documentation on the QoffeeMaker Setup here: [Documentation: QoffeeMakerInstructions](QoffeeMakerInstructions.md)
 
 You can use the [IBM Quantum Composer](http://quantum-computing.ibm.com/composer) any time to practice your Quantum Skills by using fundamental quantum gates and executing quantum circuits on real quantum computers.
