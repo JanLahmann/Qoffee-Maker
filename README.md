@@ -14,15 +14,38 @@ As an example, we will install the Qoffee Maker Graphical User Interface (GUI) t
 - Home Connect enabled coffee machine
 - Android Phone or iPhone
 - Computer
+- the e-mail address you will use to register with Home Connect
 
 ### Install Home Connect
 1. Install the Home Connect [iOS App](https://app.adjust.com/gdi5c03?campaign=germany&redirect_macos=https%3A%2F%2Fapps.apple.com%2Fde%2Fapp%2Fhome-connect-app%2Fid901397789&redirect_windows=https%3A%2F%2Fapps.apple.com%2Fde%2Fapp%2Fhome-connect-app%2Fid901397789) or [Android App](https://app.adjust.com/gdi5c03?campaign=germany&redirect_macos=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.bshg.homeconnect.android.release%26hl%3Dde&redirect_windows=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.bshg.homeconnect.android.release%26hl%3Dde)
 
 2. Add your Coffee Machine appliance to the Home Connect App
 
-First, you need to create a Home Connect User Account. Then you can connect your Coffee Machine under _Appliances_ in the App.
+a) in the App Connect application, you need to create a Home Connect User Account. 
 
-3. [Sign up for a Home Connect Developer Account](https://developer.home-connect.com/user/register)
+- After starting the application, on the welcome screen will show the option to log in to the application or register a new user. If you have not used the "Home Connect" application before, click on the Register link as shown in the picture below.
+<img src="css/HomeConnect_app_home_screen.png">
+Use your email address to register new user. Provide new password as requested on the form.
+<img src="css/HomeConnect_app_user_registration.png">
+and press "Continue" link on the top-right corner. 
+
+- Read "Terms and Condition" rules, and accept it by checking "I have read and accept the terms of use" checkbox, then press "Continue" button.
+
+- Once again read "Data protection statement" and accept it by checking "I have read and accept the data protection statement" checkbox. Press "Continue" button to proceed.
+
+- Read the statements regarding collecting user data and accept it by clicking "I consent to the collection of mu user data" checkbox. Press "Continue" button to finish procedure. 
+
+- Review provided information and click "Send" button.
+
+- Now you have to activate the registered account. To confirm the account you must click the link in the activation e-mail that you will receive in your mailbox.
+
+- now you confirm your email address, your account will be activated and you can log in to the Home Connect app using your newly registered user.
+
+
+b) Then you can connect your Coffee Machine under _Appliances_ in the App.
+
+
+1. [Sign up for a Home Connect Developer Account](https://developer.home-connect.com/user/register)
 
 Make sure to set your _Default Home Connect User Account for Testing_ to the Home Connect User Account (mail address) used in the previous step.
 
