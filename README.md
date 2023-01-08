@@ -27,11 +27,15 @@ If you have not used the "Home Connect" app before follow these steps on how to 
 
 - Click on the Register link as shown in the picture below.
 
+<p align="center">
 <img src="css/HomeConnect_app_home_screen.png" width="300">
+</p>
 
 - Use your email address to register new user. Provide a new password as requested on the form:
 
+<p align="center">
 <img src="css/HomeConnect_app_user_registration.png" width="300">
+</p>
 
 - Then, press "Continue" link on the top-right corner.
 
