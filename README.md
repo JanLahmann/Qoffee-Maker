@@ -21,7 +21,7 @@ As an example, we will install the Qoffee Maker Graphical User Interface (GUI) t
 
 2. In the App Connect mobile app, you need to sign in with a Home Connect User Account.
 
-After starting the app, on the welcome screen will show the option to log in to the app or register a new user.
+After starting the app, the welcome screen will show the option to log in to the app or register a new user.
 
 If you have not used the "Home Connect" app before follow these steps on how to create an account:
 
