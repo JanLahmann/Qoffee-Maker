@@ -73,7 +73,7 @@ Install the Qoffee Maker GUI in three steps:
     - `HOMECONNECT_CLIENT_ID`: Client ID of the Home Connect Appliance
     - `HOMECONNECT_CLIENT_SECRET`: Client Secret of the Home Connect Appliance
     - `HOMECONNECT_REDIRECT_URL`: Callback URL for HomeConnect as registered in your application in HomeConnect. On localhost this is `http://localhost:8887/auth/callback` (the port is determined by Jupyter, `/auth/callback` is fixed)
-    - `DEVICE_HA_ID`: This is the HomeConnect Appliance ID (HA ID) of your coffee machine. It is useful when you have mulHintle coffee machines registered in your Home Connect App. Leave it blank if you don't want to set it/don't know about it.
+    - `DEVICE_HA_ID`: This is the HomeConnect Appliance ID (HA ID) of your coffee machine. It is useful when you have multiple coffee machines registered in your Home Connect App. Leave it blank if you don't want to set it/don't know about it.
       - To get the HA IDs of your available machines start the QoffeeMaker, authenticate and then, type http://{YOUR_IP_ADRESS}:8887/machines into your browser. You will get an response with all your appliances and HA IDs.
     - `IBMQ_API_KEY`: the API Key for [IBM Quantum](https://quantum-computing.ibm.com/account)
 
