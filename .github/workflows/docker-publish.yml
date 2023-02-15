@@ -113,6 +113,7 @@ jobs:
       #     platforms: linux/arm64
       - name: Create Docker manifest
         run: |
+          set -x
           CONTAINER_REPO=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
           echo $CONTAINER_REPO
           docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
