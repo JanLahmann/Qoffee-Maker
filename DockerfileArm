@@ -18,7 +18,8 @@ COPY jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py
 
 # setup python environment
 RUN pip install --index-url=https://www.piwheels.org/simple jupyter jupyter_packaging qiskit
-RUN pip install ibm_quantum_widgets
+# RUN pip install ibm_quantum_widgets
+RUN pip install https://raw.githubusercontent.com//JanLahmann/RasQberry/master/whl/ibm_quantum_widgets-1.0.3-py2.py3-none-any.whl
 
 RUN jupyter nbextension enable --py widgetsnbextension
 RUN jupyter nbextension enable --py ibm_quantum_widgets
