@@ -116,14 +116,15 @@ jobs:
           set -x
           CONTAINER_REPO=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
           echo $CONTAINER_REPO
-          echo inspect manifest file arm
-          RESULT=`docker manifest inspect $CONTAINER_REPO-arm:${{ env.VERSION }}`
-          echo $RESULT
-          echo creating latest manifest list
-          docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
+          #echo inspect manifest file arm
+          #RESULT=`docker manifest inspect $CONTAINER_REPO-arm:${{ env.VERSION }}`
+          #echo $RESULT
           echo creating version manifest list
           docker manifest create $CONTAINER_REPO:${{ env.VERSION }} $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
-          echo pushing latest manifest list
-          docker manifest push $CONTAINER_REPO:latest
           echo pushing version manifest list
           docker manifest push $CONTAINER_REPO:${{ env.VERSION }}
+          echo creating latest manifest list
+          docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
+          echo pushing latest manifest list
+          docker manifest push $CONTAINER_REPO:latest
+          
