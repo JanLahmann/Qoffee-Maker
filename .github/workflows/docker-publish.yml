@@ -6,7 +6,7 @@ name: Docker
 
 on:
   push:
-    branches: [main, feature/github-actions]
+    branches: [gh-actions-dev, feature/github-actions]
 
 env:
   # Use docker.io for Docker Hub if empty
