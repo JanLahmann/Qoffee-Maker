@@ -116,18 +116,17 @@ jobs:
           set -x
           CONTAINER_REPO=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
           echo $CONTAINER_REPO
-          #
+          # old version used manifest. Needs to be replaced according to https://stackoverflow.com/questions/75521775/buildx-docker-image-claims-to-be-a-manifest-list
           #echo creating version manifest list
           #docker manifest create $CONTAINER_REPO:${{ env.VERSION }} $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
           #echo pushing version manifest list
           #docker manifest push $CONTAINER_REPO:${{ env.VERSION }}
           #
-          echo "START alternate way to build and push the new multi-platform image"
-          docker buildx imagetools create -t $CONTAINER_REPO:${{ env.VERSION }} $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
-          echo "DONE alternate way to build and push the new multi-platform image"
+          #echo creating latest manifest list
+          #docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
+          #echo pushing latest manifest list
+          #docker manifest push $CONTAINER_REPO:latest
           #
-          echo creating latest manifest list
-          docker manifest create $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
-          echo pushing latest manifest list
-          docker manifest push $CONTAINER_REPO:latest
-          
+          echo "build and push the new multi-platform image"
+          docker buildx imagetools create -t $CONTAINER_REPO:${{ env.VERSION }} $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
+          docker buildx imagetools create -t $CONTAINER_REPO:latest $CONTAINER_REPO-arm:${{ env.VERSION }} $CONTAINER_REPO-amd64:${{ env.VERSION }}
