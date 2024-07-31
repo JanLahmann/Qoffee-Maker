@@ -13,6 +13,7 @@ WORKDIR /home/jovyan/work
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
 
 # setup python environment
+RUN pip install setuptools==68.0.0
 RUN pip install https://raw.githubusercontent.com//JanLahmann/RasQberry/master/whl/ibm_quantum_widgets-1.0.3-py2.py3-none-any.whl jupyter_packaging && \
     jupyter nbextension enable --py widgetsnbextension && \
     jupyter nbextension enable --py ibm_quantum_widgets
