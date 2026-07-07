@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+
+{% seo %}
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <a id="a-title" href="{{ '/' | relative_url }}">
+          <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        </a>
+        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+
+        <section id="downloads">
+          {% if site.show_downloads %}
+            <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
+            <a href="{{ site.github.tar_url }}" class="btn">Download as .tar.gz</a>
+          {% endif %}
+          <a href="{{ site.github.repository_url }}" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        {{ content }}
+      </section>
+    </div>
+
+    <style>
+      .family-footer {
+        margin: 40px 0 20px;
+        padding-top: 16px;
+        border-top: 1px dashed #666;
+        text-align: center;
+        font-size: 13px;
+        color: #999;
+      }
+      .family-footer div { margin: 6px 0; }
+      .family-footer .tagline {
+        color: #b5e853;
+        letter-spacing: .08em;
+        font-size: 12px;
+      }
+    </style>
+    <footer class="container family-footer">
+      <div class="tagline">GOD DOES PLAY DICE. COME PLAY, BUILD, LEARN.</div>
+      <div><strong>Part of the Fun with Quantum family:</strong>
+        <a href="https://fun-with-quantum.org">Fun with Quantum</a> ·
+        <a href="https://rasqberry.org">RasQberry Two</a> ·
+        <a href="https://rasqberry.one">RasQberry One</a> ·
+        <a href="https://quantego.org">Quantego</a> ·
+        <a href="https://qutie.org">Qutie</a>
+      </div>
+      <div>Open source, built by <a href="https://www.linkedin.com/in/JanLahmann">Jan-R. Lahmann</a> and the RasQberry community.</div>
+    </footer>
+  </body>
+</html>
