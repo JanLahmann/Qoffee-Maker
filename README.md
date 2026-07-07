@@ -96,3 +96,11 @@ To stop all qoffee containers, select "A Advanced Config" -> "QMst stop Qoffee-M
 
 The two versions of the demo can also be started using the "Qoffee Maker" desktop icons.
 
+
+---
+
+## Part of the Fun with Quantum family
+
+The Qoffee-Maker is part of [**Fun with Quantum**](https://fun-with-quantum.org), a family of open-source quantum outreach projects: [RasQberry Two](https://rasqberry.org) · [RasQberry One](https://rasqberry.one) · [Quantego](https://quantego.org) · [Qutie](https://qutie.org).
+
+*God does play dice. Come play, build, learn.*
