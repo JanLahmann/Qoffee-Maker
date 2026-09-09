@@ -33,17 +33,24 @@
       <section id="main_content">
         {{ content }}
 
-        <footer class="family-footer">
-          <div class="tagline">GOD DOES PLAY DICE. COME PLAY, BUILD, LEARN.</div>
-          <div><strong>Part of the Fun with Quantum family:</strong>
-            <a href="https://fun-with-quantum.org">Fun with Quantum</a> ·
-            <a href="https://rasqberry.org">RasQberry Two</a> ·
-            <a href="https://rasqberry.one">RasQberry One</a> ·
-            <a href="https://quantego.org">Quantego</a> ·
-            <a href="https://qutie.org">Qutie</a>
-          </div>
-          <div>Open source, built by <a href="https://www.linkedin.com/in/JanLahmann">Jan-R. Lahmann</a> and the RasQberry community.</div>
-        </footer>
+<!-- FWQ-FAMILY:START format=html — generated from family.json in JanLahmann/Fun-with-Quantum, do not edit by hand -->
+<footer class="family-footer">
+  <div class="family-footer-tagline">GOD DOES PLAY DICE. COME PLAY, BUILD, LEARN.</div>
+  <div class="family-footer-lead"><strong>Part of the Fun with Quantum family:</strong></div>
+  <div class="family-footer-members">
+    <a class="member" href="https://fun-with-quantum.org"><span>Fun with Quantum</span><small>Quantum games &amp; the family home</small></a>
+    <a class="member" href="https://rasqberry.org"><span>RasQberry Two</span><small>Pi-powered quantum computer model</small></a>
+    <a class="member" href="https://rasqberry.one"><span>RasQberry One</span><small>The original Pi model</small></a>
+    <a class="member" href="https://quantego.org"><span>Quantego</span><small>Quantum computers from LEGO bricks</small></a>
+    <a class="member" href="https://qutie.org"><span>Qutie</span><small>Palm-sized 3D-printed models</small></a>
+    <a class="member" href="https://entangible.org"><span>Entangible</span><small>Hands-on circuit composer for booths</small></a>
+    <a class="member" href="https://certiq.dev"><span>CertiQ</span><small>Qiskit certification prep</small></a>
+    <a class="member" href="https://qubins.org"><span>QuBins</span><small>One-click Qiskit environments</small></a>
+    <a class="member" href="https://qamposer.org"><span>QAMPoser</span><small>Web quantum circuit composer</small></a>
+  </div>
+  <div class="family-footer-credit">Open source, built by <a href="https://www.linkedin.com/in/JanLahmann">Jan-R. Lahmann</a> and the RasQberry community.</div>
+</footer>
+<!-- FWQ-FAMILY:END -->
       </section>
     </div>
 
@@ -57,11 +64,19 @@
         color: #999;
       }
       .family-footer div { margin: 6px 0; }
-      .family-footer .tagline {
+      .family-footer .tagline, .family-footer-tagline {
         color: #b5e853;
         letter-spacing: .08em;
         font-size: 12px;
       }
+      .family-footer-members {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 8px 20px; margin: 8px 0;
+      }
+      .family-footer .member { display: block; line-height: 1.3; text-decoration: none; color: inherit; }
+      .family-footer .member span { display: block; color: #ccc; }
+      .family-footer .member:hover span { color: #b5e853; }
+      .family-footer .member small { display: block; font-size: 12px; color: #999; }
     </style>
   </body>
 </html>
