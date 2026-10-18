@@ -4,7 +4,7 @@
 
 <img src="Bilder/Event Image.jpeg" >
 
-Qoffee Maker is based on [Quantum Computing](http://ibm.com/quantum-computing) and will produce a coffee, capuccino, etc based on the measurement result of a Quantum Circuit.
+Qoffee Maker is based on [Quantum Computing](http://ibm.com/quantum-computing) and will produce a coffee, cappuccino, etc based on the measurement result of a Quantum Circuit.
 
 To get your favorite type of beverage implies creating a quantum circuit whose measurement result is the appropriate representing binary number.
 
@@ -30,7 +30,7 @@ The three most important quantum gates are: NOT, CNOT and H with a short descrip
 The following examples illustrate step-by-step how to use these to solve the Qoffee Puzzle.
 
 
-### 1) I want a Cappucino
+### 1) I want a Cappuccino
 
 To request a Cappuccino (beverage number 4, encoded with the binary number 100), you need to build the Quantum Circuit such that the state (4, 100) will come up with 100% probability.  
 Remember: The order of qubits q2, q1, q0 is initialized at 0 each (0, 000).  
