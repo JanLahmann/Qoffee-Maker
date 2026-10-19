@@ -1,10 +1,12 @@
 # Qoffee-Maker
 
+**Website: [qoffee-maker.org](https://qoffee-maker.org)**
+
 <img src="css/QoffeeMug.png">
 
 ## User Instructions
 
-Find user instructions on the project GitHub pages: http://qoffee-maker.org
+Find user instructions on the project website: [qoffee-maker.org](https://qoffee-maker.org)
 
 ## Installation
 
