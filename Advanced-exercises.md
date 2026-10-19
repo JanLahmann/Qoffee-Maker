@@ -1,3 +1,7 @@
+---
+title: "Advanced exercises"
+description: "Advanced Qoffee Maker exercises: find quantum circuits for trickier drink orders, such as an espresso with single-qubit gates on q0 only."
+---
 # Advanced Exercises <img src="Bilder/QuoffeeMug_vector.png" width="150">
 To spice up your beverage selection, try to find quantum circuits that solve the following advanced exercises. 
 We provide examples for the first few, but these are not the only possible approach. Give it a shot yourself and come up with individual Quoffe solutions or explore alternative Circuit options.

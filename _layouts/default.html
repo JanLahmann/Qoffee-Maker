@@ -15,9 +15,9 @@
     <header>
       <div class="container">
         <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          <p class="site-title">{{ site.title | default: site.github.repository_name }}</p>
         </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        <p class="site-tagline">{{ site.description | default: site.github.project_tagline }}</p>
 
         <section id="downloads">
           {% if site.show_downloads %}
