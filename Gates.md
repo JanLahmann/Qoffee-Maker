@@ -1,3 +1,7 @@
+---
+title: "Quantum gates: NOT, CNOT and H"
+description: "The three quantum gates you need for the Qoffee Maker (NOT, CNOT and Hadamard) and what each one does to the qubits."
+---
 # Description of the Quantum Gates <img src="Bilder/QuoffeeMug_vector.png" width="150">
 
 "Quantum Gates" are the fundamental operations that can be applied to Qubits.  

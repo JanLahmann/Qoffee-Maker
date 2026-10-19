@@ -16,3 +16,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+<style>
+  /* Site name and tagline as <p>, so each page has exactly one <h1> (its own title); same look as the theme's header h1/h2 */
+  header .site-title, header .site-tagline {
+    margin: 0 0 20px; font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+    letter-spacing: -0.03em; text-shadow: 0 1px 1px rgba(0,0,0,0.1), 0 0 5px rgba(181,232,83,0.1), 0 0 10px rgba(181,232,83,0.1);
+  }
+  header .site-title {
+    font-size: 30px; line-height: 1.5; margin: 0 0 0 -40px; font-weight: bold; color: #b5e853;
+    letter-spacing: -1px; -webkit-font-smoothing: antialiased;
+  }
+  header .site-title:before { content: "./ "; font-size: 24px; }
+  @media (max-width: 1000px) { header .site-title { margin-left: 0; } }
+  header .site-tagline { font-size: 18px; font-weight: 300; color: #666; }
+</style>

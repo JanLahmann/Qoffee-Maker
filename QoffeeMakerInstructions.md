@@ -1,3 +1,7 @@
+---
+title: "Setup instructions"
+description: "How to set up the Qoffee Maker: parts list, router, coffee machine and RasQberry, plus usage tips and bug fixing."
+---
 # Setup instructions for the QoffeeMaker
 
 ![Full setup](QoffeeMakerInstructions/QoffeeMaker1.jpg)
@@ -93,7 +97,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 
 ---
 
-# Usage tips
+## Usage tips
 
 - By clicking on "Simulator (error free)" and "Simulator (real quantum device)" you can calculate these models too. Wait a few seconds for them to show up in the graphs below. The colors indicate which model is which.
 - The circuit can be exported to the IBM Quantum composer by clicking on "Export to IBM Quantum Composer".
@@ -107,7 +111,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 
 ---
 
-# Bug fixing
+## Bug fixing
 
 - If there are any problems, the first thing to try is a restart of the Raspberry Pi. To do this, click on the restart symbol in the menu bar at to top of the screen. If the bar is not visible, move your mouse to the top of the screen.
 - If there the coffee machine doesnt make the ordered coffee:

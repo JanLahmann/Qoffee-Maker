@@ -1,3 +1,7 @@
+---
+title: "Qoffee Maker guide: Composer, gates and drink examples"
+description: "The long Qoffee Maker guide in one page: IBM Quantum Composer basics, the NOT, CNOT and H gates, the eight drinks, example circuits and advanced exercises."
+---
 # Welcome to the Qoffee Maker <img src="Bilder/QuoffeeMug_vector.png" width="150">
 
 ## Introduction

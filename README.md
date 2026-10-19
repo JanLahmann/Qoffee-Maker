@@ -1,3 +1,7 @@
+---
+title: "Order your coffee with a quantum circuit"
+description: "Build a 3-qubit circuit in IBM Quantum Composer: its measurement picks one of eight drinks, and the Qoffee Maker brews it. Quick start, examples, exercises."
+---
 # Welcome to the Qoffee Maker <img src="Bilder/QuoffeeMug_vector.png" width="150">
 
 ## Introduction
