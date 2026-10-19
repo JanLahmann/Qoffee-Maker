@@ -1,0 +1,42 @@
+# IndexNow (Fun with Quantum family, family/indexnow/README.md): after GitHub Pages has built and
+# deployed this branch, tell Bing, Yandex & co. which pages changed. The key is public by design;
+# https://qoffee-maker.org/6c33da1eaeb359f544adb84037c3b157.txt holds it. The sitemap has no <lastmod>, so every page is sent.
+name: IndexNow
+
+on:
+  push:
+    branches: [website]
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  # Pages builds this branch itself (no deploy job here), so wait until it has deployed this commit
+  wait-for-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      pages: read
+    steps:
+      - name: Wait for the Pages build of this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+        run: |
+          for i in $(seq 1 80); do
+            read -r status commit < <(gh api "repos/$REPO/pages/builds/latest" -q '"\(.status) \(.commit)"' || echo "unknown none")
+            echo "pages build: $status $commit"
+            if [ "$commit" = "$SHA" ] && [ "$status" = built ]; then exit 0; fi
+            if [ "$commit" = "$SHA" ] && [ "$status" = errored ]; then echo "Pages build failed"; exit 1; fi
+            sleep 10
+          done
+          echo "timed out waiting for the Pages build of $SHA"; exit 1
+
+  indexnow:
+    needs: wait-for-pages
+    if: github.ref == 'refs/heads/website'
+    uses: JanLahmann/Fun-with-Quantum/.github/workflows/indexnow.yml@master
+    with:
+      site: https://qoffee-maker.org
+      key: 6c33da1eaeb359f544adb84037c3b157
