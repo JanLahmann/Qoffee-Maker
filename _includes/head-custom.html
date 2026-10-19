@@ -1,2 +1,18 @@
-<!-- Umami analytics (shared Fun with Quantum family property) -->
-<script defer src="https://cloud.umami.is/script.js" data-website-id="97f347ac-e7ba-4be3-b26f-ab4b328bdbf2" data-domains="qoffee-maker.org"></script>
+<!-- Umami analytics (shared Fun with Quantum family property). ?notrack excludes this browser, ?track undoes it; headless browsers and bots send nothing -->
+<script>(function(){try{var q=location.search;if(/[?&]notrack\b/.test(q))localStorage.setItem('umami.disabled','1');if(/[?&]track\b/.test(q))localStorage.removeItem('umami.disabled')}catch(e){}window.fwqUmamiBeforeSend=function(t,p){var n=navigator;return(n.webdriver||/HeadlessChrome|bot|crawl|spider|Lighthouse|PageSpeed/i.test(n.userAgent))?false:p}})();</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="97f347ac-e7ba-4be3-b26f-ab4b328bdbf2" data-domains="qoffee-maker.org" data-before-send="fwqUmamiBeforeSend"></script>
+<!-- Click events (family taxonomy v2): every external link -> "Qoffee-Maker: outbound click" (host),
+     links to the instructions page -> "Qoffee-Maker: build guide open". Links that already carry an event keep it. -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('a[href]').forEach(function (a) {
+    if (a.hasAttribute('data-umami-event')) return;
+    if (/^https?:$/.test(a.protocol) && a.hostname !== location.hostname) {
+      a.setAttribute('data-umami-event', 'Qoffee-Maker: outbound click');
+      a.setAttribute('data-umami-event-host', a.hostname.replace(/^www\./, ''));
+    } else if (/\/QoffeeMakerInstructions(\.html|\.md)?$/.test(a.pathname)) {
+      a.setAttribute('data-umami-event', 'Qoffee-Maker: build guide open');
+    }
+  });
+});
+</script>
