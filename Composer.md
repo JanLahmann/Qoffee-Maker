@@ -2,11 +2,11 @@
 title: "IBM Quantum Composer"
 description: "How to build Qoffee Maker circuits in IBM Quantum Composer: drag gates onto the qubits and read the measurement probabilities of your drink."
 ---
-# IBM Quantum Composer <img src="Bilder/QuoffeeMug_vector.png" width="150">
+# IBM Quantum Composer <img src="Bilder/QuoffeeMug_vector.png" alt="" width="150" height="150">
 
-Using the IBM Quantum Composer, Quantum Circuits can be build by drag & drop of various gates onto the qubits. The resulting measurement probabilities are shown in a diagram. In addition, the Quantum Circuits can be executed on real quantum hardware or on simulators. A more detailed overview of the IBM Quantum Composer can be found [here](https://quantum-computing.ibm.com/composer/docs/iqx/overview).
+Using the IBM Quantum Composer, Quantum Circuits can be build by drag & drop of various gates onto the qubits. The resulting measurement probabilities are shown in a diagram. In addition, the Quantum Circuits can be executed on real quantum hardware or on simulators. IBM has a [more detailed overview of the IBM Quantum Composer](https://quantum-computing.ibm.com/composer/docs/iqx/overview).
 
-![alt text](Bilder/Composer.png) 
+![IBM Quantum Composer window with its numbered areas](Bilder/Composer.png){: width="1440" height="810"} 
 
 2 View: customize the layout.
 

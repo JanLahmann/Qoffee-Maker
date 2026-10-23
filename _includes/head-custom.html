@@ -32,3 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   @media (max-width: 1000px) { header .site-title { margin-left: 0; } }
   header .site-tagline { font-size: 18px; font-weight: 300; color: #666; }
 </style>
+<style>
+  /* Images carry width/height (no layout shift while loading); keep their aspect ratio when max-width shrinks them */
+  section img { height: auto; }
+</style>

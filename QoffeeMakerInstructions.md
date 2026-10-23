@@ -4,17 +4,17 @@ description: "How to set up the Qoffee Maker: parts list, router, coffee machine
 ---
 # Setup instructions for the QoffeeMaker
 
-![Full setup](QoffeeMakerInstructions/QoffeeMaker1.jpg)
+![Full setup](QoffeeMakerInstructions/QoffeeMaker1.jpg){: width="1707" height="1280"}
 
 Some stats for the setup:
 
 - List of parts:
   -  [RasQberry](https://rasqberry.org/) (Raspberry Pi in enclosure)
      -  Cables: Power Adapter <-> USB-C, USB-C <-> USB-C
-      > ![RasQberry](QoffeeMakerInstructions/QoffeeMaker8.jpg)
+      > ![RasQberry](QoffeeMakerInstructions/QoffeeMaker8.jpg){: width="4032" height="3024"}
   -  Small keyboard for RasQberry 
      -  USB receiver for connection to RasQberry should already be plugged in (Attention: The cable in the picture is for charging the keyboard!)
-      > ![Keyboard](QoffeeMakerInstructions/QoffeeMaker9.jpg)
+      > ![Keyboard](QoffeeMakerInstructions/QoffeeMaker9.jpg){: width="4032" height="3024"}
   -  Coffee Machine (Siemens Bosch Hausgeräte)
   -  Touchscreen Display (Viewsonic)
      -  Cables: HDMI <-> Mini-HDMI, power cable
@@ -36,15 +36,15 @@ Some stats for the setup:
 - Internet: Ethernet or WI-FI Connection to the Internet is neccessary; Network should be allowing repeaters/access points; Hotspots via your mobile phone are also possible
 
 1. Build up the different parts independently (coffee machine, RasQberry, touchscreen monitor, Router) and connect them to a power outlet (total: 1600W (~ 7A, 230V))
-> ![PowerOutlet](QoffeeMakerInstructions/QoffeeMaker12.jpg)
+> ![PowerOutlet](QoffeeMakerInstructions/QoffeeMaker12.jpg){: width="4032" height="3024"}
 2. Connect the Display and the RasQberry by cables (HDMI cable, USB cable)
-> ![RasQberry IO](QoffeeMakerInstructions/QoffeeMaker5.jpg)
-> ![Monitor IO](QoffeeMakerInstructions/QoffeeMaker6.jpg)
+> ![RasQberry IO](QoffeeMakerInstructions/QoffeeMaker5.jpg){: width="4032" height="3024"}
+> ![Monitor IO](QoffeeMakerInstructions/QoffeeMaker6.jpg){: width="4032" height="3024"}
 3. Power on all devices (coffee machine, touchscreen monitor); the other devices are powered on automatically
 
 ## Router 
 
-![Router](QoffeeMakerInstructions/QoffeeMaker3.jpg)
+![Router](QoffeeMakerInstructions/QoffeeMaker3.jpg){: width="4032" height="3024"}
 
 1. After some minutes you should find a WI-FI network called *Qoffee*. Connect to this network on your laptop or mobile device with the credentials.
 2. Don't worry: The router is probably **not** connected to the internet. We will change this now.
@@ -63,12 +63,12 @@ Some stats for the setup:
 ## Qoffee Machine
 
 1. Fill in all consumables: coffee beans(on top of machine), milk (left, see picture below), water (right, see picture below)
->![Milk tank](QoffeeMakerInstructions/QoffeeMaker10.jpg)
->![Water tank](QoffeeMakerInstructions/QoffeeMaker11.jpg)
+>![Milk tank](QoffeeMakerInstructions/QoffeeMaker10.jpg){: width="4032" height="3024"}
+>![Water tank](QoffeeMakerInstructions/QoffeeMaker11.jpg){: width="4032" height="3024"}
 2. After the startup you should see a screen like this: 
 
->![Coffee machine](QoffeeMakerInstructions/QoffeeMaker2.jpg)
-If you dont see this, you probably have to clean the machine or do maintenance. You can find intructions on how to deal with these issues [here](https://www.siemens-home.bsh-group.com/de/kundendienst/pflege-reinigung/kaffeemaschinen).
+>![Coffee machine](QoffeeMakerInstructions/QoffeeMaker2.jpg){: width="4032" height="3024"}
+If you dont see this, you probably have to clean the machine or do maintenance. See the [Siemens care and cleaning instructions for coffee machines (in German)](https://www.siemens-home.bsh-group.com/de/kundendienst/pflege-reinigung/kaffeemaschinen).
 
 2. Check if the machine is connected to the wireless network. The router should obviously be powered on for this. If the machine is connected there should be a WI-FI symbol in the top right hand corner. (see picture for example)
 3. If neccessary change the configuration for the different beverages (cup size in ml, amount of coffee vs milk, etc.)
@@ -81,7 +81,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 5. Wait a few second until the Jupyter notebook screen turns up in the browser.
 6. Open the qoffee.ipynb notebook.
 7. Wait a few seconds until a little rocket turns up in the menu bar.
-   >![Rocket](QoffeeMakerInstructions/QoffeeMaker13.png)
+   >![Rocket](QoffeeMakerInstructions/QoffeeMaker13.png){: width="1206" height="418"}
 8. Click the rocket to open app mode. The window should now be fullscreen and showing a GUI.
 > To reload the whole notebook or reenable fullscreen click the correspoding buttons in the lower right hand corner.
 9. In the lower right hand corner click "Refresh Auth". If the button turns green go on with the instructions. 
@@ -93,7 +93,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 
 10. Try out the circuit composer, determine your beverage and order it. If everything works fine there should now be a hot drink in your cup!
 
-![Working Composer](QoffeeMakerInstructions/QoffeeMaker7.jpg)
+![Working Composer](QoffeeMakerInstructions/QoffeeMaker7.jpg){: width="4032" height="3024"}
 
 ---
 
@@ -104,7 +104,7 @@ If you dont see this, you probably have to clean the machine or do maintenance. 
 - By default the circuit is always run in with an error-free simulator. Change this by clicking on the "Q" in the top right hand corner. It should change its colors between purple (error-free) and green (simulating a real device). 
 - You can show more gates in the composer by clicking the crossed out eye on the right side of the screen.
 - To reload the whole notebook or reenable fullscreen click the correspoding buttons in the lower right hand corner.
-   > ![Buttons](QoffeeMakerInstructions/QoffeeMaker14.png)
+   > ![Buttons](QoffeeMakerInstructions/QoffeeMaker14.png){: width="544" height="100"}
 - The RasQberry has inbuilt LEDs which can be acitvated by pressing the **right** button on top of the enclosure for about 4 seconds. The activation takes a short time.
 - The RasQberry can be turned off by pressing the **left** button on the top the enclosure.
 - The menu bar disappears on its own. Therefore you have to move to the mouse to the top of the screen to show the bar again.
