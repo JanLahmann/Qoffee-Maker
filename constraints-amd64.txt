@@ -1,6 +1,6 @@
 # Exact versions that DockerfileAmd64 added on top of jupyter/base-notebook:notebook-6.4.5 in the working
 # image ghcr.io/janlahmann/qoffee-maker-amd64:1.4.0 (built 2024-08-09), read from its layers.
-# Used as `pip install -c` so rebuilds get the same set.
+# DockerfileAmd64 applies them to every pip call (incl. build isolation) via the PIP_CONSTRAINT build arg.
 beautifulsoup4==4.12.3
 comm==0.2.2
 deprecation==2.1.0
