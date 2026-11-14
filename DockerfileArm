@@ -9,7 +9,7 @@ RUN npm install yarn
 RUN yarn build:prod
 
 
-FROM python:3.7
+FROM python:3.7.17
 RUN apt update
 RUN apt install -y libatlas-base-dev
 
@@ -17,6 +17,11 @@ WORKDIR /root
 COPY jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py
 
 # setup python environment
+# pip 23.0.1 from the base image rejects piwheels' Pillow/Quandl wheels ("inconsistent Name"); 24.0 is the last pip for Python 3.7.
+RUN pip install pip==24.0
+# Pin every package to the versions in the working 1.4.0 image.
+COPY constraints-arm.txt /tmp/constraints.txt
+ARG PIP_CONSTRAINT=/tmp/constraints.txt
 RUN pip install --index-url=https://www.piwheels.org/simple jupyter jupyter_packaging qiskit
 # RUN pip install ibm_quantum_widgets
 RUN pip install https://raw.githubusercontent.com//JanLahmann/RasQberry/master/whl/ibm_quantum_widgets-1.0.3-py2.py3-none-any.whl
