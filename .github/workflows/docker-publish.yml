@@ -58,11 +58,16 @@ jobs:
       - name: Check whether VERSION is already published
         id: publish
         run: |
-          if [ "$PUSH" = "true" ] && ! docker buildx imagetools inspect "$(echo "$REGISTRY/$IMAGE_NAME" | tr '[:upper:]' '[:lower:]'):$VERSION" >/dev/null 2>&1; then
+          if [ "$PUSH" != "true" ]; then
+            echo "push=false" >> "$GITHUB_OUTPUT"
+          elif out=$(docker buildx imagetools inspect "$(echo "$REGISTRY/$IMAGE_NAME" | tr '[:upper:]' '[:lower:]'):$VERSION" 2>&1); then
+            echo "push=false" >> "$GITHUB_OUTPUT"
+            echo "Not pushing: $VERSION is already published (bump VERSION to release)."
+          elif echo "$out" | grep -qi "not found"; then
             echo "push=true" >> "$GITHUB_OUTPUT"
           else
-            echo "push=false" >> "$GITHUB_OUTPUT"
-            echo "Not pushing: PUSH=$PUSH, or $VERSION is already published (bump VERSION to release)."
+            # Fail closed: a registry or network error must not lead to overwriting a released tag.
+            echo "$out"; exit 1
           fi
 
       # Login against a Docker registry except on PR
