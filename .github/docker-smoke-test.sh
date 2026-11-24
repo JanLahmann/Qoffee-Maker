@@ -47,11 +47,19 @@ for entry in qcreg:
     executor = CircuitExecutor(entry["circuit"])
     analytical = executor.probabilities_analytical()   # StatevectorSimulator
     qasm = executor.probabilities_qasm(num_shots=100)  # transpile + QasmSimulator
-    assert abs(sum(analytical.values()) - 1) < 1e-3 and abs(sum(qasm.values()) - 1) < 1e-3, entry["id"]  # the app rounds amplitudes to 5 decimals
+    assert abs(sum(analytical.values()) - 1) < 1e-9 and abs(sum(qasm.values()) - 1) < 1e-9, entry["id"]
     print(entry["id"], CircuitExecutor.get_maximum_key(qasm))
 mock = CircuitExecutor(qcreg[4]["circuit"]).probabilities_mock(num_shots=100)  # FakeMontreal: layout, routing, noise
 assert abs(sum(mock.values()) - 1) < 1e-3
 print("mock device", mock)
+# The ideal-probability labels must be rounded and keep one decimal: 3x H gives 12.5% per drink, untouched bars 0.0%.
+three_h = QuantumCircuit(3)
+three_h.h([0, 1, 2])
+data.histogram_anal = CircuitExecutor(three_h).probabilities_analytical()
+assert view_composer_hist._rendered.count(">12.5%<") == 8, view_composer_hist._rendered
+data.histogram_anal = {key: 0 for key in DRINKS}
+assert view_composer_hist._rendered.count(">0.0%<") == 8, view_composer_hist._rendered
+print("histogram labels ok")
 """})
 json.dump(nb, sys.stdout)
 PY

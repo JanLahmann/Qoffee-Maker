@@ -17,7 +17,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  VERSION: 1.5.2
+  VERSION: 1.5.1
   # Pull requests only build; images are pushed only from main.
   PUSH: ${{ github.ref == 'refs/heads/main' }}
 
@@ -53,10 +53,22 @@ jobs:
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@v3
 
+      # Published VERSION tags are immutable: a push to main without a VERSION bump builds and
+      # smoke-tests, but doesn't overwrite an image that has already been released and tested.
+      - name: Check whether VERSION is already published
+        id: publish
+        run: |
+          if [ "$PUSH" = "true" ] && ! docker buildx imagetools inspect "$(echo "$REGISTRY/$IMAGE_NAME" | tr '[:upper:]' '[:lower:]'):$VERSION" >/dev/null 2>&1; then
+            echo "push=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "push=false" >> "$GITHUB_OUTPUT"
+            echo "Not pushing: PUSH=$PUSH, or $VERSION is already published (bump VERSION to release)."
+          fi
+
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
       - name: Log into registry ${{ env.REGISTRY }}
-        if: env.PUSH == 'true'
+        if: steps.publish.outputs.push == 'true'
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
@@ -114,7 +126,7 @@ jobs:
       - name: Smoke-test Docker image AMD
         run: .github/docker-smoke-test.sh "${{ fromJSON(steps.meta-amd.outputs.json).tags[0] }}" linux/amd64
       - name: Push Docker images
-        if: env.PUSH == 'true'
+        if: steps.publish.outputs.push == 'true'
         run: |
           docker push "${{ fromJSON(steps.meta-arm.outputs.json).tags[0] }}"
           docker push "${{ fromJSON(steps.meta-amd.outputs.json).tags[0] }}"
@@ -128,7 +140,7 @@ jobs:
       #     file: DockerfileArm64
       #     platforms: linux/arm64
       - name: Create Docker manifest
-        if: env.PUSH == 'true'
+        if: steps.publish.outputs.push == 'true'
         run: |
           set -x
           CONTAINER_REPO=`echo ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }} | tr '[:upper:]' '[:lower:]'`
