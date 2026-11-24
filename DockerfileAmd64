@@ -13,11 +13,11 @@ WORKDIR /home/jovyan/work
 COPY jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py
 
 # setup python environment
-# Pin every package to the versions in the working 1.4.0 image.
+# Pin every package (qiskit 0.29.1, as on ARM; see the constraints file).
 COPY constraints-amd64.txt /tmp/constraints.txt
 ARG PIP_CONSTRAINT=/tmp/constraints.txt
 RUN pip install setuptools==68.0.0
-RUN pip install https://raw.githubusercontent.com//JanLahmann/RasQberry/master/whl/ibm_quantum_widgets-1.0.3-py2.py3-none-any.whl jupyter_packaging && \
+RUN pip install https://raw.githubusercontent.com//JanLahmann/RasQberry/master/whl/ibm_quantum_widgets-1.0.3-py2.py3-none-any.whl jupyter_packaging qiskit && \
     jupyter nbextension enable --py widgetsnbextension && \
     jupyter nbextension enable --py ibm_quantum_widgets
 

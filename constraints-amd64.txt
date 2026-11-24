@@ -1,26 +1,63 @@
-# Exact versions that DockerfileAmd64 added on top of jupyter/base-notebook:notebook-6.4.5 in the working
-# image ghcr.io/janlahmann/qoffee-maker-amd64:1.4.0 (built 2024-08-09), read from its layers.
+# Versions DockerfileAmd64 installs on top of jupyter/base-notebook:notebook-6.4.5 (conda Python 3.9).
+# qoffee.ipynb needs qiskit 0.x (IBMQ, execute, qiskit.providers.aer, qiskit.test.mock), so this matches the ARM
+# image's qiskit 0.29.1 with numpy <1.24; the rest is what pip resolved for that on 2026-11-24.
+# (1.4.0 and 1.5.0 got qiskit 1.1.1 through ibm-quantum-widgets, which broke the notebook's import cell.)
 # DockerfileAmd64 applies them to every pip call (incl. build isolation) via the PIP_CONSTRAINT build arg.
-beautifulsoup4==4.12.3
-comm==0.2.2
-deprecation==2.1.0
-dill==0.3.8
 ibm-quantum-widgets==1.0.3
-ipywidgets==8.1.3
-jupyter-packaging==0.12.3
-jupyterlab-widgets==3.0.11
+beautifulsoup4==4.15.0
+certifi==2026.11.20
+comm==0.2.3
+curl_cffi==0.13.0
+deprecation==2.1.0
+dill==0.4.1
+dlx==1.0.4
+docplex==2.32.264
+fastdtw==0.3.4
+fastjsonschema==2.21.2
+frozendict==2.5.1
+h5py==3.2.1
+inflection==0.5.1
+ipywidgets==8.1.9
+joblib==1.5.3
+jupyter_packaging==0.12.3
+jupyterlab_widgets==3.0.17
+more-itertools==10.8.0
 mpmath==1.3.0
-numpy==2.0.1
-pbr==6.0.0
-python-dotenv==1.0.1
-qiskit==1.1.1
-rustworkx==0.15.1
+multitasking==0.0.13
+numpy==1.23.5
+pandas==2.3.3
+peewee==4.5.3
+platformdirs==4.4.0
+ply==3.11
+protobuf==6.33.6
+psutil==7.2.2
+pybind11==3.1.0
+pyspnego==0.12.4
+python-constraint==1.4.0
+python-dotenv==1.2.1
+pytz==2026.6
+qiskit-aer==0.8.2
+qiskit-aqua==0.9.5
+qiskit-ibmq-provider==0.16.0
+qiskit-ignis==0.6.0
+qiskit-terra==0.18.2
+qiskit==0.29.1
+Quandl==3.7.0
+requests==2.32.5
+requests_ntlm==1.3.0
+retworkx==0.17.1
+rustworkx==0.17.1
+scikit-learn==1.6.1
 scipy==1.13.1
 setuptools==68.0.0
-soupsieve==2.5
-stevedore==5.2.0
-symengine==0.11.0
-sympy==1.13.1
-tomlkit==0.13.0
-typing-extensions==4.12.2
-widgetsnbextension==4.0.11
+soupsieve==2.8.4
+symengine==0.14.1
+sympy==1.14.0
+threadpoolctl==3.7.0
+tomlkit==0.15.3
+tweedledum==1.1.1
+typing_extensions==4.16.0
+tzdata==2026.6
+websockets==15.0.1
+widgetsnbextension==4.0.16
+yfinance==1.2.0

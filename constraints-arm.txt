@@ -12,8 +12,9 @@ certifi==2024.7.4
 cffi==1.15.1
 charset-normalizer==3.3.2
 comm==0.1.4
-# 1.4.0 had 43.0.0; piwheels no longer serves an armv7 wheel for it (skipped: "openssl issue"), so the newest one it has.
-cryptography==42.0.8
+# 1.4.0 had 43.0.0 from piwheels, linked against OpenSSL 1.1, which bookworm lacks. DockerfileArm installs
+# PyPI's manylinux armv7 wheel instead (OpenSSL bundled); 45.0.x is the last series that supports Python 3.7.
+cryptography==45.0.7
 debugpy==1.7.0
 decorator==5.1.1
 defusedxml==0.7.1
