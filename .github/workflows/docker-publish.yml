@@ -17,7 +17,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  VERSION: 1.5.1
+  VERSION: 1.5.2
   # Pull requests only build; images are pushed only from main.
   PUSH: ${{ github.ref == 'refs/heads/main' }}
 
