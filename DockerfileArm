@@ -20,7 +20,7 @@ COPY jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py
 # setup python environment
 # pip 23.0.1 from the base image rejects piwheels' Pillow/Quandl wheels ("inconsistent Name"); 24.0 is the last pip for Python 3.7.
 RUN pip install pip==24.0
-# Pin every package to the versions in the working 1.4.0 image.
+# Pin every package (the 1.4.0 image's versions, except where constraints-arm.txt says why not).
 COPY constraints-arm.txt /tmp/constraints.txt
 ARG PIP_CONSTRAINT=/tmp/constraints.txt
 # piwheels' cp37 armv7 wheels were built on Debian buster: its cryptography links OpenSSL 1.1 and its cffi

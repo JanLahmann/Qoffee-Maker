@@ -100,7 +100,7 @@ jobs:
           file: DockerfileArm
           platforms: linux/arm/v7
       - name: Smoke-test Docker image ARM
-        run: .github/docker-smoke-test.sh "${{ steps.meta-arm.outputs.tags }}" linux/arm/v7
+        run: .github/docker-smoke-test.sh "${{ fromJSON(steps.meta-arm.outputs.json).tags[0] }}" linux/arm/v7
       - name: Build Docker image AMD
         id: build-amd
         uses: docker/build-push-action@v6
@@ -112,12 +112,12 @@ jobs:
           file: DockerfileAmd64
           platforms: linux/amd64
       - name: Smoke-test Docker image AMD
-        run: .github/docker-smoke-test.sh "${{ steps.meta-amd.outputs.tags }}" linux/amd64
+        run: .github/docker-smoke-test.sh "${{ fromJSON(steps.meta-amd.outputs.json).tags[0] }}" linux/amd64
       - name: Push Docker images
         if: env.PUSH == 'true'
         run: |
-          docker push "${{ steps.meta-arm.outputs.tags }}"
-          docker push "${{ steps.meta-amd.outputs.tags }}"
+          docker push "${{ fromJSON(steps.meta-arm.outputs.json).tags[0] }}"
+          docker push "${{ fromJSON(steps.meta-amd.outputs.json).tags[0] }}"
       # - name: Build and push Docker image ARM64
       #   id: build-and-push-arm
       #   uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
