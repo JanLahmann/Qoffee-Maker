@@ -11,7 +11,7 @@ curl_cffi==0.13.0
 deprecation==2.1.0
 dill==0.4.1
 dlx==1.0.4
-docplex==2.32.264
+docplex==2.28.240
 fastdtw==0.3.4
 fastjsonschema==2.21.2
 frozendict==2.5.1
@@ -49,7 +49,7 @@ retworkx==0.17.1
 rustworkx==0.17.1
 scikit-learn==1.6.1
 scipy==1.13.1
-setuptools==68.0.0
+setuptools==68.2.2
 soupsieve==2.8.4
 symengine==0.14.1
 sympy==1.14.0
